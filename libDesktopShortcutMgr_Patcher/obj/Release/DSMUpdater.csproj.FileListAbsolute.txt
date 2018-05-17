@@ -1,0 +1,51 @@
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.pdb
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.pdb
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.pdb
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll.config
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll.config
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.pdb
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.dll
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.pdb
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.dll
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.pdb
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll.config
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.pdb
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.dll
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.pdb
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\ResolveAssemblyReference.cache
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.dll
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.pdb
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.PatcherInterface.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\GenerateResource-ResGen.read.1.tlog
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\GenerateResource-ResGen.write.1.tlog
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll.config
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.pdb
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.dll
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.pdb
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\ResolveAssemblyReference.cache
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.PatcherInterface.resources
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\ResGen.read.1.tlog
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\ResGen.write.1.tlog
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.dll
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.csprojResolveAssemblyReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.PatcherInterface.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.csproj.GenerateResource.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.csproj.CoreCompileInputs.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.csproj.CopyComplete
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.pdb

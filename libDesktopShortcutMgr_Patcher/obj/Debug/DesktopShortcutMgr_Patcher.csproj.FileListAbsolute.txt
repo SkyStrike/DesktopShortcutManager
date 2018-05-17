@@ -1,0 +1,7 @@
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Debug\libDesktopShortcutMgr_Patcher.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Debug\libDesktopShortcutMgr_Patcher.pdb
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Debug\CustomLibraries.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Debug\CustomLibraries.pdb
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Debug\libDesktopShortcutMgr_Patcher.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Debug\libDesktopShortcutMgr_Patcher.pdb
