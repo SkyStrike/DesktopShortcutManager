@@ -1,0 +1,5 @@
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\Libraries\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\Libraries\bin\Release\Libraries.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\Libraries\bin\Release\Libraries.pdb
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\Libraries\obj\Release\Libraries.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\Libraries\obj\Release\Libraries.pdb
