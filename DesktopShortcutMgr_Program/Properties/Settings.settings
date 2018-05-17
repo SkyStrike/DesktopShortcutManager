@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DesktopShortcutMgr_Program.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="IntialHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="DefaultView" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Opacity" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="LastMenuLoaded" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DefaultIconMapping" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DefaultIconMapping.xml</Value>
+    </Setting>
+    <Setting Name="ExpandContractStyle" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="BackgroundImagePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ShortcutGroupSettings" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Shortcuts.xml</Value>
+    </Setting>
+    <Setting Name="PatcherConfig" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PatcherConfig.xml</Value>
+    </Setting>
+    <Setting Name="ShortcutBarColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Desktop</Value>
+    </Setting>
+    <Setting Name="ShortcutBarTextColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="SupressPromptMultipleProgram" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ShowMiniPanel" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MyBlog" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://ykgoh.wordpress.com</Value>
+    </Setting>
+    <Setting Name="GitHubUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://ykgoh.wordpress.com</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

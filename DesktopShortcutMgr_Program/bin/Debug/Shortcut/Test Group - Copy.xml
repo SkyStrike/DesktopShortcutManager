@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Shortcuts>
+    <id>00e93a54-d199-4ee0-83a1-bcfd4065ee7c</id>
+    <icon>devenv.exe - Shortcut__634.ico</icon>
+    <text>devenv.exe - Shortcut</text>
+    <application>"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe"</application>
+    <params />
+  </Shortcuts>
+  <Shortcuts>
+    <id>0c94c589-48b3-475b-bc0c-ebfe644397ea</id>
+    <icon />
+    <text>base64Conversion</text>
+    <application>"C:\Users\yukuang_goh\Desktop\base64Conversion"</application>
+  </Shortcuts>
+  <Shortcuts>
+    <id>e906b98a-e518-4d03-91b9-dad7e5fc2005</id>
+    <text>6-SPID62_b133x86_CaptureAsyncBugFix_Patch</text>
+    <application>"C:\Users\yukuang_goh\Desktop\6-SPID62_b133x86_CaptureAsyncBugFix_Patch"</application>
+  </Shortcuts>
+  <Shortcuts>
+    <id>7a631a52-c8ab-48a5-a959-accc25b6d921</id>
+    <icon>devenv.exe - Shortcut__536.ico</icon>
+    <text>devenv.exe - Shortcut</text>
+    <application>"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe"</application>
+  </Shortcuts>
+  <Shortcuts>
+    <id>4ed9a4a5-20b9-44dc-867e-809aec591c73</id>
+    <icon>devenv.exe - Shortcut.ico</icon>
+    <text>BDIC</text>
+    <application>"C:\Users\yukuang_goh\Desktop\BDIC"</application>
+  </Shortcuts>
+</NewDataSet>

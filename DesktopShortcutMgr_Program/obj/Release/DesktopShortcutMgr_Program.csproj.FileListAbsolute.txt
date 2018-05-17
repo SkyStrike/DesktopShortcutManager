@@ -1,0 +1,152 @@
+C:\Documents and Settings\goh.yukuang\Local Settings\Application Data\Temporary Projects\DesktopShortcutMgr_Program\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\goh.yukuang\Local Settings\Application Data\Temporary Projects\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmMain.resources
+C:\Documents and Settings\goh.yukuang\Local Settings\Application Data\Temporary Projects\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.Properties.Resources.resources
+C:\Documents and Settings\goh.yukuang\Local Settings\Application Data\Temporary Projects\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.GenerateResource.Cache
+C:\Documents and Settings\goh.yukuang\Local Settings\Application Data\Temporary Projects\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr_Program.exe
+C:\Documents and Settings\goh.yukuang\Local Settings\Application Data\Temporary Projects\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr_Program.pdb
+C:\Documents and Settings\goh.yukuang\Local Settings\Application Data\Temporary Projects\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.exe
+C:\Documents and Settings\goh.yukuang\Local Settings\Application Data\Temporary Projects\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.pdb
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmMain.resources
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.Properties.Resources.resources
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.GenerateResource.Cache
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\Interop.IWshRuntimeLibrary.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.ResolveComReference.cache
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmNewGroup.resources
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmTextReturner.resources
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmOptions.resources
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmSearch.resources
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmShortcutProperties.resources
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmCustomSort.resources
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmKnownColorPicker.resources
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe.config
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.pdb
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.exe
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.pdb
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\CustomControls.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\CustomControls.pdb
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.pdb
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.dll
+C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.pdb
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe.config
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.ResolveComReference.cache
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.exe
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.pdb
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.pdb
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\CustomControls.dll
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.dll
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.dll
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\CustomControls.pdb
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.pdb
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.pdb
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\bin\Release\Interop.IWshRuntimeLibrary.dll
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmKnownColorPicker.resources
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmCustomSort.resources
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmNewGroup.resources
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmMain.resources
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmOptions.resources
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmSearch.resources
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmShortcutProperties.resources
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmTextReturner.resources
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.Properties.Resources.resources
+C:\Documents and Settings\Yukuang Goh\My Documents\Personal Programs\DesktopShortcutMgr_Program\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.GenerateResource.Cache
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe.config
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.ResolveComReference.cache
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.exe
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.pdb
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\ResolveAssemblyReference.cache
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\GenerateResource-ResGen.read.1.tlog
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\GenerateResource-ResGen.write.1.tlog
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.pdb
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CustomControls.dll
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.dll
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.dll
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CustomControls.pdb
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.pdb
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.pdb
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmKnownColorPicker.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmCustomSort.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmMain.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmOptions.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmSearch.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmShortcutProperties.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmTextReturner.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.Properties.Resources.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CrashReporterLibrary.dll
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CrashReporterLibrary.pdb
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmExportShortcut.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmTextDisplay.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.XML
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe.config
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.XML
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.ResolveComReference.cache
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.exe
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.pdb
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CrashReporterLibrary.dll
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CustomControls.dll
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.dll
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.dll
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CrashReporterLibrary.pdb
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CustomControls.pdb
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.pdb
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.pdb
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\ResolveAssemblyReference.cache
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmKnownColorPicker.resources
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmCustomSort.resources
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmExportShortcut.resources
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmMain.resources
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmOptions.resources
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmSearch.resources
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmShortcutProperties.resources
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmTextDisplay.resources
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmTextReturner.resources
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.Properties.Resources.resources
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\ResGen.read.1.tlog
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\ResGen.write.1.tlog
+C:\Users\gohyukuang\Documents\YK Programs\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.XML
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CrashReporterLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CustomControls.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CrashReporterLibrary.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CustomControls.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CustomControls.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\bin\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csprojResolveAssemblyReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.ResolveComReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmKnownColorPicker.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmCustomSort.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmExportShortcut.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmMain.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmOptions.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmSearch.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmShortcutProperties.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmTextDisplay.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.frmTextReturner.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.Properties.Resources.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.GenerateResource.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.CoreCompileInputs.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.CopyComplete
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.exe
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.pdb
