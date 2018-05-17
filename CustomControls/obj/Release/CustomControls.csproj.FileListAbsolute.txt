@@ -41,3 +41,12 @@ C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\Cu
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CustomControls\obj\Release\CustomControls.csproj.CoreCompileInputs.cache
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CustomControls\obj\Release\CustomControls.dll
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CustomControls\obj\Release\CustomControls.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CustomControls\bin\Release\CustomControls.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CustomControls\bin\Release\CustomControls.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CustomControls\bin\Release\CustomControls.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CustomControls\obj\Release\CustomControls.csprojResolveAssemblyReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CustomControls\obj\Release\CustomControls.KnownColorPicker.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CustomControls\obj\Release\CustomControls.csproj.GenerateResource.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CustomControls\obj\Release\CustomControls.csproj.CoreCompileInputs.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CustomControls\obj\Release\CustomControls.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CustomControls\obj\Release\CustomControls.pdb
