@@ -10,16 +10,16 @@ namespace DesktopShortcutMgr.Entity
 	[XmlRoot("Mappings")]
 	public class IconMap
 	{
-		[XmlElement("Map")]
+		[XmlElement("map")]
 		public List<IconMapItem> Items { get; set; }
 	}
 
 	public class IconMapItem {
 
-		[XmlAttribute("Ext")]
+		[XmlAttribute("ext")]
 		public string Ext { get; set; }
 
-		[XmlAttribute("Icon")]
+		[XmlAttribute("icon")]
 		public string Icon { get; set; }
 	}
 }
