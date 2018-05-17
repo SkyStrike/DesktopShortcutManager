@@ -366,9 +366,6 @@ namespace DesktopShortcutMgr
             asm = Assembly.GetAssembly(typeof(CustomControls.KnownColorPicker));
             this.textBoxDescription.AppendText(FormatDescription(asm));
 
-            asm = Assembly.GetAssembly(typeof(CustomLibraries.UserFunctions));
-            this.textBoxDescription.AppendText(FormatDescription(asm));
-
             asm = Assembly.GetAssembly(typeof(DSMUpdater.Patcher));
             this.textBoxDescription.AppendText(FormatDescription(asm));
         }

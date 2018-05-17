@@ -1,2 +1,29 @@
-<?xml version="1.0" standalone="yes"?>
-<shortcuts />
+﻿<Shortcuts>
+	<Groups>
+		<Name>Development</Name>
+	</Groups>
+	<Groups>
+		<Name>Misc</Name>
+	</Groups>
+	<Groups>
+		<Name>BioPass</Name>
+	</Groups>
+	<Groups>
+		<Name>WebSphere</Name>
+	</Groups>
+	<Groups>
+		<Name>NEC</Name>
+	</Groups>
+	<Groups>
+		<Name>Biopass2</Name>
+	</Groups>
+	<Groups>
+		<Name>MMBS</Name>
+	</Groups>
+	<Groups>
+		<Name>BDIC</Name>
+	</Groups>
+	<Groups>
+		<Name>nodejs</Name>
+	</Groups>
+</Shortcuts>

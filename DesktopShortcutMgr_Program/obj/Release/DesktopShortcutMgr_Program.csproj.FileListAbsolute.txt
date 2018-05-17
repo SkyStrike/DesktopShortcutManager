@@ -150,3 +150,37 @@ C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\De
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.CopyComplete
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.exe
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.XML
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.exe
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DesktopShortcutMgr.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CrashReporterLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CustomControls.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CrashReporterLibrary.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CustomControls.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CustomControls.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\DSMUpdater.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\CustomLibraries.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\bin\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csprojResolveAssemblyReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.ResolveComReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.ColorPickerForm.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.CustomSortingForm.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.ExportShortcutForm.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.MainForm.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.OptionsForm.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.SearchForm.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.ShortcutPropertiesForm.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.TextDisplayForm.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.TextReturnerForm.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.Properties.Resources.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.GenerateResource.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.CoreCompileInputs.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr_Program.csproj.CopyComplete
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.exe
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\DesktopShortcutMgr_Program\obj\Release\DesktopShortcutMgr.pdb
