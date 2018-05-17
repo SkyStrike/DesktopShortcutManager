@@ -49,3 +49,16 @@ C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\li
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.csproj.CopyComplete
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.dll
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.csprojResolveAssemblyReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.PatcherInterface.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.csproj.GenerateResource.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.csproj.CoreCompileInputs.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.csproj.CopyComplete
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.pdb

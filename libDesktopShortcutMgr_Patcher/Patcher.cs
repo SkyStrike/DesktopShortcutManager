@@ -219,7 +219,13 @@ namespace DSMUpdater
                         Write("\tDone\n");
                         break;
 
-                    default:
+					case Commands.RemoveInvalidEntries:
+						Write("Removing Invalid Entries. This may take some time.");
+						RemoveInvalidEntries();
+						Write("\tDone\n");
+						break;
+
+					default:
                         MessageBox.Show("Unknown Patch Command: " + cmd);
                         break;
                 }
@@ -240,7 +246,8 @@ namespace DSMUpdater
             FixApplicationPaths,
             AssignShortcutIds,
             RemoveCustomIcons,
-            RemoveAllShortcuts
+            RemoveAllShortcuts,
+			RemoveInvalidEntries
         }
 
         public static bool IsCommand(string cmd)
@@ -261,6 +268,46 @@ namespace DSMUpdater
             return System.Enum.GetNames(typeof(Commands));
         }
 
+
+		private DataSet GetDataSetFromPath(string path) {
+			DataSet ds = null;
+			if (System.IO.File.Exists(path))
+			{
+				ds = new DataSet();
+				ds.ReadXml(path);
+			}
+			return ds;
+		}
+
+		private DataSet GetShortcutGroupDataSet()
+		{
+			string cfgFile = System.IO.Path.Combine(strConfigfolder, this.strShortcutGroupConfigFile);
+			return GetDataSetFromPath(cfgFile);
+		}
+		private void SaveGroupDataSet(DataSet data)
+		{
+			string cfgFile = System.IO.Path.Combine(strConfigfolder, this.strShortcutGroupConfigFile);
+			data.WriteXml(cfgFile);
+		}
+
+		private DataSet GetGroupShortcut(string groupName)
+		{
+			string cfgFile = System.IO.Path.Combine(strShortcutFolder, groupName + ".xml");
+			return GetDataSetFromPath(cfgFile);
+		}
+
+		private DataSet GetIconMap()
+		{
+			string cfgFile = System.IO.Path.Combine(strConfigfolder, this.strDefaultIconMapConfigFile);
+			return GetDataSetFromPath(cfgFile);
+		}
+
+		private void SaveGroupShortcut(string groupName, DataSet data)
+		{
+			string cfgFile = System.IO.Path.Combine(strShortcutFolder, groupName + ".xml");
+			data.WriteXml(cfgFile);
+		}
+
         /// <summary>
         /// <para>Created By    : YUKUANG</para>
         /// <para>Created Date  : 15 Oct 2009</para>
@@ -278,25 +325,16 @@ namespace DSMUpdater
         /// </summary>
         private void RebuildIcons()
         {
-            string strShortcutGroupConfigFile = strConfigfolder + this.strShortcutGroupConfigFile;
-
-            if (!System.IO.File.Exists(strShortcutGroupConfigFile))
-            {
-                WriteLine("Invalid Shortcut Group Settings File: " + strShortcutGroupConfigFile);
-                return;
-            }
-
-
             WriteLine("Getting Group Name Config");
 
             //Check if the file exists
-            DataSet ds = null;
+            DataSet ds = GetShortcutGroupDataSet();
+			if (ds == null) {
+				WriteLine("Invalid Shortcut Group Settings File: " + strShortcutGroupConfigFile);
+				return;
+			}
 
-            //Read the shortcut file
-            ds = new DataSet();
-            ds.ReadXml(strShortcutGroupConfigFile);
-
-            if (ds.Tables.Count == 0)
+			if (ds.Tables.Count == 0)
             {
                 WriteLine("No Shortcuts to remove!");
                 return;
@@ -304,86 +342,71 @@ namespace DSMUpdater
 
             if (ds.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow dr in ds.Tables[0].Rows)
-                {
-                    //Get the group name
-                    string strGroupName = dr["name"].ToString();
+				foreach (DataRow dr in ds.Tables[0].Rows)
+				{
+					//Get the group name
+					string strGroupName = dr["name"].ToString();
 
-                    //get the full path
-                    string strShortcutFile = strShortcutFolder + @strGroupName + ".xml";
-
-                    WriteLine("Loading Group: " + strGroupName);
-
-                    //locate file. If it exists, load the items
-                    if (System.IO.File.Exists(strShortcutFile))
-                    {
-
-                        //Read all items of the group
-                        DataSet dsItems = new DataSet();
-                        dsItems.ReadXml(strShortcutFile);
+					DataSet dsItems = GetGroupShortcut(strGroupName);
+					if (dsItems != null)
+					{
+						foreach (DataRow subDr in dsItems.Tables[0].Rows)
+						{
+							//Get the application name
+							string strApplicationName = subDr["text"].ToString();
 
 
-                        //Loop all records
-                        foreach (DataRow subDr in dsItems.Tables[0].Rows)
-                        {
-
-                            //Get the application name
-                            string strApplicationName = subDr["text"].ToString();
+							//Get the application path
+							string strApplication = GetApplicationPart(subDr["application"].ToString());
 
 
-                            //Get the application path
-                            string strApplication = GetApplicationPart(subDr["application"].ToString());
+							//only patch FILES that exists
+							if (System.IO.File.Exists(strApplication))
+							{
+								//Only Patch EXEs
+								if (System.IO.Path.GetExtension(strApplication).ToLower() == ".exe")
+								{
+									//Try to extract the icon file
+									try
+									{
+										Write(string.Format("Extracting Icon: {0}", strApplication));
+										Libraries.IconExtractor extractor = new Libraries.IconExtractor(strApplication);
 
+										//Gets the first icon in the Executable
+										System.Drawing.Icon ico = extractor.GetIcon(0);
 
-                            //only patch FILES that exists
-                            if (System.IO.File.Exists(strApplication))
-                            {
+										//create unique name
+										string uniqueFilename = System.IO.Path.GetFileNameWithoutExtension(strApplication);
+										string strIconPath = strIconFolder + uniqueFilename + ".ico";
+										strIconPath = CreateUniqueFilename(strIconPath);
 
-                                //Only Patch EXEs
-                                if (System.IO.Path.GetExtension(strApplication).ToLower() == ".exe")
-                                {
-                                    //Try to extract the icon file
-                                    try
-                                    {
-                                        Write(string.Format("Extracting Icon: {0}", strApplication));
-                                        Libraries.IconExtractor extractor = new Libraries.IconExtractor(strApplication);
+										//Save the Icon using a FileStream
+										using (System.IO.FileStream fs = new System.IO.FileStream(strIconPath, System.IO.FileMode.OpenOrCreate))
+										{
+											ico.Save(fs);
+											fs.Close();
+											fs.Dispose();
+										}
+										WriteLine("\tExtracted\n");
 
-                                        //Gets the first icon in the Executable
-                                        System.Drawing.Icon ico = extractor.GetIcon(0);
+										//Patch the datarow
+										subDr["icon"] = System.IO.Path.GetFileName(strIconPath);
+									}
+									catch (Exception)
+									{
+										//display error
+										MessageBox.Show(
+											"Unable to extract icon for [" + strGroupName + "/" + strApplicationName + "]",
+											"Error",
+											MessageBoxButtons.OK, MessageBoxIcon.Error);
+									}
+								}
+							}
+						}
 
-                                        //create unique name
-                                        string uniqueFilename = System.IO.Path.GetFileNameWithoutExtension(strApplication);
-                                        string strIconPath = strIconFolder + uniqueFilename + ".ico";
-                                        strIconPath = CreateUniqueFilename(strIconPath);
-
-                                        //Save the Icon using a FileStream
-                                        using (System.IO.FileStream fs = new System.IO.FileStream(strIconPath, System.IO.FileMode.OpenOrCreate))
-                                        {
-                                            ico.Save(fs);
-                                            fs.Close();
-                                            fs.Dispose();
-                                        }
-                                        WriteLine("\tExtracted\n");
-
-                                        //Patch the datarow
-                                        subDr["icon"] = System.IO.Path.GetFileName(strIconPath);
-                                    }
-                                    catch (Exception)
-                                    {
-                                        //display error
-                                        MessageBox.Show(
-                                            "Unable to extract icon for [" + strGroupName + "/" + strApplicationName + "]",
-                                            "Error",
-                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
-                            }
-                        }
-
-                        //Update the shortcut file
-                        dsItems.WriteXml(strShortcutFile);
-                    }
-                }
+						SaveGroupShortcut(strGroupName, dsItems);
+					}
+				}
             }
         }
 
@@ -403,24 +426,17 @@ namespace DSMUpdater
         /// </summary>
         private void ClearUnusedIcons()
         {
-            string strDefaultIconMapConfigFile = strConfigfolder + this.strDefaultIconMapConfigFile;
-            string strShortcutGroupConfigFile = strConfigfolder + this.strShortcutGroupConfigFile;
+			//Check if the file exists
+			DataSet ds = GetIconMap();
 
-            if (!System.IO.File.Exists(strDefaultIconMapConfigFile))
+			if (ds == null)
             {
                 WriteLine("Invalid Default Icon Map Settings File: " + strDefaultIconMapConfigFile);
                 return;
             }
+			WriteLine("Getting Default Icon Files");
 
-            //Check if the file exists
-            DataSet ds = null;
-
-            WriteLine("Getting Default Icon Files");
-            //Read the shortcut file
-            ds = new DataSet();
-            ds.ReadXml(strDefaultIconMapConfigFile);
-
-            List<string> lstIcons = new List<string>();
+			List<string> lstIcons = new List<string>();
             foreach (DataRow drIcon in ds.Tables[0].Rows)
             {
                 if (drIcon["icon"] != null)
@@ -430,54 +446,39 @@ namespace DSMUpdater
             }
 
 
-            if (System.IO.File.Exists(strShortcutGroupConfigFile))
+			ds = GetShortcutGroupDataSet();
+            if (ds != null)
             {
                 WriteLine("Getting Icons used in groups");
-
-                //Read the shortcut file
-                ds = new DataSet();
-                ds.ReadXml(strShortcutGroupConfigFile);
-
-                if (ds.Tables.Count == 0)
+                if (ds.Tables.Count > 0)
                 {
-                    WriteLine("No Shortcut groups found!");
+					foreach (DataRow dr in ds.Tables[0].Rows)
+					{
+						//Get the group name
+						string strGroupName = dr["name"].ToString();
 
+						//Read all items of the group
+						DataSet dsItems = GetGroupShortcut(strGroupName);
+
+						//locate file. If it exists, load the items
+						if (dsItems != null)
+						{
+							//Loop all records
+							foreach (DataRow subDr in dsItems.Tables[0].Rows)
+							{
+								if (subDr["icon"] != null)
+									if (!string.IsNullOrEmpty(subDr["icon"].ToString()))
+										if (!lstIcons.Contains(subDr["icon"].ToString()))
+											lstIcons.Add(subDr["icon"].ToString());
+							}
+						}
+					}
                 }
                 else
                 {
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        foreach (DataRow dr in ds.Tables[0].Rows)
-                        {
-                            //Get the group name
-                            string strGroupName = dr["name"].ToString();
-
-                            //get the full path
-                            string strShortcutFile = strShortcutFolder + @strGroupName + ".xml";
-
-                            //locate file. If it exists, load the items
-                            if (System.IO.File.Exists(strShortcutFile))
-                            {
-
-                                //Read all items of the group
-                                DataSet dsItems = new DataSet();
-                                dsItems.ReadXml(strShortcutFile);
-
-
-                                //Loop all records
-                                foreach (DataRow subDr in dsItems.Tables[0].Rows)
-                                {
-                                    if (subDr["icon"] != null)
-                                        if (!string.IsNullOrEmpty(subDr["icon"].ToString()))
-                                            if (!lstIcons.Contains(subDr["icon"].ToString()))
-                                                lstIcons.Add(subDr["icon"].ToString());
-                                }
-                            }
-                        }
-                    }
-                }
+					WriteLine("No Shortcut groups found!");
+				}
             }
-
             lstIcons.Add("unknown.ico");
 
 
@@ -505,7 +506,6 @@ namespace DSMUpdater
                 {
                     WriteLine("Removing.." + strIconToRemove);
                     System.IO.File.Delete(strIconFolder + strIconToRemove);
-                    
                 }
                 catch (Exception ex)
                 {
@@ -516,19 +516,14 @@ namespace DSMUpdater
 
         private void RemoveCustomIcons()
         {
-            string strDefaultIconMapConfigFile = strConfigfolder + this.strDefaultIconMapConfigFile;
-            if (!System.IO.File.Exists(strDefaultIconMapConfigFile))
-            {
-                WriteLine("Invalid Default Icon Map Settings File: " + strDefaultIconMapConfigFile);
-                return;
-            }
 
-            //Check if the file exists
-            DataSet ds = null;
-
-            //Read the shortcut file
-            ds = new DataSet();
-            ds.ReadXml(strDefaultIconMapConfigFile);
+			//Check if the file exists
+			DataSet ds = GetIconMap();
+			if (ds == null)
+			{
+				WriteLine("Invalid Default Icon Map Settings File: " + strDefaultIconMapConfigFile);
+				return;
+			}
 
             WriteLine("Getting default icon list");
 
@@ -538,7 +533,6 @@ namespace DSMUpdater
                 if (drIcon["icon"] != null)
                     if (!string.IsNullOrEmpty(drIcon["icon"].ToString()))
                         lstIcons.Add(drIcon["icon"].ToString());
-
             }
 
             lstIcons.Add("unknown.ico");
@@ -578,22 +572,15 @@ namespace DSMUpdater
 
         private void FixApplicationPaths()
         {
-            string strShortcutGroupConfigFile = strConfigfolder + this.strShortcutGroupConfigFile;
-
-            if (!System.IO.File.Exists(strShortcutGroupConfigFile))
-            {
-                WriteLine("Invalid Shortcut Group Settings File: " + strShortcutGroupConfigFile);
-                return;
-            }
+			//Check if the file exists
+			DataSet ds = GetShortcutGroupDataSet();
+			if (ds == null)
+			{
+				WriteLine("Invalid Shortcut Group Settings File: " + strShortcutGroupConfigFile);
+				return;
+			}
 
             WriteLine("Getting Group Names");
-
-            //Check if the file exists
-            DataSet ds = null;
-
-            //Read the shortcut file
-            ds = new DataSet();
-            ds.ReadXml(strShortcutGroupConfigFile);
 
             if (ds.Tables.Count == 0)
             {
@@ -608,19 +595,10 @@ namespace DSMUpdater
                     //Get the group name
                     string strGroupName = dr["name"].ToString();
 
-                    //get the full path
-                    string strShortcutFile = strShortcutFolder + @strGroupName + ".xml";
-
-                    
-
-                    //locate file. If it exists, load the items
-                    if (System.IO.File.Exists(strShortcutFile))
-                    {
+					DataSet dsItems = GetGroupShortcut(strGroupName);
+					if (dsItems != null)
+					{
                         WriteLine("Patching Group: " + strGroupName);
-
-                        //Read all items of the group
-                        DataSet dsItems = new DataSet();
-                        dsItems.ReadXml(strShortcutFile);
 
                         //Loop all records
                         foreach (DataRow subDr in dsItems.Tables[0].Rows)
@@ -634,16 +612,17 @@ namespace DSMUpdater
                             string strApplication = subDr["application"].ToString();
 
 
-                            if (strApplication[0] != '\"')
+                            if (strApplication[0] == '\"')
                             {
-                                strApplication = "\"" + strApplication + "\"";
+								strApplication = GetApplicationPart(strApplication);
+								//strApplication = "\"" + strApplication + "\"";
                                 subDr["application"] = strApplication;
                             }
                         }
 
                         //Update the shortcut file
                         WriteLine("Saving Group: " + strGroupName);
-                        dsItems.WriteXml(strShortcutFile);
+						SaveGroupShortcut(strGroupName, dsItems);
                     }
                 }
             }
@@ -651,22 +630,16 @@ namespace DSMUpdater
 
         private void AssignShortcutIds()
         {
-            string strShortcutGroupConfigFile = strConfigfolder + this.strShortcutGroupConfigFile;
 
-            if (!System.IO.File.Exists(strShortcutGroupConfigFile))
-            {
-                WriteLine("Invalid Shortcut Group Settings File: " + strShortcutGroupConfigFile);
-                return;
-            }
+			//Check if the file exists
+			DataSet ds = GetShortcutGroupDataSet();
+			if (ds == null)
+			{
+				WriteLine("Invalid Shortcut Group Settings File: " + this.strShortcutGroupConfigFile);
+				return;
+			}
 
             WriteLine("Getting Group Names");
-
-            //Check if the file exists
-            DataSet ds = null;
-
-            //Read the shortcut file
-            ds = new DataSet();
-            ds.ReadXml(strShortcutGroupConfigFile);
 
             if (ds.Tables.Count == 0)
             {
@@ -681,18 +654,12 @@ namespace DSMUpdater
                     //Get the group name
                     string strGroupName = dr["name"].ToString();
 
-                    //get the full path
-                    string strShortcutFile = strShortcutFolder + @strGroupName + ".xml";
-
-                    //locate file. If it exists, load the items
-                    if (System.IO.File.Exists(strShortcutFile))
-                    {
+					DataSet dsItems = GetGroupShortcut(strGroupName);
+					if (dsItems != null)
+					{
                         WriteLine("Patching Group: " + strGroupName);
 
                         //Read all items of the group
-                        DataSet dsItems = new DataSet();
-                        dsItems.ReadXml(strShortcutFile);
-
                         if (dsItems.Tables[0].Columns.Contains("id"))
                         {
                             dsItems.Tables[0].Columns.Remove("id");
@@ -710,33 +677,25 @@ namespace DSMUpdater
 
                         //Update the shortcut file
                         WriteLine("Saving Group: " + strGroupName);
-                        dsItems.WriteXml(strShortcutFile);
-                    }
+						SaveGroupShortcut(strGroupName, dsItems);
+					}
                 }
             }
         }
 
         private void RemoveAllShortcuts()
         {
-            string strDefaultIconMapConfigFile = strConfigfolder + this.strDefaultIconMapConfigFile;
-            string strShortcutGroupConfigFile = strConfigfolder + this.strShortcutGroupConfigFile;
+			//Check if the file exists
+			DataSet ds = GetShortcutGroupDataSet();
+			if (ds == null)
+			{
+				WriteLine("Invalid Shortcut Group Settings File: " + this.strShortcutGroupConfigFile);
+				return;
+			}
 
-            if (!System.IO.File.Exists(strShortcutGroupConfigFile))
-            {
-                WriteLine("No Shortcut File Found!");
-                return;
-            }
+			WriteLine("Getting Group Names");
 
-            WriteLine("Get Group Name Settings");
-
-            //Check if the file exists
-            DataSet ds = null;
-
-            //Read the shortcut file
-            ds = new DataSet();
-            ds.ReadXml(strShortcutGroupConfigFile);
-
-            if (ds.Tables.Count == 0)
+			if (ds.Tables.Count == 0)
             {
                 WriteLine("No Shortcuts to remove!");
                 return;
@@ -768,10 +727,62 @@ namespace DSMUpdater
 
             WriteLine("Updating Group Name Config");
             ds = new DataSet("shortcuts");
-            ds.WriteXml(strShortcutGroupConfigFile);
 
+			SaveGroupDataSet(ds);
             RemoveCustomIcons();
         }
+
+		private void RemoveInvalidEntries()
+		{
+			//Check if the file exists
+			DataSet ds = GetShortcutGroupDataSet();
+			if (ds == null)
+			{
+				WriteLine("Invalid Shortcut Group Settings File: " + this.strShortcutGroupConfigFile);
+				return;
+			}
+
+			WriteLine("Getting Group Names");
+
+			if (ds.Tables.Count == 0)
+			{
+				WriteLine("No Shortcuts to assign Ids!");
+				return;
+			}
+			
+			if (ds.Tables[0].Rows.Count > 0)
+			{
+				foreach (DataRow dr in ds.Tables[0].Rows)
+				{
+					//Get the group name
+					string strGroupName = dr["name"].ToString();
+
+					DataSet dsItems = GetGroupShortcut(strGroupName);
+					if (dsItems != null)
+					{
+						WriteLine("Patching Group: " + strGroupName);
+
+						DataTable dt = dsItems.Tables[0];
+						for (int i = dt.Rows.Count - 1; i >= 0; i--)
+						{
+							DataRow row = dt.Rows[i];
+							string application = GetApplicationPart(row["application"].ToString());
+							if (!System.IO.Directory.Exists(application) && !System.IO.File.Exists(application))
+							{
+								//invalid
+								WriteLine(string.Format("removing: {0}, {1}", row["text"].ToString(), application));
+								row.Delete();
+							}
+						}
+
+						//Update the shortcut file
+						WriteLine("Saving Group: " + strGroupName);
+						SaveGroupShortcut(strGroupName, dsItems);
+					}
+				}
+			}
+		}
+
 
 		public static string GetApplicationPart(string strApplicationPath)
 		{
@@ -787,22 +798,6 @@ namespace DSMUpdater
 					throw new Exception("Please ensure that the filepath is a valid path: " + strApplicationPath);
 				}
 			}
-			return strResult;
-		}
-
-		public static string GetArgumentPart(string strApplicationPath)
-		{
-			string strResult = strApplicationPath;
-
-			if ((strResult.LastIndexOf("\"") + 1) == 0)
-			{
-				strResult = string.Empty;
-			}
-			else
-			{
-				strResult = strResult.Substring(strResult.LastIndexOf("\"") + 1);
-			}
-
 			return strResult;
 		}
 
