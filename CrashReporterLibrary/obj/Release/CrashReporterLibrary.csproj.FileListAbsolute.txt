@@ -22,3 +22,11 @@ C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\Cr
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CrashReporterLibrary\obj\Release\CrashReporterLibrary.csproj.CoreCompileInputs.cache
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CrashReporterLibrary\obj\Release\CrashReporterLibrary.dll
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CrashReporterLibrary\obj\Release\CrashReporterLibrary.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\bin\Release\CrashReporterLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\bin\Release\CrashReporterLibrary.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Release\CrashReporterLibrary.csprojResolveAssemblyReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Release\CrashReporterLibrary.CrashReporter.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Release\CrashReporterLibrary.csproj.GenerateResource.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Release\CrashReporterLibrary.csproj.CoreCompileInputs.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Release\CrashReporterLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Release\CrashReporterLibrary.pdb

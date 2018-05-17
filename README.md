@@ -1,4 +1,4 @@
-# DesktopShortcutManager
+# Desktop Shortcut Manager
 
 A small program which does shortcuts management. This is specially created for people who hates having too many shortcuts on the desktop.
 
