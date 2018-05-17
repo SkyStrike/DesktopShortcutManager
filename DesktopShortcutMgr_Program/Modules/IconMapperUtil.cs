@@ -31,10 +31,10 @@ namespace DesktopShortcutMgr.Modules
 			doc.Load(AppConfig.DefaultIconMappingFile);
 
 			string strIconFile = string.Empty;
-			XmlNode list = doc.SelectSingleNode(string.Format("//Map[@Ext='{0}']", fileExtension));
+			XmlNode list = doc.SelectSingleNode(string.Format("//map[@ext='{0}']", fileExtension));
 			if (list != null)
 			{
-				strIconFile = list.Attributes.GetNamedItem("Icon").Value;
+				strIconFile = list.Attributes.GetNamedItem("icon").Value;
 			}
 
 			Icon icn = null;
