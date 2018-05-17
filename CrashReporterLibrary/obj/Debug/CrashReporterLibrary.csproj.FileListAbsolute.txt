@@ -1,0 +1,24 @@
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\CrashReporterLibrary\bin\Debug\CrashReporterLibrary.dll
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\CrashReporterLibrary\bin\Debug\CrashReporterLibrary.pdb
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.CrashReporter.resources
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.dll
+C:\Users\gohyk\Documents\Visual Studio 2010\Projects\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CrashReporterLibrary\bin\Debug\CrashReporterLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CrashReporterLibrary\bin\Debug\CrashReporterLibrary.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.csprojResolveAssemblyReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.CrashReporter.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.csproj.GenerateResource.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.csproj.CoreCompileInputs.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\bin\Debug\CrashReporterLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\bin\Debug\CrashReporterLibrary.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.csprojResolveAssemblyReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.CrashReporter.resources
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.csproj.GenerateResource.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.csproj.CoreCompileInputs.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\CrashReporterLibrary\obj\Debug\CrashReporterLibrary.pdb
