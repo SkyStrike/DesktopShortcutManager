@@ -23,3 +23,10 @@ C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\Li
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\Libraries\obj\Debug\CustomLibraries.dll
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\Libraries\obj\Debug\CustomLibraries.pdb
 C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr (src) v1.6.10\Libraries\obj\Debug\CustomLibraries.csprojResolveAssemblyReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\Libraries\bin\Debug\CustomLibraries.dll.config
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\Libraries\bin\Debug\CustomLibraries.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\Libraries\bin\Debug\CustomLibraries.pdb
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\Libraries\obj\Debug\CustomLibraries.csprojResolveAssemblyReference.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\Libraries\obj\Debug\CustomLibraries.csproj.CoreCompileInputs.cache
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\Libraries\obj\Debug\CustomLibraries.dll
+C:\Users\yukuang_goh\Documents\YK Software\Desktop Shortcut Mgr\Libraries\obj\Debug\CustomLibraries.pdb
