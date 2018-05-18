@@ -1,4 +1,4 @@
-﻿namespace DesktopShortcutMgr
+﻿namespace DesktopShortcutMgr.Forms
 {
     partial class CustomSortingForm
     {

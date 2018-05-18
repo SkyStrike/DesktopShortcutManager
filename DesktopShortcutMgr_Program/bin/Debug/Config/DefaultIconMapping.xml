@@ -1,30 +1,3 @@
-<?xml version="1.0" standalone="yes"?>
-<Mappings>
-  <map ext=".7z" icon="zip.ico" />
-  <map ext=".bat" icon="batch.ico" />
-  <map ext=".cmd" icon="exe.ico" />
-  <map ext=".com" icon="exe.ico" />
-  <map ext=".cs" icon="script.ico" />
-  <map ext=".csproj" icon="proj.ico" />
-  <map ext=".doc" icon="doc.ico" />
-  <map ext=".docx" icon="doc.ico" />
-  <map ext=".exe" icon="exe.ico" />
-  <map ext=".htm" icon="html.ico" />
-  <map ext=".html" icon="html.ico" />
-  <map ext=".log" icon="txt.ico" />
-  <map ext=".mdb" icon="mdb.ico" />
-  <map ext=".mpp" icon="proj.ico" />
-  <map ext=".ppt" icon="ppt.ico" />
-  <map ext=".pptx" icon="ppt.ico" />
-  <map ext=".rar" icon="zip.ico" />
-  <map ext=".sln" icon="proj2.ico" />
-  <map ext=".txt" icon="txt.ico" />
-  <map ext=".url" icon="html.ico" />
-  <map ext=".vb" icon="script.ico" />
-  <map ext=".vbproj" icon="proj2.ico" />
-  <map ext=".vbs" icon="script.ico" />
-  <map ext=".xls" icon="xls.ico" />
-  <map ext=".xlsx" icon="xls.ico" />
-  <map ext=".zip" icon="zip.ico" />
-  <map ext="folder" icon="folder.ico" />
+﻿<Mappings>
+	<map ext="folder" icon="folder.ico" />
 </Mappings>

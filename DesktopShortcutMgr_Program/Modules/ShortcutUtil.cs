@@ -90,6 +90,23 @@ namespace DesktopShortcutMgr.Modules
 			return lstShortcuts;
 		}
 
+		public static void UpdateGroupShortcut(string groupName, params ShortcutItem[] shortcuts)
+		{
+			UpdateMenuFile(AppConfig.GetShortcutFile(groupName), shortcuts);
+		}
+		public static void UpdateGroupShortcut(string groupName, Shortcuts shortcuts)
+		{
+			UpdateMenuFile(AppConfig.GetShortcutFile(groupName), shortcuts);
+		}
+
+		public static void UpdateMenuFile(string fileName, params ShortcutItem[] shortcuts)
+		{
+			Shortcuts s = new Shortcuts() {
+				Items = shortcuts.ToList<ShortcutItem>()
+			};
+			UpdateMenuFile(fileName, s);
+		}
+
 		public static void UpdateMenuFile(string fileName, Shortcuts shortcuts)
 		{
 			XmlSerializer serializer = new XmlSerializer(typeof(Shortcuts));
@@ -153,7 +170,7 @@ namespace DesktopShortcutMgr.Modules
 
 
 
-				Libraries.IconExtractor extractor = null;
+				IconExtractor extractor = null;
 				Icon ico = null;
 				string iconPath = null;
 				int iconIndex = 0;
@@ -213,7 +230,7 @@ namespace DesktopShortcutMgr.Modules
 					try
 					{
 						//Extract the icon
-						extractor = new Libraries.IconExtractor(iconPath);
+						extractor = new IconExtractor(iconPath);
 						ico = extractor.GetIcon(iconIndex);
 
 						//strIconPath =  AppConfig.GetIcon(strFilename) + ".ico";
@@ -324,6 +341,11 @@ namespace DesktopShortcutMgr.Modules
 
 		public static bool DeleteGroup(string groupName)
 		{
+
+			string groupFile = AppConfig.GetShortcutFile(groupName);
+			if (System.IO.File.Exists(groupFile)) {
+				System.IO.File.Delete(groupFile);
+			}
 
 			//Load XML shortcut files into DataSet
 			DataSet ds = GetShortcutGroups();

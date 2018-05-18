@@ -1,11 +1,67 @@
-﻿using System.Data;
+﻿using DesktopShortcutMgr.Entity;
+using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace DesktopShortcutMgr.Modules
 {
 	class IconMapperUtil
 	{
+
+		public static List<IconMapItem> GetMappedIcons() {
+
+			string cfgFile = AppConfig.DefaultIconMappingFile;
+
+			List<IconMapItem> iconMapItems = new List<IconMapItem>();
+			if (System.IO.File.Exists(cfgFile))
+			{
+				using (FileStream fileStream = new FileStream(cfgFile, FileMode.Open))
+				{
+					XmlSerializer serializer = new XmlSerializer(typeof(IconMap));
+					IconMap result = (IconMap)serializer.Deserialize(fileStream);
+
+					if (result != null && result.Items != null)
+					{
+						foreach (IconMapItem item in result.Items)
+						{
+							iconMapItems.Add(item);
+						}
+					}
+					else
+					{
+						System.IO.File.Delete(cfgFile);
+					}
+				}
+			}
+
+			return iconMapItems;
+		}
+
+		public static void UpdateIconMapping(IconMap iconMap)
+		{
+			XmlSerializer serializer = new XmlSerializer(typeof(IconMap));
+			var emptyNamepsaces = new XmlSerializerNamespaces(new[] {
+				XmlQualifiedName.Empty
+			});
+
+			XmlWriterSettings settings = new XmlWriterSettings()
+			{
+				Indent = true,
+				IndentChars = ("\t"),
+				OmitXmlDeclaration = true
+			};
+
+			using (XmlWriter writer = XmlWriter.Create(AppConfig.DefaultIconMappingFile, settings))
+			{
+				writer.WriteWhitespace("");
+				serializer.Serialize(writer, iconMap, emptyNamepsaces);
+				writer.Close();
+			}
+		}
+
 		public static DataTable GetIconMapDataTable() {
 			DataSet ds = new DataSet();
 			ds.ReadXml(AppConfig.DefaultIconMappingFile);

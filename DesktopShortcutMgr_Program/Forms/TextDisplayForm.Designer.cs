@@ -1,4 +1,4 @@
-﻿namespace DesktopShortcutMgr
+﻿namespace DesktopShortcutMgr.Forms
 {
     /// <summary>
     /// A simple form to display readonly text and for exporting of the content to plain text file

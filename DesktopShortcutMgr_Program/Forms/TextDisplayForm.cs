@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace DesktopShortcutMgr
+namespace DesktopShortcutMgr.Forms
 {
     public partial class TextDisplayForm : Form
     {

@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace DesktopShortcutMgr
+namespace DesktopShortcutMgr.Forms
 {
 	//Display shortcut settings. Allows users to specify new shortcut name and application path
 	public partial class ShortcutPropertiesForm : Form

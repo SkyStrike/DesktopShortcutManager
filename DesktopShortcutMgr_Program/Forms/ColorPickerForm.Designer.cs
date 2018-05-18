@@ -1,4 +1,4 @@
-﻿namespace DesktopShortcutMgr
+﻿namespace DesktopShortcutMgr.Forms
 {
     partial class ColorPickerForm
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucKnownColorPicker1 = new CustomControls.KnownColorPicker();
+            this.ucKnownColorPicker1 = new UserControls.KnownColorPicker();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -88,7 +88,7 @@
         }
 
         #endregion
-        private CustomControls.KnownColorPicker ucKnownColorPicker1;
+        private UserControls.KnownColorPicker ucKnownColorPicker1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
 

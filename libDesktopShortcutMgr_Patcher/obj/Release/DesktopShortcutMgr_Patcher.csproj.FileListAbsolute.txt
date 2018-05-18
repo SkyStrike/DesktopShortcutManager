@@ -1,7 +1,0 @@
-C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Release\ResolveAssemblyReference.cache
-C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.dll
-C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\CustomLibraries.pdb
-C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.dll
-C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\bin\Release\DSMUpdater.pdb
-C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.dll
-C:\Documents and Settings\goh.yukuang\My Documents\Visual Studio 2008\Projects\DesktopShortcutMgr_Program\libDesktopShortcutMgr_Patcher\obj\Release\DSMUpdater.pdb

@@ -6,8 +6,9 @@ using System.Reflection;
 using DesktopShortcutMgr.Modules;
 using System.Collections.Generic;
 using DesktopShortcutMgr.Entity;
+using DesktopShortcutMgr.UserControls;
 
-namespace DesktopShortcutMgr
+namespace DesktopShortcutMgr.Forms
 {
     public partial class OptionsForm : Form
     {
@@ -360,13 +361,7 @@ namespace DesktopShortcutMgr
                 "----------------------------------------------------------------------------" +
                 Environment.NewLine);
 
-            asm = Assembly.GetAssembly(typeof(CrashReporterLibrary.CrashReporter));
-            this.textBoxDescription.AppendText(FormatDescription(asm));
-
-            asm = Assembly.GetAssembly(typeof(CustomControls.KnownColorPicker));
-            this.textBoxDescription.AppendText(FormatDescription(asm));
-
-            asm = Assembly.GetAssembly(typeof(DSMUpdater.Patcher));
+            asm = Assembly.GetAssembly(typeof(CrashReporterForm));
             this.textBoxDescription.AppendText(FormatDescription(asm));
         }
 
@@ -613,8 +608,7 @@ namespace DesktopShortcutMgr
 
         private void btnRemoveUnusedIcos_Click(object sender, EventArgs e)
         {
-            DSMUpdater.Patcher p = new DSMUpdater.Patcher(AppConfig.PatcherConfig);
-            p.ApplyPatch("ClearUnusedIcons");
+			(new Patcher()).ApplyPatch(Patcher.Commands.ClearUnusedIcons);
         }
 
 
@@ -651,7 +645,7 @@ namespace DesktopShortcutMgr
 
         private void btnLaunchPatcher_Click(object sender, EventArgs e)
         {
-            DSMUpdater.PatcherInterface frm = new DSMUpdater.PatcherInterface(AppConfig.PatcherConfig);
+            PatcherForm frm = new PatcherForm();
             frm.ShowDialog();
         }
         #endregion

@@ -19,7 +19,7 @@ namespace DesktopShortcutMgr
                 Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
                 Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
                 AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
-                Application.Run(new MainForm());
+                Application.Run(new Forms.MainForm());
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace DesktopShortcutMgr
 
         public static void HandleError(Exception ex)
         {
-            CrashReporterLibrary.CrashReporter crashRpt = new CrashReporterLibrary.CrashReporter(ex);
+			Forms.CrashReporterForm crashRpt = new Forms.CrashReporterForm(ex);
             crashRpt.ShowDialog();
         }
 

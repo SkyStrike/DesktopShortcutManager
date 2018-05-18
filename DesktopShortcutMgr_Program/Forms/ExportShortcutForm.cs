@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace DesktopShortcutMgr
+namespace DesktopShortcutMgr.Forms
 {
     /// <summary>
     /// Form to export shortcuts in groups

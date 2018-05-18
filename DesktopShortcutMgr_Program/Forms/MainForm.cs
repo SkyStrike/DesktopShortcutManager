@@ -9,7 +9,7 @@ using System.Threading;
 using DesktopShortcutMgr.Modules;
 using DesktopShortcutMgr.Entity;
 
-namespace DesktopShortcutMgr
+namespace DesktopShortcutMgr.Forms
 {
 	/// <summary>
 	/// <![CDATA[
@@ -364,7 +364,10 @@ namespace DesktopShortcutMgr
 
         public MainForm()
         {
-            InitializeComponent();
+			//checks that the default files are there before the program continues.
+			StartupCheck();
+
+			InitializeComponent();
             this.vlblMain.Text = programName;
             notifyIcon1.Text = programName + " v" + Application.ProductVersion;
 
@@ -382,7 +385,7 @@ namespace DesktopShortcutMgr
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            /*
+			/*
              * Load some dynamic shortcuts
              * Alt + 1 = Execute Application 1
              * ...
@@ -390,7 +393,7 @@ namespace DesktopShortcutMgr
              * ...
              * Alt + 9 = Execute Application 9
              */
-            PreloadShortcuts();
+			PreloadShortcuts();
 
             //Load the shortcuts
             LoadShortcutGroups();
@@ -809,7 +812,7 @@ namespace DesktopShortcutMgr
         {
             StringBuilder sb = new StringBuilder();
 
-            Libraries.ShortcutLister libShortcutLister = new Libraries.ShortcutLister();
+            ShortcutLister libShortcutLister = new ShortcutLister();
             libShortcutLister.GetShortcuts(this, ref sb);
 
             TextDisplayForm frm = new TextDisplayForm("Shortcuts", sb.ToString());
@@ -1117,6 +1120,54 @@ namespace DesktopShortcutMgr
             return GetSelectedListViewItem().Id;
         }
 
+		private void StartupCheck()
+		{
+			if (!System.IO.Directory.Exists(AppConfig.IconFolder))
+			{
+				System.IO.Directory.CreateDirectory(AppConfig.IconFolder);
+
+				Icon ico = DesktopShortcutMgr.Properties.Resources.folder;
+				string iconPath = System.IO.Path.Combine(AppConfig.IconFolder, "folder.ico");
+				using (System.IO.FileStream fs = new System.IO.FileStream(iconPath, System.IO.FileMode.OpenOrCreate))
+				{
+					ico.Save(fs);
+					fs.Close();
+					fs.Dispose();
+				}
+			}
+			if (!System.IO.Directory.Exists(AppConfig.ShortcutFolder))
+			{
+				System.IO.Directory.CreateDirectory(AppConfig.ShortcutFolder);
+			}
+			if (!System.IO.Directory.Exists(AppConfig.ConfigFolder))
+			{
+				System.IO.Directory.CreateDirectory(AppConfig.ConfigFolder);
+			}
+
+
+			if (!System.IO.File.Exists(AppConfig.BaseShortcutFile))
+			{
+				ShortcutUtil.UpdateGroup(new ShortcutGroup());
+
+				Properties.Settings.Default.LastMenuLoaded = null;
+				Properties.Settings.Default.Save();
+				Properties.Settings.Default.Reload();
+			}
+
+			if (!System.IO.File.Exists(AppConfig.DefaultIconMappingFile))
+			{
+				IconMap iconMap = new IconMap() {
+					Items = new List<IconMapItem>() {
+						new IconMapItem() {
+							Ext = "folder",
+							Icon = "folder.ico"
+						}
+					}
+				};
+				IconMapperUtil.UpdateIconMapping(iconMap);
+			}
+		}
+
 		//Loads dynamic shortcuts for generic use
 		private void PreloadShortcuts()
         {
@@ -1385,13 +1436,6 @@ namespace DesktopShortcutMgr
 
 		#endregion
 
-
-		//Create Patcher Program
-		private DSMUpdater.Patcher CreatePatcher()
-        {
-            return new DSMUpdater.Patcher(AppConfig.PatcherConfig);
-        }
-
 		//Perform patching based on the startup parameters
 		private void ExecuteStartupCommand(string[] strCmd)
         {
@@ -1403,8 +1447,8 @@ namespace DesktopShortcutMgr
                     {
                         if (cmd.Substring(0, 2) == "P:")
                         {
-                            DSMUpdater.Patcher patcher = CreatePatcher();
-                            patcher.ApplyPatch(cmd.Substring(2));
+                            Patcher patcher = new Patcher();
+							patcher.ApplyPatch(cmd.Substring(2));
                             patcher = null;
                         }
                         else
@@ -1420,7 +1464,7 @@ namespace DesktopShortcutMgr
             }
             catch (Exception ex)
             {
-                CrashReporterLibrary.CrashReporter rpt = new CrashReporterLibrary.CrashReporter(ex);
+                CrashReporterForm rpt = new CrashReporterForm(ex);
                 rpt.ShowDialog();
                 rpt.Dispose();
                 rpt = null;
@@ -1912,8 +1956,7 @@ namespace DesktopShortcutMgr
                 {
                     if (!AttemptedPatch)
                     {
-                        DSMUpdater.Patcher patcher = CreatePatcher();
-                        patcher.ApplyPatch("AssignShortcutIds");
+						(new Patcher()).ApplyPatch(Patcher.Commands.AssignShortcutIds);
                         SelectGroupAsync(objStrGroupName);
                     }
                     else
