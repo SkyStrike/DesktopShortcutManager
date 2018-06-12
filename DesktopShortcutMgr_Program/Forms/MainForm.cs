@@ -411,11 +411,11 @@ namespace DesktopShortcutMgr.Forms
 
             DockIn();
             Test();
-        }
+		}
 
         private void Test()
         {
-
+			
 		}
 
 		#region Other Form Events
@@ -630,7 +630,7 @@ namespace DesktopShortcutMgr.Forms
 				strShortcutFile = AppConfig.GetShortcutFile(strFolderName);
 			}
 
-			List<ShortcutItem> newItems = ShortcutUtil.CreateShortcut(strShortcutFile, files);
+			List<ShortcutItem> newItems = ShortcutUtil.CreateShortcut(strFolderName, files);
 			if (newItems.Count > 0) {
 				foreach (var item in newItems)
 				{
@@ -850,12 +850,14 @@ namespace DesktopShortcutMgr.Forms
         private void ctxMnuMain_Sort_Asc_Click(object sender, EventArgs e)
         {
 			ShortcutUtil.SortShortcuts(currentGroupName, "ASC");
-        }
+			SelectGroup(currentGroupName);
+		}
 
 		private void ctxMnuMain_Sort_Desc_Click(object sender, EventArgs e)
         {
 			ShortcutUtil.SortShortcuts(currentGroupName, "DESC");
-        }
+			SelectGroup(currentGroupName);
+		}
 
 		//Opens the Custom Sorting Window
 		private void ctxMnuMain_Sort_Custom_Click(object sender, EventArgs e)
@@ -870,12 +872,7 @@ namespace DesktopShortcutMgr.Forms
 					items.Add((ShortcutItem) item.Tag);
 				}
 
-				string strShortcutFile = AppConfig.GetShortcutFile(currentGroupName);
-				ShortcutUtil.UpdateMenuFile(strShortcutFile, new Shortcuts()
-				{
-					Items = items
-				});
-
+				ShortcutUtil.UpdateGroupShortcut(currentGroupName, items.ToArray());
                 SelectGroup(currentGroupName);
             }
             frmCSort = null;
@@ -1174,7 +1171,6 @@ namespace DesktopShortcutMgr.Forms
             ToolStripMenuItem itmMain = new ToolStripMenuItem("Execute Application");
             itmMain.Name = "ExeApp";
             itmMain.Text = "ExeApp";
-            //itmMain.Visible = false;
             itmMain.Visible = true;
 
             for (int i = 1; i <= 9; i++)
@@ -1405,37 +1401,7 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-        #region ShortcutFile Dataset
-
-        //Writes to the base shortcut file
-        private void UpdateAllGroupNameDataset(ref DataSet ds)
-        {
-            ds.WriteXml(AppConfig.BaseShortcutFile);
-        }
-
-        /// <summary>
-        /// <para>Created By    : YUKUANG</para>
-        /// <para>Created Date  : Undated</para>
-        /// <para>Modified By   : -</para>
-        /// <para>Modified Date : -</para>
-        /// <para>---------------------------------------------------------------</para>
-        /// <para></para>
-        /// <para>Changes</para>
-        /// <para>---------------------------------------------------------------</para>
-        /// <para></para>
-        /// <para>Description</para>
-        /// <para>---------------------------------------------------------------</para>
-        /// Checks if the base shortcut file exists
-        /// </summary>
-        /// <returns></returns>
-        private bool AllGroupNameDatasetExists()
-        {
-            return (System.IO.File.Exists(AppConfig.BaseShortcutFile));
-        }
-
-
-		#endregion
-
+        
 		//Perform patching based on the startup parameters
 		private void ExecuteStartupCommand(string[] strCmd)
         {
@@ -1688,108 +1654,78 @@ namespace DesktopShortcutMgr.Forms
 		//Load the Group Names for shortcuts from XML file
 		private void LoadShortcutGroups()
         {
-            DataSet ds = ShortcutUtil.GetShortcutGroups();
+			//Clear the context menu
+			ctxMnuListView.Items.Clear();
+			ctxMnuMain_SelectGroup.DropDownItems.Clear();
+			ctxMnuMain_DeleteGroup.DropDownItems.Clear();
 
+			ctxMnuListViewItem_MoveTo.DropDownItems.Clear();
+			ctxMnuListViewItem_CopyTo.DropDownItems.Clear();
 
-			//If the File does not exists, create a empty XML file with a Empty Root Element "Groups"
-			if (!AllGroupNameDatasetExists())
-            {
-                ds = new DataSet("shortcuts");
-                DataTable dt = new DataTable("Groups");
-                ds.Tables.Add(dt);
-                UpdateAllGroupNameDataset(ref ds);
-            }
+			int intShortcutKey_ListView = 1;
 
+			List<string> groupNames = ShortcutUtil.GetShortcutGroupNames();
+			foreach (string groupName in groupNames)
+			{
+				ToolStripMenuItem itm, itm_shortcutGrp, itm_selectGrp, itm_CopyTo, itm_MoveTo;
 
-            //Ensure there is a root element
-            if (ds.Tables.Count > 0)
-            {
+				/********************************************************************************************************************
+				 * Adds items to the Listview Context Menu (Adds to listview context menu strip)
+				 * Adds items to the List of Group for selection 
+				 ********************************************************************************************************************/
+				itm = new ToolStripMenuItem();
+				itm_shortcutGrp = new ToolStripMenuItem();
+				itm_selectGrp = new ToolStripMenuItem();
+				itm_CopyTo = new ToolStripMenuItem();
+				itm_MoveTo = new ToolStripMenuItem();
 
-                //Ensure there are records in the group
-                if (ds.Tables[0].Rows.Count > 0)
-                {
+				if (intShortcutKey_ListView <= 12)
+				{
+					Keys k = (
+						(Keys)System.Enum.Parse(typeof(Keys),
+						("F" + intShortcutKey_ListView.ToString()), true)
+					);
 
-                    //Clear the context menu
-                    ctxMnuListView.Items.Clear();
-                    ctxMnuMain_SelectGroup.DropDownItems.Clear();
-                    ctxMnuMain_DeleteGroup.DropDownItems.Clear();
+					itm.ShortcutKeys = k;
+					itm_shortcutGrp.ShortcutKeys = k;
+					itm_selectGrp.ShortcutKeys = k;
+					intShortcutKey_ListView += 1;
+				}
 
-                    ctxMnuListViewItem_MoveTo.DropDownItems.Clear();
-                    ctxMnuListViewItem_CopyTo.DropDownItems.Clear();
+				//To appear in the context menu of the list view
+				itm.Text = groupName;
+				itm.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
 
-                    int intShortcutKey_ListView = 1;
+				//To Appear in the hidden menu for Selection of group via Hotkeys
+				itm_shortcutGrp.Text = groupName;
+				itm_shortcutGrp.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
 
+				//To appear in the Left Menu
+				itm_selectGrp.Text = groupName;
+				itm_selectGrp.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
 
-                    //Loop each group in the Shortcuts.xml
-                    foreach (DataRow dr in ds.Tables[0].Rows)
-                    {
-                        ToolStripMenuItem itm, itm_shortcutGrp, itm_selectGrp, itm_CopyTo, itm_MoveTo;
+				itm_CopyTo.Text = groupName;
+				itm_CopyTo.Click += new EventHandler(itm_CopyTo_Click);
 
-                        /********************************************************************************************************************
-                         * Adds items to the Listview Context Menu (Adds to listview context menu strip)
-                         * Adds items to the List of Group for selection 
-                         ********************************************************************************************************************/
-                        itm = new ToolStripMenuItem();
-                        itm_shortcutGrp = new ToolStripMenuItem();
-                        itm_selectGrp = new ToolStripMenuItem();
-                        itm_CopyTo = new ToolStripMenuItem();
-                        itm_MoveTo = new ToolStripMenuItem();
+				itm_MoveTo.Text = groupName;
+				itm_MoveTo.Click += new EventHandler(itm_MoveTo_Click);
 
-                        if (intShortcutKey_ListView <= 12)
-                        {
-                            Keys k = (
-                                (Keys)System.Enum.Parse(typeof(Keys),
-                                ("F" + intShortcutKey_ListView.ToString()), true)
-                            );
+				ctxMnuListView.Items.Add(itm);
+				mnuShortcutGroup.Items.Add(itm_shortcutGrp);
+				ctxMnuMain_SelectGroup.DropDownItems.Add(itm_selectGrp);
 
-                            itm.ShortcutKeys = k;
-                            itm_shortcutGrp.ShortcutKeys = k;
-                            itm_selectGrp.ShortcutKeys = k;
-                            intShortcutKey_ListView += 1;
-                        }
+				ctxMnuListViewItem_MoveTo.DropDownItems.Add(itm_MoveTo);
+				ctxMnuListViewItem_CopyTo.DropDownItems.Add(itm_CopyTo);
 
-                        //To appear in the context menu of the list view
-                        itm.Text = dr["name"].ToString();
-                        itm.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
+				/********************************************************************************************************************
+				 * Add to List of Group for deleting
+				 ********************************************************************************************************************/
+				itm = new ToolStripMenuItem();
+				itm.Text = groupName;
+				itm.Click += new EventHandler(listViewCtxMenuItem_Delete_Click);
 
-                        //To Appear in the hidden menu for Selection of group via Hotkeys
-                        itm_shortcutGrp.Text = dr["name"].ToString();
-                        itm_shortcutGrp.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
-
-                        //To appear in the Left Menu
-                        itm_selectGrp.Text = dr["name"].ToString();
-                        itm_selectGrp.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
-
-                        itm_CopyTo.Text = dr["name"].ToString();
-                        itm_CopyTo.Click += new EventHandler(itm_CopyTo_Click);
-
-                        itm_MoveTo.Text = dr["name"].ToString();
-                        itm_MoveTo.Click += new EventHandler(itm_MoveTo_Click);
-
-                        ctxMnuListView.Items.Add(itm);
-                        mnuShortcutGroup.Items.Add(itm_shortcutGrp);
-                        ctxMnuMain_SelectGroup.DropDownItems.Add(itm_selectGrp);
-
-                        ctxMnuListViewItem_MoveTo.DropDownItems.Add(itm_MoveTo);
-                        ctxMnuListViewItem_CopyTo.DropDownItems.Add(itm_CopyTo);
-
-                        /********************************************************************************************************************
-                         * Add to List of Group for deleting
-                         ********************************************************************************************************************/
-                        itm = new ToolStripMenuItem();
-                        itm.Text = dr["name"].ToString();
-                        itm.Click += new EventHandler(listViewCtxMenuItem_Delete_Click);
-
-                        ctxMnuMain_DeleteGroup.DropDownItems.Add(itm);
-                    }
-                }
-            }
-
-            if (ds != null)
-            {
-                ds.Dispose();
-                ds = null;
-            }
+				ctxMnuMain_DeleteGroup.DropDownItems.Add(itm);
+			}
         }
 
         private void itm_MoveTo_Click(object sender, EventArgs e)

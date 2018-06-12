@@ -500,7 +500,7 @@ namespace DesktopShortcutMgr.Forms
 		private void SaveTabDefaultIconMappings()
         {
 			DataTable dt = (DataTable) dgvDefaultIconMapping.DataSource;
-			IconMapperUtil.UpdateIconMap(dt);
+			IconMapperUtil.UpdateIconMapping(dt);
         }
 
 		#endregion

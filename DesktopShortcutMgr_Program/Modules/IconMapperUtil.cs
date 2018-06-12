@@ -36,30 +36,7 @@ namespace DesktopShortcutMgr.Modules
 					}
 				}
 			}
-
 			return iconMapItems;
-		}
-
-		public static void UpdateIconMapping(IconMap iconMap)
-		{
-			XmlSerializer serializer = new XmlSerializer(typeof(IconMap));
-			var emptyNamepsaces = new XmlSerializerNamespaces(new[] {
-				XmlQualifiedName.Empty
-			});
-
-			XmlWriterSettings settings = new XmlWriterSettings()
-			{
-				Indent = true,
-				IndentChars = ("\t"),
-				OmitXmlDeclaration = true
-			};
-
-			using (XmlWriter writer = XmlWriter.Create(AppConfig.DefaultIconMappingFile, settings))
-			{
-				writer.WriteWhitespace("");
-				serializer.Serialize(writer, iconMap, emptyNamepsaces);
-				writer.Close();
-			}
 		}
 
 		public static DataTable GetIconMapDataTable() {
@@ -74,7 +51,18 @@ namespace DesktopShortcutMgr.Modules
 			return ds.Tables[0];
 		}
 
-		public static void UpdateIconMap(DataTable dt)
+		public static void UpdateIconMapping(IconMap iconMap)
+		{
+			XmlSerializer serializer = new XmlSerializer(typeof(IconMap));
+			using (XmlWriter writer = XmlWriter.Create(AppConfig.DefaultIconMappingFile, AppConfig.GetXmlWritterSettings()))
+			{
+				writer.WriteWhitespace("");
+				serializer.Serialize(writer, iconMap, AppConfig.GetXmlSerializerNamespaces());
+				writer.Close();
+			}
+		}
+
+		public static void UpdateIconMapping(DataTable dt)
 		{
 			dt.WriteXml(AppConfig.DefaultIconMappingFile);
 		}
@@ -116,10 +104,6 @@ namespace DesktopShortcutMgr.Modules
 			doc = null;
 
 			return icn;
-		}
-
-		public static void SaveOrdering() {
-
 		}
 	}
 }

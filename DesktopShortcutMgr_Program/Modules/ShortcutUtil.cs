@@ -21,112 +21,111 @@ namespace DesktopShortcutMgr.Modules
 		public const string ElementGroup = "Groups";
 		public const string ElementGroupName = "Name";
 
-		//Gets all shortcut groups
-		public static DataSet GetShortcutGroups()
+
+		#region Retrieve and Write to config file
+
+		//Gets Group
+		public static List<ShortcutGroupItem> GetGroupsItems()
 		{
-			DataSet ds = new DataSet(ElementNodeName);
-			ds.ReadXml(AppConfig.BaseShortcutFile);
+			List<ShortcutGroupItem> groupItems = new List<ShortcutGroupItem>();
+			string strSettingsFile = AppConfig.BaseShortcutFile;
 
-			if (ds.Tables.Count > 0)
-			{
-				if (ds.Tables[0].Rows.Count < 1)
-				{
-					DataTable dt = new DataTable(ElementGroup);
-					dt.Columns.Add("name");
-					ds.Tables.Add(dt);
-				}
-			}
-			else
-			{
-				DataTable dt = new DataTable(ElementGroup);
-				dt.Columns.Add(ElementGroupName);
-				ds.Tables.Add(dt);
-			}
-
-			return ds;
-		}
-
-		//Gets the list of shortcut group name
-		public static List<string> GetShortcutGroupNames()
-		{
-			
-			List<string> l = new List<string>();
-			if (GetShortcutGroups().Tables.Count == 0) return l;
-
-			foreach (DataRow dr in GetShortcutGroups().Tables[0].Rows)
-			{
-				l.Add(dr[ElementGroupName].ToString());
-			}
-			return l;
-		}
-
-		//Gets all shortcut items from the file
-		public static List<ShortcutItem> GetShortcuts(string groupName)
-		{
-			string strSettingsFile = AppConfig.GetShortcutFile(groupName);
-
-			List<ShortcutItem> lstShortcuts = new List<ShortcutItem>();
 			if (System.IO.File.Exists(strSettingsFile))
 			{
 				using (FileStream fileStream = new FileStream(strSettingsFile, FileMode.Open))
+				{
+					XmlSerializer serializer = new XmlSerializer(typeof(ShortcutGroup));
+					ShortcutGroup result = (ShortcutGroup)serializer.Deserialize(fileStream);
+
+					if (result != null && result.Items != null)
+					{
+						groupItems.AddRange(result.Items);
+					}
+				}
+			}
+
+			return groupItems;
+		}
+
+		//Gets Group's shortcut items
+		public static List<ShortcutItem> GetShortcuts(string groupName)
+		{
+			string cfgFile = AppConfig.GetShortcutFile(groupName);
+
+			List<ShortcutItem> groupShortcuts = new List<ShortcutItem>();
+			if (System.IO.File.Exists(cfgFile))
+			{
+				using (FileStream fileStream = new FileStream(cfgFile, FileMode.Open))
 				{
 					XmlSerializer serializer = new XmlSerializer(typeof(Shortcuts));
 					Shortcuts result = (Shortcuts)serializer.Deserialize(fileStream);
 
 					if (result != null && result.Items != null)
 					{
-						foreach (ShortcutItem item in result.Items)
-						{
-							lstShortcuts.Add(item);
-						}
+						groupShortcuts.AddRange(result.Items);
 					}
 					else
 					{
-						System.IO.File.Delete(strSettingsFile);
+						System.IO.File.Delete(cfgFile);
 					}
 				}
 			}
 
-			return lstShortcuts;
+			return groupShortcuts;
 		}
+
 
 		public static void UpdateGroupShortcut(string groupName, params ShortcutItem[] shortcuts)
 		{
-			UpdateMenuFile(AppConfig.GetShortcutFile(groupName), shortcuts);
-		}
-		public static void UpdateGroupShortcut(string groupName, Shortcuts shortcuts)
-		{
-			UpdateMenuFile(AppConfig.GetShortcutFile(groupName), shortcuts);
-		}
-
-		public static void UpdateMenuFile(string fileName, params ShortcutItem[] shortcuts)
-		{
-			Shortcuts s = new Shortcuts() {
+			Shortcuts s = new Shortcuts()
+			{
 				Items = shortcuts.ToList<ShortcutItem>()
 			};
-			UpdateMenuFile(fileName, s);
+			UpdateGroupShortcut(groupName, s);
 		}
 
-		public static void UpdateMenuFile(string fileName, Shortcuts shortcuts)
+		public static void UpdateGroupShortcut(string groupName, Shortcuts shortcuts)
 		{
 			XmlSerializer serializer = new XmlSerializer(typeof(Shortcuts));
-			var emptyNamepsaces = new XmlSerializerNamespaces(new[] {
-				XmlQualifiedName.Empty
-			});
-
-			XmlWriterSettings settings = new XmlWriterSettings()
-			{
-				Indent = true,
-				IndentChars = ("\t"),
-				OmitXmlDeclaration = true
-			};
-
-			using (XmlWriter writer = XmlWriter.Create(fileName, settings))
+			using (XmlWriter writer = XmlWriter.Create(AppConfig.GetShortcutFile(groupName), AppConfig.GetXmlWritterSettings()))
 			{
 				writer.WriteWhitespace("");
-				serializer.Serialize(writer, shortcuts, emptyNamepsaces);
+				serializer.Serialize(writer, shortcuts, AppConfig.GetXmlSerializerNamespaces());
 				writer.Close();
 			}
+		}
+
+		public static bool UpdateGroup(List<ShortcutGroupItem> groupItems)
+		{
+			ShortcutGroup group = new ShortcutGroup()
+			{
+				Items = groupItems
+			};
+			return UpdateGroup(group);
+		}
+
+		public static bool UpdateGroup(ShortcutGroup group)
+		{
+			XmlSerializer serializer = new XmlSerializer(typeof(ShortcutGroup));
+			using (XmlWriter writer = XmlWriter.Create(AppConfig.BaseShortcutFile, AppConfig.GetXmlWritterSettings()))
+			{
+				writer.WriteWhitespace("");
+				serializer.Serialize(writer, group, AppConfig.GetXmlSerializerNamespaces());
+				writer.Close();
+			}
+
+			return true;
+		}
+
+		#endregion
+
+		//Gets the list of shortcut group name
+		public static List<string> GetShortcutGroupNames()
+		{
+			List<string> groupNames = GetGroupsItems()
+									.Select(c => c.Name)
+									.ToList();
+			return groupNames;
 		}
 
 		//Sort the group items
@@ -135,19 +134,16 @@ namespace DesktopShortcutMgr.Modules
 			//If the group name is empty, ignore
 			if (string.IsNullOrEmpty(groupName)) { return; }
 
-			//get the full path
-			string strShortcutFile = AppConfig.GetShortcutFile(groupName);
-
-			DataSet ds = new DataSet();
-			ds.ReadXml(strShortcutFile);
-
-			ds.Tables[0].DefaultView.Sort = "[text] " + sortOrder;
-
-
-			DataSet ds2 = new DataSet();
-			ds2.Tables.Add(ds.Tables[0].DefaultView.ToTable());
-			ds2.WriteXml(strShortcutFile);
-
+			List<ShortcutItem> items = GetShortcuts(groupName);
+			if ("ASC" == sortOrder)
+			{
+				items.Sort((x, y) => x.Text.CompareTo(y.Text));
+			}
+			else {
+				items.Sort((x, y) => y.Text.CompareTo(x.Text));
+			}
+			
+			UpdateGroupShortcut(groupName, items.ToArray());
 		}
 
 		public static ShortcutItem ConvertFilePathToShortcut(string file)
@@ -270,10 +266,12 @@ namespace DesktopShortcutMgr.Modules
 				strFilename = inf.Name;
 			}
 
+			/*
 			if (strTargetPath[0] != '\"')
 			{
 				strTargetPath = "\"" + strTargetPath + "\"";
 			}
+			*/
 
 			item.Text = strFilename;
 			item.Application = strTargetPath;
@@ -318,50 +316,29 @@ namespace DesktopShortcutMgr.Modules
 
 		public static bool GroupNameExists(string groupName)
 		{
-			DataSet ds = GetShortcutGroups();
-			if (ds.Tables.Count == 0) return false;
-
-			string filter = string.Format("{0} = '{1}'", ElementGroupName, groupName);
-			DataRow[] existing = ds.Tables[0].Select(filter);
-
-			return (existing.Length > 0);
+			return GetShortcutGroupNames().Contains(groupName);
 		}
 
 		public static void CreateGroup(String groupName)
 		{
-			DataSet ds = GetShortcutGroups();
-
-			//Add to xml
-			DataRow dr = ds.Tables[0].NewRow();
-			dr["name"] = groupName;
-			ds.Tables[0].Rows.Add(dr);
-
-			ds.WriteXml(AppConfig.BaseShortcutFile);
+			List<ShortcutGroupItem> allGroups = GetGroupsItems();
+			allGroups.Add(new ShortcutGroupItem()
+			{
+				Name = groupName
+			});
+			UpdateGroup(allGroups);
 		}
 
 		public static bool DeleteGroup(string groupName)
 		{
-
 			string groupFile = AppConfig.GetShortcutFile(groupName);
 			if (System.IO.File.Exists(groupFile)) {
 				System.IO.File.Delete(groupFile);
 			}
 
-			//Load XML shortcut files into DataSet
-			DataSet ds = GetShortcutGroups();
-			if (ds.Tables.Count == 0) return false;
-
-			//If the group name is empty, ignore
-			if (string.IsNullOrEmpty(groupName)) { return false; }
-
-			string filter = string.Format("{0} = '{1}'", ElementGroupName, groupName);
-			DataRow[] rows = ds.Tables[0].Select(filter);
-			foreach (var item in rows)
-			{
-				item.Delete();
-			}
-
-			ds.WriteXml(AppConfig.BaseShortcutFile);
+			List<ShortcutGroupItem> allGroups = GetGroupsItems();
+			allGroups.RemoveAll(item => item.Name == groupName);
+			UpdateGroup(allGroups);
 
 			return true;
 		}
@@ -369,16 +346,11 @@ namespace DesktopShortcutMgr.Modules
 		public static bool RenameGroup(string oldGroupName, string newGroupName)
 		{
 
-			DataSet ds = GetShortcutGroups();
-			string filter = string.Format("{0} = '{1}'", ElementGroupName, oldGroupName);
-			DataRow[] groupRow = ds.Tables[0].Select(filter);
-			if (groupRow.Length > 0)
+			List<ShortcutGroupItem> allGroups = GetGroupsItems();
+			ShortcutGroupItem selectedItem = allGroups.Find(item => item.Name == oldGroupName);
+			if (selectedItem != null)
 			{
-
-				//rename
-				groupRow[0][ElementGroupName] = newGroupName;
-
-				//Check if the file exist. If exists, rename it using the MOVE
+				selectedItem.Name = newGroupName;
 				if (System.IO.File.Exists(AppConfig.GetShortcutFile(oldGroupName)))
 				{
 					System.IO.File.Move(
@@ -386,108 +358,46 @@ namespace DesktopShortcutMgr.Modules
 						AppConfig.GetShortcutFile(newGroupName)
 					);
 				}
-
-				ds.WriteXml(AppConfig.BaseShortcutFile);
 			}
+			UpdateGroup(allGroups);
 
 			return true;
 		}
 
-		public static bool UpdateGroup(ShortcutGroup group)
-		{
-			XmlSerializer serializer = new XmlSerializer(typeof(ShortcutGroup));
-			var emptyNamepsaces = new XmlSerializerNamespaces(new[] {
-				XmlQualifiedName.Empty
-			});
-
-			XmlWriterSettings settings = new XmlWriterSettings()
-			{
-				Indent = true,
-				IndentChars = ("\t"),
-				OmitXmlDeclaration = true
-			};
-
-			using (XmlWriter writer = XmlWriter.Create(AppConfig.BaseShortcutFile, settings))
-			{
-				writer.WriteWhitespace("");
-				serializer.Serialize(writer, group, emptyNamepsaces);
-				writer.Close();
-			}
-
-			return true;
-		}
+		
 
 		#endregion
 
 		#region Shortcut CRUD Function
 
-		public static List<ShortcutItem> CreateShortcut(string settingsFile, params string[] files)
+		public static List<ShortcutItem> CreateShortcut(string groupName, params string[] files)
 		{
-			List<ShortcutItem> items = new List<ShortcutItem>();
-
-			//if file does not exists, create file.
-			if (!System.IO.File.Exists(settingsFile))
+			List<ShortcutItem> newItems = new List<ShortcutItem>();
+			foreach (string file in files)
 			{
-				DataSet newDt = new DataSet(ElementRootNodeName);
-				newDt.WriteXml(settingsFile);
+				ShortcutItem i = ConvertFilePathToShortcut(file);
+				newItems.Add(i);
 			}
 
-			XmlDocument xDoc = new XmlDocument();
-			xDoc.Load(settingsFile);
-			var rootNode = xDoc.GetElementsByTagName(ElementRootNodeName)[0];
-			var nav = rootNode.CreateNavigator();
+			List<ShortcutItem> existingItems = GetShortcuts(groupName);
+			existingItems.AddRange(newItems);
 
-			var emptyNamepsaces = new XmlSerializerNamespaces(new[] {
-				XmlQualifiedName.Empty
-			});
-
-			using (var writer = nav.AppendChild())
-			{
-				writer.WriteWhitespace("");
-				foreach (string file in files)
-				{
-					ShortcutItem i = ConvertFilePathToShortcut(file);
-					var serializer = new XmlSerializer(i.GetType());
-					serializer.Serialize(writer, i, emptyNamepsaces);
-					items.Add(i);
-				}
-				writer.Close();
-			}
-			xDoc.Save(settingsFile);
-
-			return items;
+			UpdateGroupShortcut(groupName, existingItems.ToArray());
+			return newItems;
 		}
 
 		public static bool UpdateShortcut(string groupName, ShortcutItem editedItem)
 		{
-			//find xml file
-			string strMenuFile = AppConfig.GetShortcutFile(groupName);
-
-			List<ShortcutItem> lstShortcuts = new List<ShortcutItem>();
-			Shortcuts result = null;
-			XmlSerializer serializer = new XmlSerializer(typeof(Shortcuts));
-
-			using (FileStream fileStream = new FileStream(strMenuFile, FileMode.Open))
+			List<ShortcutItem> items = GetShortcuts(groupName);
+			for (int i = 0; i < items.Count; i++)
 			{
-				result = (Shortcuts)serializer.Deserialize(fileStream);
-
-				if (result != null && result.Items != null)
-				{
-					for (int i = 0; i < result.Items.Count; i++)
-					{
-
-						var fileItem = result.Items[i];
-						if (fileItem.Id == editedItem.Id)
-						{
-							result.Items[i] = editedItem;
-							break;
-						}
-					}
+				ShortcutItem item = items[i];
+				if (item.Id == editedItem.Id) {
+					items[i] = editedItem;
+					break;
 				}
 			}
-
-			UpdateMenuFile(strMenuFile, result);
-
+			UpdateGroupShortcut(groupName, items.ToArray());
 			return true;
 		}
 
@@ -497,24 +407,20 @@ namespace DesktopShortcutMgr.Modules
 			if (shortcutsToDelete == null) return false;
 			if (shortcutsToDelete.Length == 0) return false;
 
-			//Gets the shortcut file from xml
-			DataSet ds = new DataSet();
-			string strShortcutFile = AppConfig.GetShortcutFile(groupName);
-			ds.ReadXml(strShortcutFile);
-
-			foreach (ShortcutItem item in shortcutsToDelete)
+			List<ShortcutItem> items = GetShortcuts(groupName);
+			foreach (ShortcutItem toDelete in shortcutsToDelete)
 			{
-				foreach (DataRow dr in ds.Tables[0].Rows)
+				for (int i = items.Count - 1; i > 0; i--)
 				{
-					if (dr[ElementShortcutId].ToString() == item.Id)
+					ShortcutItem item = items[i];
+					if (item.Id == toDelete.Id)
 					{
-						//delete when found
-						ds.Tables[0].Rows.Remove(dr);
+						items.RemoveAt(i);
 						break;
 					}
 				}
 			}
-			ds.WriteXml(strShortcutFile);
+			UpdateGroupShortcut(groupName, items.ToArray());
 			return true;
 		}
 
@@ -541,16 +447,10 @@ namespace DesktopShortcutMgr.Modules
 					shortcuts.Add(itemToCopy);
 				}
 			}
-			Shortcuts s = new Shortcuts()
-			{
-				Items = shortcuts
-			};
-
-			UpdateMenuFile(strShortcutFile, s);
+			UpdateGroupShortcut(groupName, shortcuts.ToArray());
 		}
 
 		#endregion
-
 
 	}
 }

@@ -418,7 +418,6 @@ namespace DesktopShortcutMgr.Modules
 
         private void RemoveAllShortcuts()
         {
-
 			List<string> groupNames = ShortcutUtil.GetShortcutGroupNames();
 			foreach (string groupName in groupNames)
 			{
@@ -442,14 +441,13 @@ namespace DesktopShortcutMgr.Modules
 					if (!System.IO.Directory.Exists(application) && !System.IO.File.Exists(application))
 					{
 						//invalid
-						WriteLine(string.Format("removing: {0}, {1}", txt));
+						WriteLine(string.Format("removing: {0}", txt));
 						WriteLine(string.Format("   {0}", application));
 					}
 				}
 				ShortcutUtil.UpdateGroupShortcut(groupName, shortcuts.ToArray());
 			}
 		}
-
 
 		public static string GetApplicationPart(string strApplicationPath)
 		{

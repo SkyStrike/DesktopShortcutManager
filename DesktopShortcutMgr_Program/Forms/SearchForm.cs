@@ -96,6 +96,7 @@ namespace DesktopShortcutMgr.Forms
             if (string.IsNullOrEmpty(sGroup)) return null;
             sSearchCrit = sSearchCrit.Replace("'", "''");
             DataSet ds = new DataSet();
+
             if (System.IO.File.Exists(AppConfig.GetShortcutFile(sGroup)))
             {
                 ds.ReadXml(AppConfig.GetShortcutFile(sGroup));
