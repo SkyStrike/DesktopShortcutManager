@@ -1560,7 +1560,6 @@ namespace DesktopShortcutMgr.Forms
 
             //Creates button in the mini panel
             Button btn = new Button();
-            //btn.Tag = item.Id;
 			btn.Tag = item;
             btn.Image = imageListSmall.Images[imageList1.Images.Count - 1];
             btn.Margin = new Padding(1);
@@ -1576,7 +1575,6 @@ namespace DesktopShortcutMgr.Forms
             l.ImageIndex = imageList1.Images.Count - 1;
             l.Text = item.Text;
             l.Name = item.Id;
-			//l.Tag = item.Id;
 			l.Tag = item;
 			l.ToolTipText = item.Application + strItemShortcut;
 

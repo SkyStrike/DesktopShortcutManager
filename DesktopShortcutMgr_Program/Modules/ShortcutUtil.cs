@@ -270,13 +270,6 @@ namespace DesktopShortcutMgr.Modules
 				strFilename = inf.Name;
 			}
 
-			/*
-			if (strTargetPath[0] != '\"')
-			{
-				strTargetPath = "\"" + strTargetPath + "\"";
-			}
-			*/
-
 			item.Text = strFilename;
 			item.Application = strTargetPath;
 

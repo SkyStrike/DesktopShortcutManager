@@ -194,27 +194,6 @@ namespace DesktopShortcutMgr.Modules
                 }
             }
 
-            /*
-            StringBuilder buf = new StringBuilder(MAX_PATH);
-            int len = GetModuleFileName(this._hModule, buf, buf.Capacity + 1);
-            if (len != 0)
-            {
-                this._filename = buf.ToString();
-            }
-            else
-            {
-                switch (Marshal.GetLastWin32Error())
-                {
-                    case ERROR_SUCCESS:
-                        this._filename = filename;
-                        break;
-
-                    default:
-                        throw new Win32Exception();
-                }
-            }
-            */
-
             this._resInfo = new IconResInfo();
             bool success = EnumResourceNames(this._hModule, RT_GROUP_ICON, EnumResNameCallBack, this._resInfo);
             if (!success)
