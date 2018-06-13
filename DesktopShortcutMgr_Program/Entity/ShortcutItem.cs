@@ -92,25 +92,29 @@ namespace DesktopShortcutMgr.Entity
             WshShellClass shell = new WshShellClass();
             IWshShortcut link = (IWshShortcut)shell.CreateShortcut(strFinalPath);
 
-            if (IsFile())
-            {
-                link.TargetPath = CommonUtil.GetApplicationPart(this.Application);
-                string args = CommonUtil.GetArgumentPart(this.Application);
-                if (!string.IsNullOrEmpty(args))
-                {
-                    link.Arguments = args;
-                }
-            }
-            else
-            {
-                link.TargetPath = @"%windir%\explorer.exe";
-                link.Arguments = "/e," + CommonUtil.GetApplicationPart(this.Application);
-            }
 
-            link.Save();
-            link = null;
-            shell = null;
+			if (!string.IsNullOrEmpty(this.IconPath))
+			{
+				//Find in the computer first. if it exists, use it
+				string fullIconPath = (System.IO.File.Exists(this.IconPath) ? this.IconPath : AppConfig.GetIconMapFile(this.IconPath));
+				if (System.IO.File.Exists(fullIconPath))
+				{
+					link.IconLocation = fullIconPath + ",0";
+				}
+			}
+			
+			link.TargetPath = this.Application;
+			link.Arguments = this.Arguments;
 
+			try
+			{
+				link.Save();
+			}
+			finally
+			{
+				link = null;
+				shell = null;
+			}
         }
 
         public void CreateDesktopShortcut(string SaveToDirectory, bool DoNotCreateIfInvalidApp)

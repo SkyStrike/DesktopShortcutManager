@@ -181,7 +181,7 @@ namespace DesktopShortcutMgr.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://ykgoh.wordpress.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/SkyStrike/DesktopShortcutManager")]
         public string MyBlog {
             get {
                 return ((string)(this["MyBlog"]));
@@ -190,7 +190,7 @@ namespace DesktopShortcutMgr.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://ykgoh.wordpress.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/SkyStrike/DesktopShortcutManager")]
         public string GitHubUrl {
             get {
                 return ((string)(this["GitHubUrl"]));

@@ -56,7 +56,7 @@ namespace DesktopShortcutMgr.Forms
         private void btnExport_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Text Document (*.txt)|.txt";
+            sfd.Filter = "Text Document (*.txt)|*.txt";
 
             if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {

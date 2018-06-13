@@ -9,7 +9,9 @@ using System.Drawing;
 
 namespace DesktopShortcutMgr.Modules
 {
-	//Class for storing application configurations like the directory for icons, shortcuts, config files
+	/// <summary>
+	/// Class for storing application configurations like the directory for icons, shortcuts, config files
+	/// </summary>
 	class AppConfig
 	{
 		public static string CurrentDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location);

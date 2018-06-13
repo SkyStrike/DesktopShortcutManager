@@ -8,6 +8,10 @@ using System.Xml.Serialization;
 
 namespace DesktopShortcutMgr.Modules
 {
+	/// <summary>
+	/// IconMapperUtil
+	/// Mainly a class for any CRUD operations to the IconMap configuration file
+	/// </summary>
 	class IconMapperUtil
 	{
 

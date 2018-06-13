@@ -12,6 +12,10 @@ using System.Xml.Serialization;
 
 namespace DesktopShortcutMgr.Modules
 {
+	/// <summary>
+	/// ShortcutUtil
+	/// Mainly a class for any CRUD operations to the ShortcutGroups and ShortcutItems
+	/// </summary>
 	class ShortcutUtil
 	{
 		public const string ElementRootNodeName = "NewDataSet";

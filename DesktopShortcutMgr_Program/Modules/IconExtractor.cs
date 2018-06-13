@@ -9,11 +9,14 @@ using System.Collections;
 
 namespace DesktopShortcutMgr.Modules
 {
-    /// <summary>
-    /// This IconExtractor module is created by 
-    /// Tsuda Kageyu, http://www.codeproject.com/KB/cs/IconExtractor.aspx
-    /// </summary>
-    public class IconExtractor : IDisposable
+	/// <summary>
+	/// This IconExtractor module is created by 
+	/// Tsuda Kageyu, http://www.codeproject.com/KB/cs/IconExtractor.aspx
+	/// 
+	/// There is an update to the IconExtractor: https://www.codeproject.com/Articles/26824/Extract-icons-from-EXE-or-DLL-files
+	/// But, currently, there are no plans at the moment to update to this new library.
+	/// </summary>
+	public class IconExtractor : IDisposable
     {
         #region Win32 interop.
 

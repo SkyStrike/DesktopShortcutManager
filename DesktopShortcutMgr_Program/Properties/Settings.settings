@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DesktopShortcutMgr_Program.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DesktopShortcutMgr.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="IntialHeight" Type="System.Int32" Scope="User">
@@ -42,10 +42,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="MyBlog" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://ykgoh.wordpress.com</Value>
+      <Value Profile="(Default)">https://github.com/SkyStrike/DesktopShortcutManager</Value>
     </Setting>
     <Setting Name="GitHubUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://ykgoh.wordpress.com</Value>
+      <Value Profile="(Default)">https://github.com/SkyStrike/DesktopShortcutManager</Value>
     </Setting>
   </Settings>
 </SettingsFile>

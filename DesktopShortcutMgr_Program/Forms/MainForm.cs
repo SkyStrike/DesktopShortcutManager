@@ -749,11 +749,21 @@ namespace DesktopShortcutMgr.Forms
                 }
             }
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Shortcut File (*.lnk)|.lnk";
+            sfd.Filter = "Shortcut File (*.lnk)|*.lnk";
             sfd.FileName = strCurrentShortcutName;
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-				selectedItem.CreateDesktopShortcut(System.IO.Path.GetDirectoryName(sfd.FileName), System.IO.Path.GetFileNameWithoutExtension(sfd.FileName), false);
+				try
+				{
+					selectedItem.CreateDesktopShortcut(System.IO.Path.GetDirectoryName(sfd.FileName), System.IO.Path.GetFileNameWithoutExtension(sfd.FileName), false);
+				}
+				catch (Exception ex)
+				{
+					CrashReporterForm rpt = new CrashReporterForm(ex);
+					rpt.ShowDialog();
+					rpt.Dispose();
+					rpt = null;
+				}
             }
         }
 
