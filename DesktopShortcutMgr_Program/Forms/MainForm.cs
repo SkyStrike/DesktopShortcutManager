@@ -17,15 +17,11 @@ namespace DesktopShortcutMgr.Forms
 	/// Visit My Website |
 	/// ------------------
 	/// Custom Apps Code Repository
-	/// - https://docs.google.com/leaf?id=0BzXiotnC8aoGN2EwMmQyZjktZDk0MS00ZTMyLWJkZWUtMWY5ZWY5ODU1ZjUw&hl=en_GB
+	/// - https://github.com/SkyStrike/DesktopShortcutManager
 	/// 
 	/// Deskop Shortcut Manager Repository
-	/// - Main Folder   : https://docs.google.com/leaf?id=0BzXiotnC8aoGYzY3ODJiYjktYzM3My00ZmU5LTkxNzItZjY0OWY5NzE4Nzli&hl=en_GB
-	/// - Source Files  : https://docs.google.com/leaf?id=0BzXiotnC8aoGMjYwYzEyMzItNDY0OC00MTk4LWJjZDMtYzJjZjIxMjFlMjlk&hl=en_GB
-	/// - Binaries Only : https://docs.google.com/leaf?id=0BzXiotnC8aoGMDdkY2Q2MjktOWNlZi00MDczLWFiODMtMmZjMmM4YzkwZjdl&hl=en_GB
+	/// - https://github.com/SkyStrike/DesktopShortcutManager
 	/// 
-	/// My WordPress Blog
-	/// - http://ykgoh.wordpress.com
 	/// 
 	/// --------------------------------------------------------------------------------------
 	/// Changes In a Glance |
@@ -36,6 +32,10 @@ namespace DesktopShortcutMgr.Forms
 	/// ---------------------------------------
 	///		- Changed target framework to .NET 4.0.
 	///		- Default "Add Group" dialog to focus on "Submit" button.
+	///		- Attempt to convert to Xml Serializer for updating of xml instead of dataset.WriteXml
+	///		- Use lambda expressions and linq to reduce code complexity of the past.
+	///		- Allow programs to execute in Administrator Mode
+	///		- Allow shortcuts to specify arguments instead of using a workaround.
 	/// 
 	/// --------------------------------------------------------------------------------------
 	/// Version 1.6.10  | Released: 2011.09.01 |

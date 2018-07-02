@@ -58,14 +58,12 @@ namespace DesktopShortcutMgr.Forms
 
 				tbShortcutName.Text = ShortcutItem.Text;
 				string path = ShortcutItem.Application;
-				if (path[0] != '\"')
+				if (path[0] == '\"')
 				{
-					tbShortcutPath.Text = "\"" + path + "\"";
+					path = CommonUtil.GetApplicationPart(path);
 				}
-				else
-				{
-					tbShortcutPath.Text = path;
-				}
+				tbShortcutPath.Text = path;
+
 				cbRunAsAdmin.Checked = ShortcutItem.RunAsAdmin;
 				if (!string.IsNullOrEmpty(ShortcutItem.Arguments)) {
 					tbArguments.Lines = ShortcutItem.Arguments.Split(
@@ -113,14 +111,11 @@ namespace DesktopShortcutMgr.Forms
             ofd.Filter = "All files (*.*)|*.*";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+
                 if (!string.IsNullOrEmpty(ofd.FileName))
                 {
-                    if (ofd.FileName[0] != '\"')
-                    {
-                        ofd.FileName = "\"" + ofd.FileName + "\"";
-                    }
-                    tbShortcutPath.Text = ofd.FileName;
-                }
+					tbShortcutPath.Text = ofd.FileName;
+				}
             }
         }
 
@@ -131,10 +126,6 @@ namespace DesktopShortcutMgr.Forms
             {
                 if (!string.IsNullOrEmpty(fb.SelectedPath))
                 {
-                    if (fb.SelectedPath[0] != '\"')
-                    {
-                        fb.SelectedPath = "\"" + fb.SelectedPath + "\"";
-                    }
                     tbShortcutPath.Text = fb.SelectedPath;
                 }
             }
