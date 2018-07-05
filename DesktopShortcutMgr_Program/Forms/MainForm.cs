@@ -1541,21 +1541,28 @@ namespace DesktopShortcutMgr.Forms
 
             if (itmMain.DropDown != null)
             {
-                ToolStripMenuItem itm = null;
+
+				if (!string.IsNullOrEmpty(item.Arguments))
+				{
+					strItemShortcut = Environment.NewLine + " " + item.Arguments;
+				}
+
+				ToolStripMenuItem itm = null;
                 if (itmMain.DropDown.Items.Count > lvShortcuts.Items.Count)
                 {
                     itm = (ToolStripMenuItem)itmMain.DropDown.Items[lvShortcuts.Items.Count];
-                    strItemShortcut = Environment.NewLine + " Shortcut: " + FormatShortcutString(itm.ShortcutKeys.ToString());
-                }
-                else
-                {
-                    strItemShortcut = "";
+                    strItemShortcut += Environment.NewLine + " Shortcut: " + FormatShortcutString(itm.ShortcutKeys.ToString());
                 }
             }
             else
             {
                 ToolStripMenuItem itm = (ToolStripMenuItem)itmMain.DropDown.Items[0];
-                strItemShortcut = Environment.NewLine + " Shortcut: " + FormatShortcutString(itm.ShortcutKeys.ToString());
+
+				if (!string.IsNullOrEmpty(item.Arguments))
+				{
+					strItemShortcut = Environment.NewLine + " " + item.Arguments;
+				}
+				strItemShortcut += Environment.NewLine + " Shortcut: " + FormatShortcutString(itm.ShortcutKeys.ToString());
             }
 
             //Creates button in the mini panel
