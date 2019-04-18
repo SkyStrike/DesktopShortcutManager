@@ -11,336 +11,340 @@ using DesktopShortcutMgr.Entity;
 
 namespace DesktopShortcutMgr.Forms
 {
-	/// <summary>
-	/// <![CDATA[
-	/// --------------------------------------------------------------------------------------
-	/// Visit My Website |
-	/// ------------------
-	/// Custom Apps Code Repository
-	/// - https://github.com/SkyStrike/DesktopShortcutManager
-	/// 
-	/// Deskop Shortcut Manager Repository
-	/// - https://github.com/SkyStrike/DesktopShortcutManager
-	/// 
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Changes In a Glance |
-	/// ---------------------
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.7.0  | Released: 2018.05.16 |
-	/// ---------------------------------------
-	///		- Changed target framework to .NET 4.0.
-	///		- Default "Add Group" dialog to focus on "Submit" button.
-	///		- Attempt to convert to Xml Serializer for updating of xml instead of dataset.WriteXml
-	///		- Use lambda expressions and linq to reduce code complexity of the past.
-	///		- Allow programs to execute in Administrator Mode
-	///		- Allow shortcuts to specify arguments instead of using a workaround.
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.6.10  | Released: 2011.09.01 |
-	/// ---------------------------------------
-	///     - Fix
-	///         - Fixed a bug where launching from the Startup folder may cause the patching program to 
-	///           fail (as in, config file not found or along those line)
-	/// 
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.6.9  | Released: 2011.08.10 |
-	/// ---------------------------------------
-	///     - Fix
-	///         - Fixed the Execution of shortcuts via Shortcut keys
-	///         - Reversioned the programs...
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.6.8  | Released: 2011.08.10 |
-	/// ---------------------------------------
-	///     - Enhancement & Fixes
-	///         - Changed the Export All Shortcut to a Display all Shortcut Keys...
-	///         - Another Attempt Optimisation....not going too well. Memory seems to be gathering at AddItem
-	///         - Added Visit my Google Docs and Visit my Blog links in Options form.
-	///         - Provides links to the configuration files and folder in Options.
-	///         
-	///         - Fixed the extracting of icon to create unique name instead of overriding existing icon. 
-	///           this will also cause duplicates...
-	///         - The Icon now removes itself from System Tray when Program Closes.
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.6.7  | Released: 2011.08.03 |
-	/// ---------------------------------------
-	///     - Enhancement
-	///         -   Added function to allow exporting of shortcuts back to desktop shortcut
-	///         
-	///     - Bug Fix
-	///         -   Icons are not named corrected when extracted....can't believe I did not notice it..
-	/// 
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.6.6  | Released: 2011.07.28 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///         -   Fixed Patching library.
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.6.5  | Released: 2011.01.07 |
-	/// ---------------------------------------
-	///     - Enhancement
-	///         -   Made SelectGroup run on a New Thread. 
-	///             !!! Testing to see if it helps to reduce lagging when selecting group !!!
-	///         
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.6.4  | Released: 2010.12.09 |
-	/// ---------------------------------------
-	///     - Enhancement
-	///         -   Added function to allow Moving/Copying Shortcuts to other groups
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.6.3  | Released: 2010.09.02 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///         -   Fix broken menus for shortcut group selection
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.6.2  | Released: 2010.09.01 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///         -   The shortcut F1-12 was not working after the last version. Fixed
-	///         
-	///     - Enhancement
-	///         -   Added an option to allow show/hide of the mini panel (defaulted to Show)
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.6.1  | Released: 2010.08.30 |
-	/// ---------------------------------------
-	///     - Maintainence (Requires Patching)
-	///         -   Added a ID to all shortcuts. This will also help when renaming shortuts. 
-	///             Previously there is a bug whereby you rename to the same name for the same 
-	///             shortcut and the program disallows
-	///         -   To Patch the program, execute
-	///                 P:AssignShortcutIds
-	///         
-	///         -   Patch Program added more functions to remove all custom icons 
-	///             (easier for me to distribute without my custom icons)
-	///                 P:RemoveCustomIcons
-	///                 P:RemoveAllShortcuts
-	///                 
-	///             -   RemoveCustomIcons will remove all icons that are not in the default icon mapping configuration
-	///             -   RemoveAllShortcuts removes all shortcut groups and reset icons to default
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.5.5  | Released: 2010.08.30 |
-	/// ---------------------------------------
-	///     - Feature Enhancement
-	///         -   Added a search shortcut feature.
-	///         -   Moved a couple of functions to the CustomLibraries.UserFunctions and IconMap.
-	///             -   UserFunctions
-	///                 -   ExecuteProgram
-	///                 -   OpenProgramParent
-	///                 
-	///             -   IconMap
-	///                 -   GetDefaultIcon
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.5.4  | Released: 2010.08.06 |
-	/// ---------------------------------------
-	///     - Minor Enhancement
-	///         -   Shortcut's working directory is where the exe is located. This will fix 
-	///             some issues whereby the executable requires some of the dll/config files 
-	///             located in the same folder
-	///             
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.5.3  | Released: 2010.05.25 |
-	/// ---------------------------------------
-	///     - Feature Enhancement
-	///         - Allows Mouse Click (Single Click) to show the shortcut
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.5.2  | Released: 2010.04.21 |
-	/// ---------------------------------------
-	///     - Feature Enhancement
-	///         - Allows exporting of program shortcuts to a text file
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.5.1  | Released: 2009.11.10 |
-	/// ---------------------------------------
-	///     - Program Maintainence
-	///         - Splitted the custom controls into a new dll project libararies
-	///             - CustomLibraries
-	///                 Contains all shared libraries used. Currently it consist of
-	///                     - IconExtractor
-	///                     - UserFunctions -> all generic functions that can be cross shared
-	///                 
-	///             - CustomControls
-	///                 Contains all shared controls. This includes
-	///                     - KnownColorPicker
-	///                     - VerticalLabel
-	///         
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.4.4  | Released: 2009.11.09 |
-	/// ---------------------------------------
-	///     - Feature Enhancement
-	///         - Allow launching of selected multiple programs (shows prompting)
-	///         - Allows supressing of the prompt when launching multiple programs. 
-	///           This can be found in the Options > Behaviour
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.4.3  | Released: 2009.11.06 |
-	/// ---------------------------------------
-	///     - Feature Enhancement
-	///         - Allows Color of the Shortcut Bar and it's text to be changed. 
-	///           Colors can be set in the Options form
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.4.2  | Released: 2009.11.05 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///         - After selecting a background image from the Options form (when the default is no image), 
-	///           on Cancel, the Background Image remains.
-	///         - The "Options" Form title was overriden by the About tab's text.
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.4.1  | Released: 2009.10.30 |
-	/// ---------------------------------------
-	///     - Feature Enhancement
-	///         - Allows arguments in the application path. 
-	///           (undiscovered bugs may arise due to this)
-	///             use "P:FixApplicationPaths" to fix the application paths
-	///         
-	///     - Bug Fix
-	///         - Drag & Drop Executable's icon path is not saved
-	///         
-	///     - Program Maintainence
-	///         - Updated Patching subroutine
-	///             - Just pass in a config file Patcher "PatcherConfig.xml" and the 
-	///               patch library will handle the rest
-	///             
-	///         - Implemented a Class AppConfig.cs to hold all global variables like
-	///             - strAppPath
-	///             - strConfigFolder
-	///             - strIconFolder
-	///             - etc...
-	///         
-	///         - Moved configuration files like Shortcuts.xml & DefaultIconMapping.xml to 
-	///           a new folder: Config
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.3.3  | Released: 2009.10.27 |
-	/// ---------------------------------------
-	///     - Feature Enhancement
-	///         - Allows Icon to be changed from the properties dialog
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.3.2  | Released: 2009.10.26 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///         - Previous Feature enhancement (ListView ContextMenu item) causes the 
-	///           F1-F9 to stop functioning.
-	///           
-	///     - Feature Enhancement
-	///         - Added "Properties" to the listview context menu item. Hopefully in the 
-	///           future can allow changes to the shortcut item.
-	///           
-	///         - Allows Custom Sorting of Group
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.3.1  | Released: 2009.10.24 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///          - Unable to create Group since not sure when....
-	///          
-	///     - Feature Enhancements
-	///          - Ablility to have context menu on the list view items 
-	///                - Execute
-	///                - Open Parent Directory
-	///                - Rename
-	///                - Delete
-	///                
-	///          - The Patch Module is now a seperated component library. 
-	///            Btw, now patching command line requires a "P:" infront (case sensitive)
-	///            e.g. "P:RebuildIcons"
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.2.3  | Released: 2009.10.23 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///          - Folders/Documents are not able to be added unless they are shortcuts coming from exe
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.2.2  | Released: 2009.10.21 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///          - Icons of Exe programs are not extracted
-	///       
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.2.1  | Released: 2009.10.15 |
-	/// ---------------------------------------
-	///     - Allows Icons to be extracted when new Exe applications shortcuts are added. Credits to 
-	///       Tsuda Kageyu, http://www.codeproject.com/KB/cs/IconExtractor.aspx
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.0.7  | Released: 2009.09.24 |
-	/// ---------------------------------------
-	///     - Added New Options
-	///         - Changable Background Image
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.0.6  | Released: 2009.08.31 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///         - Program crashes when the moust double click on the side of 
-	///           the item and the item is not selected
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.0.5  | Released: 2009.07.23 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///         - 1 of the "Load" method used a default 
-	///           location (e.g. System32 folder or Documents & Settings folder) 
-	///           to load the file causing the program to crash.
-	/// 
-	/// --------------------------------------------------------------------------------------          
-	/// Version 1.0.4  | Released: 2009.07.22 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///         - The "Run on Startup" works now.
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.0.3  | Released: 2009.07.21 |
-	/// ---------------------------------------
-	///     - Added New Options
-	///         - Expand & Contract Style (Appear or Hover)
-	///         - Auto Startup (Administrators only)
-	///     - Added Shortcuts (F1 - F12) for Group Selection
-	///     - Pressing Enter when an icon is selected will execute the program
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.0.2  | Released: 2009.07.18 |
-	/// ---------------------------------------
-	///     - Bug Fix
-	///         - No longer allows creation of group name with empty name
-	///     - New Options to allow sorting of Group (Move up, Down, To Top, To Bottom)
-	///     - New Options in the left menu to allow sorting icons by Ascending or Descending
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.0.1  | Released: 2009.07.17 |
-	/// ---------------------------------------
-	///     - Added a option control for the Default Icon Mappings
-	/// 
-	/// --------------------------------------------------------------------------------------
-	/// Version 1.0.0  | Released: 2009.07.09 |
-	/// ---------------------------------------
-	///     - Allows multiple delete of shortcuts
-	///     - Shows Tooltips on Icon to display target path/exe
-	///     - Added a context menu to the Notifiy Icon
-	///     - Allow users to change opacity of the bar.
-	///     - Always on top option at the main context menu
-	///     - Docking Panel'strFilename codes came from babarjehangir, December 15th, 2008, http://www.dottostring.com/tag/windows-form/
-	///     
-	/// ]]>
-	/// </summary>
-	public partial class MainForm : Form
+    /// <summary>
+    /// <![CDATA[
+    /// --------------------------------------------------------------------------------------
+    /// Visit My Website |
+    /// ------------------
+    /// Custom Apps Code Repository
+    /// - https://github.com/SkyStrike/DesktopShortcutManager
+    /// 
+    /// Deskop Shortcut Manager Repository
+    /// - https://github.com/SkyStrike/DesktopShortcutManager
+    /// 
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Changes In a Glance |
+    /// ---------------------
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.7.0  | Released: 2018.05.16 |
+    /// ---------------------------------------
+    ///     - Allow switching in multi screen.
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.7.0  | Released: 2018.05.16 |
+    /// ---------------------------------------
+    ///		- Changed target framework to .NET 4.0.
+    ///		- Default "Add Group" dialog to focus on "Submit" button.
+    ///		- Attempt to convert to Xml Serializer for updating of xml instead of dataset.WriteXml
+    ///		- Use lambda expressions and linq to reduce code complexity of the past.
+    ///		- Allow programs to execute in Administrator Mode
+    ///		- Allow shortcuts to specify arguments instead of using a workaround.
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.6.10  | Released: 2011.09.01 |
+    /// ---------------------------------------
+    ///     - Fix
+    ///         - Fixed a bug where launching from the Startup folder may cause the patching program to 
+    ///           fail (as in, config file not found or along those line)
+    /// 
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.6.9  | Released: 2011.08.10 |
+    /// ---------------------------------------
+    ///     - Fix
+    ///         - Fixed the Execution of shortcuts via Shortcut keys
+    ///         - Reversioned the programs...
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.6.8  | Released: 2011.08.10 |
+    /// ---------------------------------------
+    ///     - Enhancement & Fixes
+    ///         - Changed the Export All Shortcut to a Display all Shortcut Keys...
+    ///         - Another Attempt Optimisation....not going too well. Memory seems to be gathering at AddItem
+    ///         - Added Visit my Google Docs and Visit my Blog links in Options form.
+    ///         - Provides links to the configuration files and folder in Options.
+    ///         
+    ///         - Fixed the extracting of icon to create unique name instead of overriding existing icon. 
+    ///           this will also cause duplicates...
+    ///         - The Icon now removes itself from System Tray when Program Closes.
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.6.7  | Released: 2011.08.03 |
+    /// ---------------------------------------
+    ///     - Enhancement
+    ///         -   Added function to allow exporting of shortcuts back to desktop shortcut
+    ///         
+    ///     - Bug Fix
+    ///         -   Icons are not named corrected when extracted....can't believe I did not notice it..
+    /// 
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.6.6  | Released: 2011.07.28 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///         -   Fixed Patching library.
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.6.5  | Released: 2011.01.07 |
+    /// ---------------------------------------
+    ///     - Enhancement
+    ///         -   Made SelectGroup run on a New Thread. 
+    ///             !!! Testing to see if it helps to reduce lagging when selecting group !!!
+    ///         
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.6.4  | Released: 2010.12.09 |
+    /// ---------------------------------------
+    ///     - Enhancement
+    ///         -   Added function to allow Moving/Copying Shortcuts to other groups
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.6.3  | Released: 2010.09.02 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///         -   Fix broken menus for shortcut group selection
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.6.2  | Released: 2010.09.01 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///         -   The shortcut F1-12 was not working after the last version. Fixed
+    ///         
+    ///     - Enhancement
+    ///         -   Added an option to allow show/hide of the mini panel (defaulted to Show)
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.6.1  | Released: 2010.08.30 |
+    /// ---------------------------------------
+    ///     - Maintainence (Requires Patching)
+    ///         -   Added a ID to all shortcuts. This will also help when renaming shortuts. 
+    ///             Previously there is a bug whereby you rename to the same name for the same 
+    ///             shortcut and the program disallows
+    ///         -   To Patch the program, execute
+    ///                 P:AssignShortcutIds
+    ///         
+    ///         -   Patch Program added more functions to remove all custom icons 
+    ///             (easier for me to distribute without my custom icons)
+    ///                 P:RemoveCustomIcons
+    ///                 P:RemoveAllShortcuts
+    ///                 
+    ///             -   RemoveCustomIcons will remove all icons that are not in the default icon mapping configuration
+    ///             -   RemoveAllShortcuts removes all shortcut groups and reset icons to default
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.5.5  | Released: 2010.08.30 |
+    /// ---------------------------------------
+    ///     - Feature Enhancement
+    ///         -   Added a search shortcut feature.
+    ///         -   Moved a couple of functions to the CustomLibraries.UserFunctions and IconMap.
+    ///             -   UserFunctions
+    ///                 -   ExecuteProgram
+    ///                 -   OpenProgramParent
+    ///                 
+    ///             -   IconMap
+    ///                 -   GetDefaultIcon
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.5.4  | Released: 2010.08.06 |
+    /// ---------------------------------------
+    ///     - Minor Enhancement
+    ///         -   Shortcut's working directory is where the exe is located. This will fix 
+    ///             some issues whereby the executable requires some of the dll/config files 
+    ///             located in the same folder
+    ///             
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.5.3  | Released: 2010.05.25 |
+    /// ---------------------------------------
+    ///     - Feature Enhancement
+    ///         - Allows Mouse Click (Single Click) to show the shortcut
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.5.2  | Released: 2010.04.21 |
+    /// ---------------------------------------
+    ///     - Feature Enhancement
+    ///         - Allows exporting of program shortcuts to a text file
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.5.1  | Released: 2009.11.10 |
+    /// ---------------------------------------
+    ///     - Program Maintainence
+    ///         - Splitted the custom controls into a new dll project libararies
+    ///             - CustomLibraries
+    ///                 Contains all shared libraries used. Currently it consist of
+    ///                     - IconExtractor
+    ///                     - UserFunctions -> all generic functions that can be cross shared
+    ///                 
+    ///             - CustomControls
+    ///                 Contains all shared controls. This includes
+    ///                     - KnownColorPicker
+    ///                     - VerticalLabel
+    ///         
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.4.4  | Released: 2009.11.09 |
+    /// ---------------------------------------
+    ///     - Feature Enhancement
+    ///         - Allow launching of selected multiple programs (shows prompting)
+    ///         - Allows supressing of the prompt when launching multiple programs. 
+    ///           This can be found in the Options > Behaviour
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.4.3  | Released: 2009.11.06 |
+    /// ---------------------------------------
+    ///     - Feature Enhancement
+    ///         - Allows Color of the Shortcut Bar and it's text to be changed. 
+    ///           Colors can be set in the Options form
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.4.2  | Released: 2009.11.05 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///         - After selecting a background image from the Options form (when the default is no image), 
+    ///           on Cancel, the Background Image remains.
+    ///         - The "Options" Form title was overriden by the About tab's text.
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.4.1  | Released: 2009.10.30 |
+    /// ---------------------------------------
+    ///     - Feature Enhancement
+    ///         - Allows arguments in the application path. 
+    ///           (undiscovered bugs may arise due to this)
+    ///             use "P:FixApplicationPaths" to fix the application paths
+    ///         
+    ///     - Bug Fix
+    ///         - Drag & Drop Executable's icon path is not saved
+    ///         
+    ///     - Program Maintainence
+    ///         - Updated Patching subroutine
+    ///             - Just pass in a config file Patcher "PatcherConfig.xml" and the 
+    ///               patch library will handle the rest
+    ///             
+    ///         - Implemented a Class AppConfig.cs to hold all global variables like
+    ///             - strAppPath
+    ///             - strConfigFolder
+    ///             - strIconFolder
+    ///             - etc...
+    ///         
+    ///         - Moved configuration files like Shortcuts.xml & DefaultIconMapping.xml to 
+    ///           a new folder: Config
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.3.3  | Released: 2009.10.27 |
+    /// ---------------------------------------
+    ///     - Feature Enhancement
+    ///         - Allows Icon to be changed from the properties dialog
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.3.2  | Released: 2009.10.26 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///         - Previous Feature enhancement (ListView ContextMenu item) causes the 
+    ///           F1-F9 to stop functioning.
+    ///           
+    ///     - Feature Enhancement
+    ///         - Added "Properties" to the listview context menu item. Hopefully in the 
+    ///           future can allow changes to the shortcut item.
+    ///           
+    ///         - Allows Custom Sorting of Group
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.3.1  | Released: 2009.10.24 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///          - Unable to create Group since not sure when....
+    ///          
+    ///     - Feature Enhancements
+    ///          - Ablility to have context menu on the list view items 
+    ///                - Execute
+    ///                - Open Parent Directory
+    ///                - Rename
+    ///                - Delete
+    ///                
+    ///          - The Patch Module is now a seperated component library. 
+    ///            Btw, now patching command line requires a "P:" infront (case sensitive)
+    ///            e.g. "P:RebuildIcons"
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.2.3  | Released: 2009.10.23 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///          - Folders/Documents are not able to be added unless they are shortcuts coming from exe
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.2.2  | Released: 2009.10.21 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///          - Icons of Exe programs are not extracted
+    ///       
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.2.1  | Released: 2009.10.15 |
+    /// ---------------------------------------
+    ///     - Allows Icons to be extracted when new Exe applications shortcuts are added. Credits to 
+    ///       Tsuda Kageyu, http://www.codeproject.com/KB/cs/IconExtractor.aspx
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.0.7  | Released: 2009.09.24 |
+    /// ---------------------------------------
+    ///     - Added New Options
+    ///         - Changable Background Image
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.0.6  | Released: 2009.08.31 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///         - Program crashes when the moust double click on the side of 
+    ///           the item and the item is not selected
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.0.5  | Released: 2009.07.23 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///         - 1 of the "Load" method used a default 
+    ///           location (e.g. System32 folder or Documents & Settings folder) 
+    ///           to load the file causing the program to crash.
+    /// 
+    /// --------------------------------------------------------------------------------------          
+    /// Version 1.0.4  | Released: 2009.07.22 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///         - The "Run on Startup" works now.
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.0.3  | Released: 2009.07.21 |
+    /// ---------------------------------------
+    ///     - Added New Options
+    ///         - Expand & Contract Style (Appear or Hover)
+    ///         - Auto Startup (Administrators only)
+    ///     - Added Shortcuts (F1 - F12) for Group Selection
+    ///     - Pressing Enter when an icon is selected will execute the program
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.0.2  | Released: 2009.07.18 |
+    /// ---------------------------------------
+    ///     - Bug Fix
+    ///         - No longer allows creation of group name with empty name
+    ///     - New Options to allow sorting of Group (Move up, Down, To Top, To Bottom)
+    ///     - New Options in the left menu to allow sorting icons by Ascending or Descending
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.0.1  | Released: 2009.07.17 |
+    /// ---------------------------------------
+    ///     - Added a option control for the Default Icon Mappings
+    /// 
+    /// --------------------------------------------------------------------------------------
+    /// Version 1.0.0  | Released: 2009.07.09 |
+    /// ---------------------------------------
+    ///     - Allows multiple delete of shortcuts
+    ///     - Shows Tooltips on Icon to display target path/exe
+    ///     - Added a context menu to the Notifiy Icon
+    ///     - Allow users to change opacity of the bar.
+    ///     - Always on top option at the main context menu
+    ///     - Docking Panel'strFilename codes came from babarjehangir, December 15th, 2008, http://www.dottostring.com/tag/windows-form/
+    ///     
+    /// ]]>
+    /// </summary>
+    public partial class MainForm : Form
     {
         private string currentGroupName = string.Empty;
         private const string programName = "Shortcut Manager";
