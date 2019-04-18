@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopShortcutMgr.Modules;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +36,7 @@ namespace DesktopShortcutMgr.Forms
         public ColorPickerForm()
         {
             InitializeComponent();
+            CommonUtil.SetApplicationFont(Controls);
         }
 
         private void frmColorPicker_Load(object sender, EventArgs e)

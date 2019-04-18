@@ -28,6 +28,7 @@ namespace DesktopShortcutMgr.Forms
         public PatcherForm()
         {
             InitializeComponent();
+            CommonUtil.SetApplicationFont(Controls);
         }
 
         //public PatcherForm(string PatcherConfig)

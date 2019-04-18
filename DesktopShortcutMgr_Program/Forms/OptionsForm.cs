@@ -20,13 +20,15 @@ namespace DesktopShortcutMgr.Forms
         public OptionsForm()
         {
             InitializeComponent();
+            CommonUtil.SetApplicationFont(Controls);
         }
 
-		public OptionsForm(MainForm opener)
-        {
-            InitializeComponent();
-            this.opener = opener;
-        }
+		//public OptionsForm(MainForm opener)
+  //      {
+  //          InitializeComponent();
+  //          this.opener = opener;
+  //          CommonUtil.SetApplicationFont(Controls);
+  //      }
 
 		private void frmOptions_Load(object sender, EventArgs e)
         {

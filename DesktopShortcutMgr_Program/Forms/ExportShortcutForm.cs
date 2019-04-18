@@ -21,6 +21,7 @@ namespace DesktopShortcutMgr.Forms
         public ExportShortcutForm()
         {
             InitializeComponent();
+            CommonUtil.SetApplicationFont(Controls);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

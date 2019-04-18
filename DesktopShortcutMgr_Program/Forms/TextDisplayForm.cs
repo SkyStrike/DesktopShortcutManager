@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopShortcutMgr.Modules;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,6 +27,7 @@ namespace DesktopShortcutMgr.Forms
         public TextDisplayForm()
         {
             InitializeComponent();
+            CommonUtil.SetApplicationFont(Controls);
         }
 
         /// <summary>

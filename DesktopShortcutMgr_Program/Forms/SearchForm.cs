@@ -32,6 +32,7 @@ namespace DesktopShortcutMgr.Forms
         public SearchForm()
         {
             InitializeComponent();
+            CommonUtil.SetApplicationFont(Controls);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

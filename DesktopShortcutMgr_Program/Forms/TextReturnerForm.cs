@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopShortcutMgr.Modules;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,6 +45,7 @@ namespace DesktopShortcutMgr.Forms
         public TextReturnerForm()
         {
             InitializeComponent();
+            CommonUtil.SetApplicationFont(Controls);
         }
 
         /// <summary>
@@ -65,6 +67,7 @@ namespace DesktopShortcutMgr.Forms
         public TextReturnerForm(string strFormName, string strLabelName, string strButtonText)
         {
             InitializeComponent();
+            CommonUtil.SetApplicationFont(Controls);
 
             this.Text = strFormName;
             lblLabel.Text = strLabelName;

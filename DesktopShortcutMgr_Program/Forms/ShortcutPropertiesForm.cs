@@ -22,7 +22,8 @@ namespace DesktopShortcutMgr.Forms
 		public ShortcutPropertiesForm()
 		{
 			InitializeComponent();
-		}
+            CommonUtil.SetApplicationFont(Controls);
+        }
 
 		//OK = Return OK
 		private void btnOK_Click(object sender, EventArgs e)

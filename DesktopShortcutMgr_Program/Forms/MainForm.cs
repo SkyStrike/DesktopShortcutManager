@@ -374,6 +374,8 @@ namespace DesktopShortcutMgr.Forms
 			StartupCheck();
 
 			InitializeComponent();
+            CommonUtil.SetApplicationFont(Controls);
+
             this.vlblMain.Text = programName;
             notifyIcon1.Text = programName + " v" + Application.ProductVersion;
 

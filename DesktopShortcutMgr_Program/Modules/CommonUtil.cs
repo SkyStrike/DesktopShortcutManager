@@ -25,6 +25,14 @@ namespace DesktopShortcutMgr.Modules
 			}
 		}
 
+        public static void SetApplicationFont(System.Windows.Forms.Control.ControlCollection collections) {
+            foreach (Control c in collections)
+            {
+                Font f = new Font(FontFamily.GenericSansSerif, c.Font.Size, c.Font.Style);
+                c.Font = f;
+            }
+        }
+
 		/// <summary>
 		/// Gets the real application path of the program.
 		/// this will remove all parameters 
