@@ -31,8 +31,8 @@ namespace DesktopShortcutMgr.Forms
     /// ---------------------------------------
     ///     - Allow switching in multi screen.
     /// 
-    /// --------------------------------------------------------------------------------------
     /// Version 1.7.0  | Released: 2018.05.16 |
+    /// --------------------------------------------------------------------------------------
     /// ---------------------------------------
     ///		- Changed target framework to .NET 4.0.
     ///		- Default "Add Group" dialog to focus on "Submit" button.
@@ -355,7 +355,7 @@ namespace DesktopShortcutMgr.Forms
 		private Thread GroupSelectorThread = null;
 
         //use primary screen
-        private int ScreenIndex = 0;
+        private int ScreenIndex = GetPrimaryScreenIndex();
 
 		#region Delegates
 
@@ -930,6 +930,13 @@ namespace DesktopShortcutMgr.Forms
         #endregion
 
 
+        public static int GetPrimaryScreenIndex() {
+            for (int i = 0; i < Screen.AllScreens.Length; i++) {
+                Screen s = Screen.AllScreens[i];
+                if (s.Bounds.X == Screen.PrimaryScreen.Bounds.X) return i;
+            }
+            return 0;
+        }
 
         //default to use primary screen
         public Screen GetScreen() {
