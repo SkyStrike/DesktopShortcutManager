@@ -350,6 +350,8 @@ namespace DesktopShortcutMgr.Forms
 		private bool AttemptedPatch = false;
 		private Thread GroupSelectorThread = null;
 
+        //use primary screen
+        private int ScreenIndex = 0;
 
 		#region Delegates
 
@@ -921,9 +923,29 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		#endregion
+        #endregion
 
 
+
+        //default to use primary screen
+        public Screen GetScreen() {
+
+            if (ScreenIndex >= Screen.AllScreens.Length) {
+                //reset the screen index if number of screens is reduced
+                ScreenIndex = 0;
+            }
+
+            return Screen.AllScreens[ScreenIndex];
+        }
+
+        /// <summary>
+        /// Calculate the position X on screen.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public int GetPositionX(int x) {
+            return Screen.AllScreens[ScreenIndex].WorkingArea.X + x;
+        }
 
 		#region Dock In/Out
 		/*
@@ -936,15 +958,15 @@ namespace DesktopShortcutMgr.Forms
 		public int GetScreenWidth()
         {
             Rectangle recWorkingArea = new Rectangle();
-            recWorkingArea = Screen.PrimaryScreen.WorkingArea;
-            return recWorkingArea.Width;
+            recWorkingArea = GetScreen().WorkingArea;
+            return GetPositionX(recWorkingArea.Width);
         }
 
 		//Gets The Screen Height Available for Work  
 		public int GetScreenHeight()
         {
             Rectangle recWorkingArea = new Rectangle();
-            recWorkingArea = Screen.PrimaryScreen.WorkingArea;
+            recWorkingArea = GetScreen().WorkingArea;
             return recWorkingArea.Height;
         }
 
@@ -1065,10 +1087,8 @@ namespace DesktopShortcutMgr.Forms
                         this.Location = new System.Drawing.Point(i, 0);
                     }
                     this.Location = new System.Drawing.Point(EndX, 0);
-
                     break;
                 case OptionsForm.ExpandContractStyle.Appear:
-
                     this.Location = new System.Drawing.Point((GetScreenWidth() - pVisiblePart.Width), 0);
 
 
@@ -1076,6 +1096,7 @@ namespace DesktopShortcutMgr.Forms
                 default:
                     break;
             }
+            System.Diagnostics.Debug.WriteLine((GetScreenWidth() - pVisiblePart.Width));
 
             //Contract to user defined height
             this.Height = GetUserSize();
@@ -2030,8 +2051,16 @@ namespace DesktopShortcutMgr.Forms
 		[DllImport("User32.dll")]
         public static extern Int32 SetForegroundWindow(int hWnd);
 
+
         #endregion
 
-
+        private void ctxMnuMain_SwitchScreen_Click(object sender, EventArgs e)
+        {
+            //rotate screen to show shortcut bar
+            int screenCount = Screen.AllScreens.Length;
+            if (ScreenIndex < screenCount) ScreenIndex++;
+            else ScreenIndex = 0;
+            ConfigureThis();
+        }
     }
 }
