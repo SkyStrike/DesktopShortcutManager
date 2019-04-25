@@ -52,6 +52,7 @@
             this.ctxMnuMain_ExportShortcutToDesktop = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMnuMain_MoreExportOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMnuMain_DisplayAllShortcutKeys = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxMnuMain_SwitchScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMnuMain_Options = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxMnuMain_Exit = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,8 +79,8 @@
             this.mnuShortcut_Hidden = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShortcut_Hidden_options = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShortcut_Hidden_Search = new System.Windows.Forms.ToolStripMenuItem();
+            this.switchScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vlblMain = new DesktopShortcutMgr.UserControls.VerticalLabel();
-            this.ctxMnuMain_SwitchScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.pVisiblePart.SuspendLayout();
             this.ctxMnuMain.SuspendLayout();
             this.ctxMnuListViewItem.SuspendLayout();
@@ -140,9 +141,9 @@
             this.pVisiblePart.Controls.Add(this.btnDockUnDock);
             this.pVisiblePart.Controls.Add(this.vlblMain);
             this.pVisiblePart.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pVisiblePart.Location = new System.Drawing.Point(0, 0);
+            this.pVisiblePart.Location = new System.Drawing.Point(0, 24);
             this.pVisiblePart.Name = "pVisiblePart";
-            this.pVisiblePart.Size = new System.Drawing.Size(25, 668);
+            this.pVisiblePart.Size = new System.Drawing.Size(25, 644);
             this.pVisiblePart.TabIndex = 1;
             this.pVisiblePart.DoubleClick += new System.EventHandler(this.btnDockUnDock_Click);
             // 
@@ -160,36 +161,36 @@
             this.ctxMnuMain_AlwaysOnTop,
             this.ctxMnuMain_Export,
             this.ctxMnuMain_DisplayAllShortcutKeys,
-            this.ctxMnuMain_Options,
             this.ctxMnuMain_SwitchScreen,
+            this.ctxMnuMain_Options,
             this.toolStripSeparator2,
             this.ctxMnuMain_Exit});
             this.ctxMnuMain.Name = "ctxMnuMain";
-            this.ctxMnuMain.Size = new System.Drawing.Size(205, 292);
+            this.ctxMnuMain.Size = new System.Drawing.Size(210, 270);
             // 
             // ctxMnuMain_SelectGroup
             // 
             this.ctxMnuMain_SelectGroup.Name = "ctxMnuMain_SelectGroup";
-            this.ctxMnuMain_SelectGroup.Size = new System.Drawing.Size(204, 22);
+            this.ctxMnuMain_SelectGroup.Size = new System.Drawing.Size(209, 22);
             this.ctxMnuMain_SelectGroup.Text = "Select Group";
             // 
             // ctxMnuMain_AddGroup
             // 
             this.ctxMnuMain_AddGroup.Name = "ctxMnuMain_AddGroup";
-            this.ctxMnuMain_AddGroup.Size = new System.Drawing.Size(204, 22);
+            this.ctxMnuMain_AddGroup.Size = new System.Drawing.Size(209, 22);
             this.ctxMnuMain_AddGroup.Text = "Add Group";
             this.ctxMnuMain_AddGroup.Click += new System.EventHandler(this.ctxMnuMain_AddGroup_Click);
             // 
             // ctxMnuMain_DeleteGroup
             // 
             this.ctxMnuMain_DeleteGroup.Name = "ctxMnuMain_DeleteGroup";
-            this.ctxMnuMain_DeleteGroup.Size = new System.Drawing.Size(204, 22);
+            this.ctxMnuMain_DeleteGroup.Size = new System.Drawing.Size(209, 22);
             this.ctxMnuMain_DeleteGroup.Text = "Delete Group";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(201, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(206, 6);
             // 
             // ctxMnuMain_Sort
             // 
@@ -198,7 +199,7 @@
             this.ctxMnuMain_Sort_Desc,
             this.ctxMnuMain_Sort_Custom});
             this.ctxMnuMain_Sort.Name = "ctxMnuMain_Sort";
-            this.ctxMnuMain_Sort.Size = new System.Drawing.Size(204, 22);
+            this.ctxMnuMain_Sort.Size = new System.Drawing.Size(209, 22);
             this.ctxMnuMain_Sort.Text = "Sort";
             // 
             // ctxMnuMain_Sort_Asc
@@ -225,25 +226,25 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(201, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(206, 6);
             // 
             // ctxMnuMain_Search
             // 
             this.ctxMnuMain_Search.Name = "ctxMnuMain_Search";
-            this.ctxMnuMain_Search.Size = new System.Drawing.Size(204, 22);
+            this.ctxMnuMain_Search.Size = new System.Drawing.Size(209, 22);
             this.ctxMnuMain_Search.Text = "Search";
             this.ctxMnuMain_Search.Click += new System.EventHandler(this.ctxMnuMain_Search_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(201, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(206, 6);
             // 
             // ctxMnuMain_AlwaysOnTop
             // 
             this.ctxMnuMain_AlwaysOnTop.CheckOnClick = true;
             this.ctxMnuMain_AlwaysOnTop.Name = "ctxMnuMain_AlwaysOnTop";
-            this.ctxMnuMain_AlwaysOnTop.Size = new System.Drawing.Size(204, 22);
+            this.ctxMnuMain_AlwaysOnTop.Size = new System.Drawing.Size(209, 22);
             this.ctxMnuMain_AlwaysOnTop.Text = "Always on top";
             this.ctxMnuMain_AlwaysOnTop.Click += new System.EventHandler(this.ctxMnuMain_AlwaysOnTop_Click);
             // 
@@ -253,7 +254,7 @@
             this.ctxMnuMain_ExportShortcutToDesktop,
             this.ctxMnuMain_MoreExportOptions});
             this.ctxMnuMain_Export.Name = "ctxMnuMain_Export";
-            this.ctxMnuMain_Export.Size = new System.Drawing.Size(204, 22);
+            this.ctxMnuMain_Export.Size = new System.Drawing.Size(209, 22);
             this.ctxMnuMain_Export.Text = "Export";
             // 
             // ctxMnuMain_ExportShortcutToDesktop
@@ -273,27 +274,35 @@
             // ctxMnuMain_DisplayAllShortcutKeys
             // 
             this.ctxMnuMain_DisplayAllShortcutKeys.Name = "ctxMnuMain_DisplayAllShortcutKeys";
-            this.ctxMnuMain_DisplayAllShortcutKeys.Size = new System.Drawing.Size(204, 22);
+            this.ctxMnuMain_DisplayAllShortcutKeys.Size = new System.Drawing.Size(209, 22);
             this.ctxMnuMain_DisplayAllShortcutKeys.Text = "Display All Shortcut Keys";
             this.ctxMnuMain_DisplayAllShortcutKeys.Click += new System.EventHandler(this.ctxMnuMain_DisplayAllShortcutKeys_Click);
+            // 
+            // ctxMnuMain_SwitchScreen
+            // 
+            this.ctxMnuMain_SwitchScreen.Name = "ctxMnuMain_SwitchScreen";
+            this.ctxMnuMain_SwitchScreen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Right)));
+            this.ctxMnuMain_SwitchScreen.Size = new System.Drawing.Size(209, 22);
+            this.ctxMnuMain_SwitchScreen.Text = "Switch Screen";
+            this.ctxMnuMain_SwitchScreen.Click += new System.EventHandler(this.ctxMnuMain_SwitchScreen_Click);
             // 
             // ctxMnuMain_Options
             // 
             this.ctxMnuMain_Options.Name = "ctxMnuMain_Options";
             this.ctxMnuMain_Options.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.ctxMnuMain_Options.Size = new System.Drawing.Size(204, 22);
+            this.ctxMnuMain_Options.Size = new System.Drawing.Size(209, 22);
             this.ctxMnuMain_Options.Text = "Options";
             this.ctxMnuMain_Options.Click += new System.EventHandler(this.ctxMnuMain_Options_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(201, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(206, 6);
             // 
             // ctxMnuMain_Exit
             // 
             this.ctxMnuMain_Exit.Name = "ctxMnuMain_Exit";
-            this.ctxMnuMain_Exit.Size = new System.Drawing.Size(204, 22);
+            this.ctxMnuMain_Exit.Size = new System.Drawing.Size(209, 22);
             this.ctxMnuMain_Exit.Text = "Exit";
             this.ctxMnuMain_Exit.Click += new System.EventHandler(this.ctxMnuMain_Exit_Click);
             // 
@@ -344,7 +353,7 @@
             this.lblGroupName.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGroupName.ForeColor = System.Drawing.Color.White;
-            this.lblGroupName.Location = new System.Drawing.Point(25, 0);
+            this.lblGroupName.Location = new System.Drawing.Point(25, 24);
             this.lblGroupName.Margin = new System.Windows.Forms.Padding(0);
             this.lblGroupName.Name = "lblGroupName";
             this.lblGroupName.Size = new System.Drawing.Size(241, 20);
@@ -369,7 +378,7 @@
             this.tbGroupName.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.tbGroupName.ForeColor = System.Drawing.Color.White;
-            this.tbGroupName.Location = new System.Drawing.Point(25, 20);
+            this.tbGroupName.Location = new System.Drawing.Point(25, 44);
             this.tbGroupName.Name = "tbGroupName";
             this.tbGroupName.Size = new System.Drawing.Size(241, 19);
             this.tbGroupName.TabIndex = 3;
@@ -482,7 +491,8 @@
             // 
             this.mnuShortcut_Hidden.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuShortcut_Hidden_options,
-            this.mnuShortcut_Hidden_Search});
+            this.mnuShortcut_Hidden_Search,
+            this.switchScreenToolStripMenuItem});
             this.mnuShortcut_Hidden.Name = "mnuShortcut_Hidden";
             this.mnuShortcut_Hidden.Size = new System.Drawing.Size(108, 20);
             this.mnuShortcut_Hidden.Text = "HiddenShortcuts";
@@ -491,7 +501,7 @@
             // 
             this.mnuShortcut_Hidden_options.Name = "mnuShortcut_Hidden_options";
             this.mnuShortcut_Hidden_options.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.mnuShortcut_Hidden_options.Size = new System.Drawing.Size(159, 22);
+            this.mnuShortcut_Hidden_options.Size = new System.Drawing.Size(209, 22);
             this.mnuShortcut_Hidden_options.Text = "Options";
             this.mnuShortcut_Hidden_options.Click += new System.EventHandler(this.mnuShortcut_Hidden_options_Click);
             // 
@@ -499,9 +509,17 @@
             // 
             this.mnuShortcut_Hidden_Search.Name = "mnuShortcut_Hidden_Search";
             this.mnuShortcut_Hidden_Search.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.mnuShortcut_Hidden_Search.Size = new System.Drawing.Size(159, 22);
+            this.mnuShortcut_Hidden_Search.Size = new System.Drawing.Size(209, 22);
             this.mnuShortcut_Hidden_Search.Text = "Search";
             this.mnuShortcut_Hidden_Search.Click += new System.EventHandler(this.mnuShortcut_Hidden_Search_Click);
+            // 
+            // switchScreenToolStripMenuItem
+            // 
+            this.switchScreenToolStripMenuItem.Name = "switchScreenToolStripMenuItem";
+            this.switchScreenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Right)));
+            this.switchScreenToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.switchScreenToolStripMenuItem.Text = "Switch Screen";
+            this.switchScreenToolStripMenuItem.Click += new System.EventHandler(this.ctxMnuMain_SwitchScreen_Click);
             // 
             // vlblMain
             // 
@@ -511,17 +529,10 @@
             this.vlblMain.ForeColor = System.Drawing.Color.White;
             this.vlblMain.Location = new System.Drawing.Point(0, 100);
             this.vlblMain.Name = "vlblMain";
-            this.vlblMain.Size = new System.Drawing.Size(25, 568);
+            this.vlblMain.Size = new System.Drawing.Size(25, 544);
             this.vlblMain.TabIndex = 2;
             this.vlblMain.Text = null;
             this.vlblMain.DoubleClick += new System.EventHandler(this.btnDockUnDock_Click);
-            // 
-            // ctxMnuMain_SwitchScreen
-            // 
-            this.ctxMnuMain_SwitchScreen.Name = "ctxMnuMain_SwitchScreen";
-            this.ctxMnuMain_SwitchScreen.Size = new System.Drawing.Size(204, 22);
-            this.ctxMnuMain_SwitchScreen.Text = "Switch Screen";
-            this.ctxMnuMain_SwitchScreen.Click += new System.EventHandler(this.ctxMnuMain_SwitchScreen_Click);
             // 
             // MainForm
             // 
@@ -609,6 +620,7 @@
         private System.Windows.Forms.ToolStripMenuItem ctxMnuListViewItem_ExportToShortcut;
         private System.Windows.Forms.ToolStripMenuItem ctxMnuMain_MoreExportOptions;
         private System.Windows.Forms.ToolStripMenuItem ctxMnuMain_SwitchScreen;
+        private System.Windows.Forms.ToolStripMenuItem switchScreenToolStripMenuItem;
     }
 }
 
