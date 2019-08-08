@@ -27,6 +27,11 @@ namespace DesktopShortcutMgr.Forms
     /// Changes In a Glance |
     /// ---------------------
     /// --------------------------------------------------------------------------------------
+    /// Version 1.7.1  | Released: 2019.08.08 |
+    /// ---------------------------------------
+    ///     - Fixed positioning bug for switching between screen with different resolutions.
+    ///     
+    /// --------------------------------------------------------------------------------------
     /// Version 1.7.0  | Released: 2018.05.16 |
     /// ---------------------------------------
     ///     - Allow switching in multi screen.
@@ -932,6 +937,37 @@ namespace DesktopShortcutMgr.Forms
         #endregion
 
 
+        /// <summary>
+        /// Gets screen offset for Y
+        /// 
+        /// Used mainly for multiple displays with different resolution.
+        /// The position for winforms is based on PrimaryScreen size. 
+        /// If rendered on a secondary screen, the positioning of 0 will be still based on the PrimaryScreen Y value.
+        /// Therefore there will be a error in display.
+        /// E.g. 
+        /// Primary Screen Height = 1080px
+        /// Secondary Screen Height = 768px
+        /// 
+        /// When displayed on Secondary Screen with Y = 0, the real positioning will be -312
+        /// Similarly for the reverse (primary = 768px), the real positioning on the larger screen for Y = 0 will be 312px.
+        /// </summary>
+        /// <returns></returns>
+        public int GetYOffset() {
+
+            int primaryScreenIndex = GetPrimaryScreenIndex();
+            if (primaryScreenIndex == ScreenIndex) {
+                return 0;
+            }
+
+            Screen primaryScreen = Screen.AllScreens[primaryScreenIndex];
+            int primaryY = primaryScreen.Bounds.Height;
+
+            Screen currentScreen = Screen.AllScreens[ScreenIndex];
+            int currentY = currentScreen.Bounds.Height;
+
+            return primaryY - currentY;
+        }
+
         public static int GetPrimaryScreenIndex() {
             for (int i = 0; i < Screen.AllScreens.Length; i++) {
                 Screen s = Screen.AllScreens[i];
@@ -986,17 +1022,18 @@ namespace DesktopShortcutMgr.Forms
 		//Initialize the Docking Window Start Location
 		private void ConfigureThis()
         {
+            //Setting the Text of the Button which will act at the Navigation for Docking Window  
+            this.btnDockUnDock.Text = "<<";
+
             //Dynamically resizing the form to match the height available on the screen  
             this.Size = new Size(this.Width, GetScreenHeight());
 
             //Calculating the Horizontal Location of the Form (Docking Window)  
             //such that only the panel having the Docking Window'strFilename Navigation Control  
             //will be visible  
-
             int EndX = GetScreenWidth() - pVisiblePart.Width;
-            this.Location = new System.Drawing.Point(EndX, 0);
-            //Setting the Text of the Button which will act at the Navigation for Docking Window  
-            this.btnDockUnDock.Text = "<<";
+            this.Location = new System.Drawing.Point(EndX, GetYOffset());
+
         }
 
 		//Sets the height of the Shortcutbar
@@ -1010,7 +1047,7 @@ namespace DesktopShortcutMgr.Forms
             //will be visible  
 
             int EndX = GetScreenWidth() - pVisiblePart.Width;
-            this.Location = new System.Drawing.Point(EndX, 0);
+            this.Location = new System.Drawing.Point(EndX, GetYOffset());
             //Setting the Text of the Button which will act at the Navigation for Docking Window  
             this.btnDockUnDock.Text = "<<";
         }
@@ -2071,8 +2108,11 @@ namespace DesktopShortcutMgr.Forms
         {
             //rotate screen to show shortcut bar
             int screenCount = Screen.AllScreens.Length;
-            if (ScreenIndex < screenCount) ScreenIndex++;
-            else ScreenIndex = 0;
+            if ((ScreenIndex + 1) < screenCount)
+                ScreenIndex++;
+            else
+                ScreenIndex = 0;
+
             ConfigureThis();
         }
     }

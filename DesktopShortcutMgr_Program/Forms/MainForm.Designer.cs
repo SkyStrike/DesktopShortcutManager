@@ -58,7 +58,7 @@
             this.ctxMnuMain_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMiniPanel = new System.Windows.Forms.Panel();
             this.btnMainMenu = new System.Windows.Forms.Button();
-            this.btnDockUnDock = new System.Windows.Forms.Button();
+            this.vlblMain = new DesktopShortcutMgr.UserControls.VerticalLabel();
             this.lblGroupName = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.tbGroupName = new System.Windows.Forms.TextBox();
@@ -80,7 +80,7 @@
             this.mnuShortcut_Hidden_options = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShortcut_Hidden_Search = new System.Windows.Forms.ToolStripMenuItem();
             this.switchScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vlblMain = new DesktopShortcutMgr.UserControls.VerticalLabel();
+            this.btnDockUnDock = new System.Windows.Forms.Button();
             this.pVisiblePart.SuspendLayout();
             this.ctxMnuMain.SuspendLayout();
             this.ctxMnuListViewItem.SuspendLayout();
@@ -97,11 +97,11 @@
             this.lvShortcuts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvShortcuts.LabelEdit = true;
             this.lvShortcuts.LargeImageList = this.imageList1;
-            this.lvShortcuts.Location = new System.Drawing.Point(25, 20);
+            this.lvShortcuts.Location = new System.Drawing.Point(25, 18);
             this.lvShortcuts.Margin = new System.Windows.Forms.Padding(0);
             this.lvShortcuts.Name = "lvShortcuts";
             this.lvShortcuts.ShowItemToolTips = true;
-            this.lvShortcuts.Size = new System.Drawing.Size(241, 648);
+            this.lvShortcuts.Size = new System.Drawing.Size(241, 598);
             this.lvShortcuts.SmallImageList = this.imageListSmall;
             this.lvShortcuts.TabIndex = 0;
             this.lvShortcuts.TileSize = new System.Drawing.Size(184, 34);
@@ -141,9 +141,9 @@
             this.pVisiblePart.Controls.Add(this.btnDockUnDock);
             this.pVisiblePart.Controls.Add(this.vlblMain);
             this.pVisiblePart.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pVisiblePart.Location = new System.Drawing.Point(0, 24);
+            this.pVisiblePart.Location = new System.Drawing.Point(0, 0);
             this.pVisiblePart.Name = "pVisiblePart";
-            this.pVisiblePart.Size = new System.Drawing.Size(25, 644);
+            this.pVisiblePart.Size = new System.Drawing.Size(25, 617);
             this.pVisiblePart.TabIndex = 1;
             this.pVisiblePart.DoubleClick += new System.EventHandler(this.btnDockUnDock_Click);
             // 
@@ -310,7 +310,7 @@
             // 
             this.pnlMiniPanel.AutoSize = true;
             this.pnlMiniPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMiniPanel.Location = new System.Drawing.Point(0, 48);
+            this.pnlMiniPanel.Location = new System.Drawing.Point(0, 44);
             this.pnlMiniPanel.Margin = new System.Windows.Forms.Padding(0);
             this.pnlMiniPanel.Name = "pnlMiniPanel";
             this.pnlMiniPanel.Size = new System.Drawing.Size(25, 0);
@@ -323,29 +323,26 @@
             this.btnMainMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMainMenu.ForeColor = System.Drawing.Color.White;
             this.btnMainMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMainMenu.Image")));
-            this.btnMainMenu.Location = new System.Drawing.Point(0, 23);
+            this.btnMainMenu.Location = new System.Drawing.Point(0, 21);
             this.btnMainMenu.Name = "btnMainMenu";
-            this.btnMainMenu.Size = new System.Drawing.Size(25, 25);
+            this.btnMainMenu.Size = new System.Drawing.Size(25, 23);
             this.btnMainMenu.TabIndex = 1;
             this.toolTip1.SetToolTip(this.btnMainMenu, "Menu");
             this.btnMainMenu.UseVisualStyleBackColor = true;
             this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
             // 
-            // btnDockUnDock
+            // vlblMain
             // 
-            this.btnDockUnDock.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDockUnDock.FlatAppearance.BorderSize = 0;
-            this.btnDockUnDock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDockUnDock.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDockUnDock.ForeColor = System.Drawing.Color.White;
-            this.btnDockUnDock.Location = new System.Drawing.Point(0, 0);
-            this.btnDockUnDock.Margin = new System.Windows.Forms.Padding(0);
-            this.btnDockUnDock.Name = "btnDockUnDock";
-            this.btnDockUnDock.Size = new System.Drawing.Size(25, 23);
-            this.btnDockUnDock.TabIndex = 0;
-            this.btnDockUnDock.Text = "<<";
-            this.btnDockUnDock.UseVisualStyleBackColor = true;
-            this.btnDockUnDock.Click += new System.EventHandler(this.btnDockUnDock_Click);
+            this.vlblMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.vlblMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.vlblMain.ForeColor = System.Drawing.Color.White;
+            this.vlblMain.Location = new System.Drawing.Point(0, 92);
+            this.vlblMain.Name = "vlblMain";
+            this.vlblMain.Size = new System.Drawing.Size(25, 525);
+            this.vlblMain.TabIndex = 2;
+            this.vlblMain.Text = null;
+            this.vlblMain.DoubleClick += new System.EventHandler(this.btnDockUnDock_Click);
             // 
             // lblGroupName
             // 
@@ -353,10 +350,10 @@
             this.lblGroupName.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGroupName.ForeColor = System.Drawing.Color.White;
-            this.lblGroupName.Location = new System.Drawing.Point(25, 24);
+            this.lblGroupName.Location = new System.Drawing.Point(25, 0);
             this.lblGroupName.Margin = new System.Windows.Forms.Padding(0);
             this.lblGroupName.Name = "lblGroupName";
-            this.lblGroupName.Size = new System.Drawing.Size(241, 20);
+            this.lblGroupName.Size = new System.Drawing.Size(241, 18);
             this.lblGroupName.TabIndex = 2;
             this.lblGroupName.Text = "Shortcut Manager";
             this.toolTip1.SetToolTip(this.lblGroupName, "Double click to edit group name");
@@ -378,7 +375,7 @@
             this.tbGroupName.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.tbGroupName.ForeColor = System.Drawing.Color.White;
-            this.tbGroupName.Location = new System.Drawing.Point(25, 44);
+            this.tbGroupName.Location = new System.Drawing.Point(25, 18);
             this.tbGroupName.Name = "tbGroupName";
             this.tbGroupName.Size = new System.Drawing.Size(241, 19);
             this.tbGroupName.TabIndex = 3;
@@ -482,7 +479,7 @@
             this.mnuShortcut_Hidden});
             this.mnuShortcutGroup.Location = new System.Drawing.Point(0, 0);
             this.mnuShortcutGroup.Name = "mnuShortcutGroup";
-            this.mnuShortcutGroup.Size = new System.Drawing.Size(266, 24);
+            this.mnuShortcutGroup.Size = new System.Drawing.Size(266, 22);
             this.mnuShortcutGroup.TabIndex = 4;
             this.mnuShortcutGroup.Text = "menuStrip1";
             this.mnuShortcutGroup.Visible = false;
@@ -494,7 +491,7 @@
             this.mnuShortcut_Hidden_Search,
             this.switchScreenToolStripMenuItem});
             this.mnuShortcut_Hidden.Name = "mnuShortcut_Hidden";
-            this.mnuShortcut_Hidden.Size = new System.Drawing.Size(108, 20);
+            this.mnuShortcut_Hidden.Size = new System.Drawing.Size(108, 18);
             this.mnuShortcut_Hidden.Text = "HiddenShortcuts";
             // 
             // mnuShortcut_Hidden_options
@@ -521,26 +518,29 @@
             this.switchScreenToolStripMenuItem.Text = "Switch Screen";
             this.switchScreenToolStripMenuItem.Click += new System.EventHandler(this.ctxMnuMain_SwitchScreen_Click);
             // 
-            // vlblMain
+            // btnDockUnDock
             // 
-            this.vlblMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.vlblMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.vlblMain.ForeColor = System.Drawing.Color.White;
-            this.vlblMain.Location = new System.Drawing.Point(0, 100);
-            this.vlblMain.Name = "vlblMain";
-            this.vlblMain.Size = new System.Drawing.Size(25, 544);
-            this.vlblMain.TabIndex = 2;
-            this.vlblMain.Text = null;
-            this.vlblMain.DoubleClick += new System.EventHandler(this.btnDockUnDock_Click);
+            this.btnDockUnDock.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDockUnDock.FlatAppearance.BorderSize = 0;
+            this.btnDockUnDock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDockUnDock.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDockUnDock.ForeColor = System.Drawing.Color.White;
+            this.btnDockUnDock.Location = new System.Drawing.Point(0, 0);
+            this.btnDockUnDock.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDockUnDock.Name = "btnDockUnDock";
+            this.btnDockUnDock.Size = new System.Drawing.Size(25, 21);
+            this.btnDockUnDock.TabIndex = 0;
+            this.btnDockUnDock.Text = "<<";
+            this.btnDockUnDock.UseVisualStyleBackColor = true;
+            this.btnDockUnDock.Click += new System.EventHandler(this.btnDockUnDock_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(266, 668);
+            this.ClientSize = new System.Drawing.Size(266, 617);
             this.Controls.Add(this.tbGroupName);
             this.Controls.Add(this.lblGroupName);
             this.Controls.Add(this.pVisiblePart);
@@ -574,7 +574,6 @@
         private System.Windows.Forms.ListView lvShortcuts;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Panel pVisiblePart;
-        private System.Windows.Forms.Button btnDockUnDock;
         private System.Windows.Forms.ContextMenuStrip ctxMnuMain;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ctxMnuMain_Exit;
@@ -621,6 +620,7 @@
         private System.Windows.Forms.ToolStripMenuItem ctxMnuMain_MoreExportOptions;
         private System.Windows.Forms.ToolStripMenuItem ctxMnuMain_SwitchScreen;
         private System.Windows.Forms.ToolStripMenuItem switchScreenToolStripMenuItem;
+        private System.Windows.Forms.Button btnDockUnDock;
     }
 }
 
