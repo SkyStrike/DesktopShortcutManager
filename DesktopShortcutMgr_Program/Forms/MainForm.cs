@@ -944,12 +944,8 @@ namespace DesktopShortcutMgr.Forms
         /// The position for winforms is based on PrimaryScreen size. 
         /// If rendered on a secondary screen, the positioning of 0 will be still based on the PrimaryScreen Y value.
         /// Therefore there will be a error in display.
-        /// E.g. 
-        /// Primary Screen Height = 1080px
-        /// Secondary Screen Height = 768px
         /// 
-        /// When displayed on Secondary Screen with Y = 0, the real positioning will be -312
-        /// Similarly for the reverse (primary = 768px), the real positioning on the larger screen for Y = 0 will be 312px.
+        /// Use CurrentScreen's Bounds value will be the accurate position.
         /// </summary>
         /// <returns></returns>
         public int GetYOffset() {
@@ -959,13 +955,8 @@ namespace DesktopShortcutMgr.Forms
                 return 0;
             }
 
-            Screen primaryScreen = Screen.AllScreens[primaryScreenIndex];
-            int primaryY = primaryScreen.Bounds.Height;
-
             Screen currentScreen = Screen.AllScreens[ScreenIndex];
-            int currentY = currentScreen.Bounds.Height;
-
-            return primaryY - currentY;
+            return currentScreen.Bounds.Y;
         }
 
         public static int GetPrimaryScreenIndex() {
@@ -1074,10 +1065,10 @@ namespace DesktopShortcutMgr.Forms
             btnMainMenu.Show();
             pnlMiniPanel.Hide();
 
+            int offsetY = GetYOffset();
             switch ((OptionsForm.ExpandContractStyle)Properties.Settings.Default.ExpandContractStyle)
             {
                 case OptionsForm.ExpandContractStyle.Hover:
-
                     //Starting Location of the Docking Window  
                     int StartX = this.Location.X;
 
@@ -1088,17 +1079,18 @@ namespace DesktopShortcutMgr.Forms
                     //This loops does the trick for us, this will effectively simulate the  
                     //coming out effect to the docking window, eventually making the window  
                     //completely visible  
+                    
                     for (int i = StartX; i >= EndX; i--)
                     {
-                        this.Location = new System.Drawing.Point(i, 0);
+                        this.Location = new System.Drawing.Point(i, offsetY);
                     }
                     //Setting the final location (ensuring the final location)  
-                    this.Location = new System.Drawing.Point(EndX, 0);
+                    this.Location = new System.Drawing.Point(EndX, offsetY);
 
                     break;
                 case OptionsForm.ExpandContractStyle.Appear:
 
-                    this.Location = new System.Drawing.Point((GetScreenWidth() - this.Width), 0);
+                    this.Location = new System.Drawing.Point((GetScreenWidth() - this.Width), offsetY);
 
                     break;
                 default:
@@ -1121,6 +1113,8 @@ namespace DesktopShortcutMgr.Forms
             if (Properties.Settings.Default.ShowMiniPanel)
                 pnlMiniPanel.Show();
 
+            int offsetY = GetYOffset();
+
             switch ((OptionsForm.ExpandContractStyle)Properties.Settings.Default.ExpandContractStyle)
             {
                 case OptionsForm.ExpandContractStyle.Hover:
@@ -1132,14 +1126,15 @@ namespace DesktopShortcutMgr.Forms
                     int EndX = GetScreenWidth() - pVisiblePart.Width;
 
                     //This is loop will dock the window back in  
+                    
                     for (int i = StartX; i <= EndX; i++)
                     {
-                        this.Location = new System.Drawing.Point(i, 0);
+                        this.Location = new System.Drawing.Point(i, offsetY);
                     }
-                    this.Location = new System.Drawing.Point(EndX, 0);
+                    this.Location = new System.Drawing.Point(EndX, offsetY);
                     break;
                 case OptionsForm.ExpandContractStyle.Appear:
-                    this.Location = new System.Drawing.Point((GetScreenWidth() - pVisiblePart.Width), 0);
+                    this.Location = new System.Drawing.Point((GetScreenWidth() - pVisiblePart.Width), offsetY);
 
 
                     break;
