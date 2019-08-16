@@ -955,6 +955,9 @@ namespace DesktopShortcutMgr.Forms
                 return 0;
             }
 
+            if (ScreenIndex > Screen.AllScreens.Length) {
+                ScreenIndex = 0;
+            }
             Screen currentScreen = Screen.AllScreens[ScreenIndex];
             return currentScreen.Bounds.Y;
         }
