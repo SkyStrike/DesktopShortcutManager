@@ -1,13 +1,12 @@
-﻿using System;
+﻿using DesktopShortcutMgr.Entity;
+using DesktopShortcutMgr.Modules;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Data;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
-using DesktopShortcutMgr.Modules;
-using DesktopShortcutMgr.Entity;
+using System.Windows.Forms;
 
 namespace DesktopShortcutMgr.Forms
 {
@@ -355,16 +354,16 @@ namespace DesktopShortcutMgr.Forms
         private const string programName = "Shortcut Manager";
 
 
-		//global variables
-		private bool AttemptedPatch = false;
-		private Thread GroupSelectorThread = null;
+        //global variables
+        private bool AttemptedPatch = false;
+        private Thread GroupSelectorThread = null;
 
         //use primary screen
         private int ScreenIndex = GetPrimaryScreenIndex();
 
-		#region Delegates
+        #region Delegates
 
-		delegate void ClearItemsCallBack();
+        delegate void ClearItemsCallBack();
         delegate void PanelAddControlCallBack(Control ctrl);
         delegate void lvShortcutsAddItemCallBack(ListViewItem l);
         delegate void SetStringCallBack(string s);
@@ -375,10 +374,10 @@ namespace DesktopShortcutMgr.Forms
 
         public MainForm()
         {
-			//checks that the default files are there before the program continues.
-			StartupCheck();
+            //checks that the default files are there before the program continues.
+            StartupCheck();
 
-			InitializeComponent();
+            InitializeComponent();
             CommonUtil.SetApplicationFont(Controls);
 
             this.vlblMain.Text = programName;
@@ -398,7 +397,7 @@ namespace DesktopShortcutMgr.Forms
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-			/*
+            /*
              * Load some dynamic shortcuts
              * Alt + 1 = Execute Application 1
              * ...
@@ -406,7 +405,7 @@ namespace DesktopShortcutMgr.Forms
              * ...
              * Alt + 9 = Execute Application 9
              */
-			PreloadShortcuts();
+            PreloadShortcuts();
 
             //Load the shortcuts
             LoadShortcutGroups();
@@ -424,17 +423,17 @@ namespace DesktopShortcutMgr.Forms
 
             DockIn();
             Test();
-		}
+        }
 
         private void Test()
         {
-			
-		}
 
-		#region Other Form Events
+        }
 
-		//Renaming the group
-		private void lblGroupName_DoubleClick(object sender, EventArgs e)
+        #region Other Form Events
+
+        //Renaming the group
+        private void lblGroupName_DoubleClick(object sender, EventArgs e)
         {
             int counter = 0;
             foreach (ToolStripItem itm in ctxMnuListView.Items)
@@ -461,8 +460,8 @@ namespace DesktopShortcutMgr.Forms
             tbGroupName.SelectAll();
         }
 
-		//Textbox Group name Lost focus event. Rename group when lost focus. If new group name is empty, ignore
-		private void tbGroupName_LostFocus(object sender, System.EventArgs e)
+        //Textbox Group name Lost focus event. Rename group when lost focus. If new group name is empty, ignore
+        private void tbGroupName_LostFocus(object sender, System.EventArgs e)
         {
             string oldGroupName = lblGroupName.Text;
             string newGroupName = tbGroupName.Text;
@@ -473,21 +472,21 @@ namespace DesktopShortcutMgr.Forms
             RenameGroup(oldGroupName, newGroupName);
         }
 
-		//Show the bar
-		private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        //Show the bar
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ShowShortcutBar();
             if (IsDockedIn()) { DockOut(); }
         }
 
-		//Show the bar
-		private void notifyIcon1_Click(object sender, EventArgs e)
+        //Show the bar
+        private void notifyIcon1_Click(object sender, EventArgs e)
         {
             notifyIcon1_MouseDoubleClick(sender, null);
         }
 
-		//Remove Icon when form closes
-		private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        //Remove Icon when form closes
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (notifyIcon1 != null)
             {
@@ -497,13 +496,13 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		#endregion
+        #endregion
 
 
-		#region List View Events
+        #region List View Events
 
-		//Double click action for ListView
-		private void lvShortcuts_DoubleClick(object sender, System.EventArgs e)
+        //Double click action for ListView
+        private void lvShortcuts_DoubleClick(object sender, System.EventArgs e)
         {
             //if there is something selected, then try to execute
             if (lvShortcuts.SelectedItems != null)
@@ -533,7 +532,7 @@ namespace DesktopShortcutMgr.Forms
                             foreach (ListViewItem liSelectedItem in lvShortcuts.SelectedItems)
                             {
                                 if (liSelectedItem != null)
-									CommonUtil.ExecuteProgram((ShortcutItem)liSelectedItem.Tag);
+                                    CommonUtil.ExecuteProgram((ShortcutItem)liSelectedItem.Tag);
                             }
                         }
                     }
@@ -542,15 +541,15 @@ namespace DesktopShortcutMgr.Forms
                         //Launching single program
                         if (lvShortcuts.SelectedItems[0] != null)
                         {
-							CommonUtil.ExecuteProgram(GetSelectedListViewItem());
+                            CommonUtil.ExecuteProgram(GetSelectedListViewItem());
                         }
                     }
                 }
             }
         }
 
-		//Check for the delete button press event.
-		private void lvShortcuts_KeyUp(object sender, KeyEventArgs e)
+        //Check for the delete button press event.
+        private void lvShortcuts_KeyUp(object sender, KeyEventArgs e)
         {
             //check for delete key
             if (e.KeyCode == Keys.Delete && itemEditing == null)
@@ -568,8 +567,8 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		//Handles the context menu showing
-		private void lvShortcuts_MouseUp(object sender, MouseEventArgs e)
+        //Handles the context menu showing
+        private void lvShortcuts_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -591,14 +590,14 @@ namespace DesktopShortcutMgr.Forms
         //Contains the name of the currently editing icon
         ShortcutItem itemEditing = null;
 
-		//Before editing label, get the original item text
-		private void lvShortcuts_BeforeLabelEdit(object sender, LabelEditEventArgs e)
+        //Before editing label, get the original item text
+        private void lvShortcuts_BeforeLabelEdit(object sender, LabelEditEventArgs e)
         {
-            itemEditing = (ShortcutItem) lvShortcuts.SelectedItems[0].Tag;
+            itemEditing = (ShortcutItem)lvShortcuts.SelectedItems[0].Tag;
         }
 
-		//Save the new value after editing if it is unique
-		private void lvShortcuts_AfterLabelEdit(object sender, LabelEditEventArgs e)
+        //Save the new value after editing if it is unique
+        private void lvShortcuts_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
             //ensure that the new name is not empty.
             if (string.IsNullOrEmpty(e.Label))
@@ -608,17 +607,17 @@ namespace DesktopShortcutMgr.Forms
                 return;
             }
 
-			itemEditing.Text = e.Label;
-			ShortcutUtil.UpdateShortcut(currentGroupName, itemEditing);
+            itemEditing.Text = e.Label;
+            ShortcutUtil.UpdateShortcut(currentGroupName, itemEditing);
             itemEditing = null;
         }
 
-		#endregion
+        #endregion
 
-		#region Drag & Drop
+        #region Drag & Drop
 
-		//Adding new items to group
-		private void lvShortcuts_DragDrop(object sender, DragEventArgs e)
+        //Adding new items to group
+        private void lvShortcuts_DragDrop(object sender, DragEventArgs e)
         {
             string strFolderName = currentGroupName;
 
@@ -628,32 +627,34 @@ namespace DesktopShortcutMgr.Forms
             string strShortcutFile = string.Empty;
             //DataSet ds = null;
 
-			//if no folder is selected, auto create one.
-			if (string.IsNullOrEmpty(strFolderName))
-			{
-				string strGroup = DateTime.Now.ToString("yyyyMMdd_hhmmss");
-				
-				//Create the group
-				CreateGroup(strGroup);
-				strShortcutFile = AppConfig.GetShortcutFile(strGroup);
-				strFolderName = strGroup;
-			}
-			else {
-				//Get the shortcut file
-				strShortcutFile = AppConfig.GetShortcutFile(strFolderName);
-			}
+            //if no folder is selected, auto create one.
+            if (string.IsNullOrEmpty(strFolderName))
+            {
+                string strGroup = DateTime.Now.ToString("yyyyMMdd_hhmmss");
 
-			List<ShortcutItem> newItems = ShortcutUtil.CreateShortcut(strFolderName, files);
-			if (newItems.Count > 0) {
-				foreach (var item in newItems)
-				{
-					AddItem(item);
-				}
-			}
-		}
+                //Create the group
+                CreateGroup(strGroup);
+                strShortcutFile = AppConfig.GetShortcutFile(strGroup);
+                strFolderName = strGroup;
+            }
+            else
+            {
+                //Get the shortcut file
+                strShortcutFile = AppConfig.GetShortcutFile(strFolderName);
+            }
 
-		//Show the "cursor effect"
-		private void lvShortcuts_DragEnter(object sender, DragEventArgs e)
+            List<ShortcutItem> newItems = ShortcutUtil.CreateShortcut(strFolderName, files);
+            if (newItems.Count > 0)
+            {
+                foreach (var item in newItems)
+                {
+                    AddItem(item);
+                }
+            }
+        }
+
+        //Show the "cursor effect"
+        private void lvShortcuts_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
                 // allow them to continue
@@ -662,16 +663,16 @@ namespace DesktopShortcutMgr.Forms
 
         }
 
-		#endregion
+        #endregion
 
-		#endregion
+        #endregion
 
 
 
-		#region ContextMenu - ListView
+        #region ContextMenu - ListView
 
-		//Delete Group
-		private void listViewCtxMenuItem_Delete_Click(object sender, EventArgs e)
+        //Delete Group
+        private void listViewCtxMenuItem_Delete_Click(object sender, EventArgs e)
         {
             //Show confirmation message before proceeding to delete
             string strGroupName = ((ToolStripMenuItem)sender).Text;
@@ -685,51 +686,51 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		//Gets Shortcut from Group Name
-		private void listViewCtxMenuItem_Selection_Click(object sender, EventArgs e)
+        //Gets Shortcut from Group Name
+        private void listViewCtxMenuItem_Selection_Click(object sender, EventArgs e)
         {
             string strGroupName = ((ToolStripMenuItem)sender).Text;
             SelectGroup(strGroupName);
         }
 
-		#endregion
+        #endregion
 
 
 
-		#region ContextMenu - ListViewItem
+        #region ContextMenu - ListViewItem
 
-		//Execute the program/folder/directory
-		private void ctxMnuListViewItem_Execute_Click(object sender, EventArgs e)
+        //Execute the program/folder/directory
+        private void ctxMnuListViewItem_Execute_Click(object sender, EventArgs e)
         {
-			CommonUtil.ExecuteProgram(GetSelectedListViewItem());
+            CommonUtil.ExecuteProgram(GetSelectedListViewItem());
         }
 
-		//Opens the program'strFilename parent directory
-		private void ctxMnuListViewItem_OpenDirectory_Click(object sender, EventArgs e)
+        //Opens the program'strFilename parent directory
+        private void ctxMnuListViewItem_OpenDirectory_Click(object sender, EventArgs e)
         {
-			CommonUtil.OpenProgramParent(GetSelectedListViewItem());
-		}
+            CommonUtil.OpenProgramParent(GetSelectedListViewItem());
+        }
 
-		//Renames an item
-		private void ctxMnuListViewItem_Rename_Click(object sender, EventArgs e)
+        //Renames an item
+        private void ctxMnuListViewItem_Rename_Click(object sender, EventArgs e)
         {
             RenameItem();
         }
 
-		//Deletes items
-		private void ctxMnuListViewItem_Delete_Click(object sender, EventArgs e)
+        //Deletes items
+        private void ctxMnuListViewItem_Delete_Click(object sender, EventArgs e)
         {
             DeleteListViewItem();
         }
 
-		//Shows the shortcut properties
-		private void ctxMnuListViewItem_Properties_Click(object sender, EventArgs e)
+        //Shows the shortcut properties
+        private void ctxMnuListViewItem_Properties_Click(object sender, EventArgs e)
         {
             ShowListViewItemProperties();
         }
 
-		//Disable the current group in the list
-		private void ctxMnuListViewItem_MoveTo_DropDownOpening(object sender, EventArgs e)
+        //Disable the current group in the list
+        private void ctxMnuListViewItem_MoveTo_DropDownOpening(object sender, EventArgs e)
         {
             foreach (ToolStripItem item in ctxMnuListViewItem_MoveTo.DropDownItems)
             {
@@ -737,8 +738,8 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		//Disable the current group in the list
-		private void ctxMnuListViewItem_CopyTo_DropDownOpening(object sender, EventArgs e)
+        //Disable the current group in the list
+        private void ctxMnuListViewItem_CopyTo_DropDownOpening(object sender, EventArgs e)
         {
             foreach (ToolStripItem item in ctxMnuListViewItem_CopyTo.DropDownItems)
             {
@@ -746,13 +747,13 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		//Exports Item to Icon
-		private void ctxMnuListViewItem_ExportToShortcut_Click(object sender, EventArgs e)
+        //Exports Item to Icon
+        private void ctxMnuListViewItem_ExportToShortcut_Click(object sender, EventArgs e)
         {
-			ShortcutItem selectedItem = GetSelectedListViewItem();
+            ShortcutItem selectedItem = GetSelectedListViewItem();
 
-			string strCurrentShortcutName = selectedItem.Text;
-			string strCurrentShortcutPath = selectedItem.Application;
+            string strCurrentShortcutName = selectedItem.Text;
+            string strCurrentShortcutPath = selectedItem.Application;
 
             if (!selectedItem.IsValid())
             {
@@ -766,28 +767,28 @@ namespace DesktopShortcutMgr.Forms
             sfd.FileName = strCurrentShortcutName;
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-				try
-				{
-					selectedItem.CreateDesktopShortcut(System.IO.Path.GetDirectoryName(sfd.FileName), System.IO.Path.GetFileNameWithoutExtension(sfd.FileName), false);
-				}
-				catch (Exception ex)
-				{
-					CrashReporterForm rpt = new CrashReporterForm(ex);
-					rpt.ShowDialog();
-					rpt.Dispose();
-					rpt = null;
-				}
+                try
+                {
+                    selectedItem.CreateDesktopShortcut(System.IO.Path.GetDirectoryName(sfd.FileName), System.IO.Path.GetFileNameWithoutExtension(sfd.FileName), false);
+                }
+                catch (Exception ex)
+                {
+                    CrashReporterForm rpt = new CrashReporterForm(ex);
+                    rpt.ShowDialog();
+                    rpt.Dispose();
+                    rpt = null;
+                }
             }
         }
 
-		#endregion
+        #endregion
 
 
 
-		#region ContextMenu - Main
+        #region ContextMenu - Main
 
-		//Add a new group
-		private void ctxMnuMain_AddGroup_Click(object sender, EventArgs e)
+        //Add a new group
+        private void ctxMnuMain_AddGroup_Click(object sender, EventArgs e)
         {
             //frmNewGroup frm = new frmNewGroup();
             TextReturnerForm frm = new TextReturnerForm("New Group Name", "Group Name", "Submit");
@@ -872,43 +873,43 @@ namespace DesktopShortcutMgr.Forms
 
         private void ctxMnuMain_Sort_Asc_Click(object sender, EventArgs e)
         {
-			ShortcutUtil.SortShortcuts(currentGroupName, "ASC");
-			SelectGroup(currentGroupName);
-		}
+            ShortcutUtil.SortShortcuts(currentGroupName, "ASC");
+            SelectGroup(currentGroupName);
+        }
 
-		private void ctxMnuMain_Sort_Desc_Click(object sender, EventArgs e)
+        private void ctxMnuMain_Sort_Desc_Click(object sender, EventArgs e)
         {
-			ShortcutUtil.SortShortcuts(currentGroupName, "DESC");
-			SelectGroup(currentGroupName);
-		}
+            ShortcutUtil.SortShortcuts(currentGroupName, "DESC");
+            SelectGroup(currentGroupName);
+        }
 
-		//Opens the Custom Sorting Window
-		private void ctxMnuMain_Sort_Custom_Click(object sender, EventArgs e)
+        //Opens the Custom Sorting Window
+        private void ctxMnuMain_Sort_Custom_Click(object sender, EventArgs e)
         {
             CustomSortingForm frmCSort = new CustomSortingForm(lvShortcuts, imageList1);
             if (frmCSort.ShowDialog() == DialogResult.OK)
             {
                 ListView lv = frmCSort.UpdatedListView();
-				List<ShortcutItem> items = new List<ShortcutItem>();
-				foreach (ListViewItem item in lv.Items)
-				{
-					items.Add((ShortcutItem) item.Tag);
-				}
+                List<ShortcutItem> items = new List<ShortcutItem>();
+                foreach (ListViewItem item in lv.Items)
+                {
+                    items.Add((ShortcutItem)item.Tag);
+                }
 
-				ShortcutUtil.UpdateGroupShortcut(currentGroupName, items.ToArray());
+                ShortcutUtil.UpdateGroupShortcut(currentGroupName, items.ToArray());
                 SelectGroup(currentGroupName);
             }
             frmCSort = null;
         }
 
-		#endregion
+        #endregion
 
-		#endregion
+        #endregion
 
-		#region Main Menu - Hidden
+        #region Main Menu - Hidden
 
-		//Launches the Options window
-		private void mnuShortcut_Hidden_options_Click(object sender, EventArgs e)
+        //Launches the Options window
+        private void mnuShortcut_Hidden_options_Click(object sender, EventArgs e)
         {
             ctxMnuMain_Options_Click(sender, e);
         }
@@ -918,8 +919,8 @@ namespace DesktopShortcutMgr.Forms
             ctxMnuMain_Search_Click(sender, e);
         }
 
-		//Handles the Shortcut for Execution of Program
-		private void ApplicationShortcut_Click(object sender, EventArgs e)
+        //Handles the Shortcut for Execution of Program
+        private void ApplicationShortcut_Click(object sender, EventArgs e)
         {
             if (sender != null && sender is ToolStripMenuItem)
             {
@@ -929,7 +930,7 @@ namespace DesktopShortcutMgr.Forms
                 {
                     lvShortcuts.SelectedItems.Clear();
                     lvShortcuts.Items[selectedItemIdx - 1].Selected = true;
-					CommonUtil.ExecuteProgram(GetSelectedListViewItem());
+                    CommonUtil.ExecuteProgram(GetSelectedListViewItem());
                 }
             }
         }
@@ -948,22 +949,27 @@ namespace DesktopShortcutMgr.Forms
         /// Use CurrentScreen's Bounds value will be the accurate position.
         /// </summary>
         /// <returns></returns>
-        public int GetYOffset() {
+        public int GetYOffset()
+        {
 
             int primaryScreenIndex = GetPrimaryScreenIndex();
-            if (primaryScreenIndex == ScreenIndex) {
+            if (primaryScreenIndex == ScreenIndex)
+            {
                 return 0;
             }
 
-            if (ScreenIndex > Screen.AllScreens.Length) {
+            if (ScreenIndex > Screen.AllScreens.Length)
+            {
                 ScreenIndex = 0;
             }
             Screen currentScreen = Screen.AllScreens[ScreenIndex];
             return currentScreen.Bounds.Y;
         }
 
-        public static int GetPrimaryScreenIndex() {
-            for (int i = 0; i < Screen.AllScreens.Length; i++) {
+        public static int GetPrimaryScreenIndex()
+        {
+            for (int i = 0; i < Screen.AllScreens.Length; i++)
+            {
                 Screen s = Screen.AllScreens[i];
                 if (s.Bounds.X == Screen.PrimaryScreen.Bounds.X) return i;
             }
@@ -971,9 +977,11 @@ namespace DesktopShortcutMgr.Forms
         }
 
         //default to use primary screen
-        public Screen GetScreen() {
+        public Screen GetScreen()
+        {
 
-            if (ScreenIndex >= Screen.AllScreens.Length) {
+            if (ScreenIndex >= Screen.AllScreens.Length)
+            {
                 //reset the screen index if number of screens is reduced
                 ScreenIndex = 0;
             }
@@ -986,35 +994,36 @@ namespace DesktopShortcutMgr.Forms
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        public int GetPositionX(int x) {
+        public int GetPositionX(int x)
+        {
             return Screen.AllScreens[ScreenIndex].WorkingArea.X + x;
         }
 
-		#region Dock In/Out
-		/*
+        #region Dock In/Out
+        /*
          * Credits for the Dock In/Dock Out should go to: babarjehangir, December 15th, 2008
          * 
          * http://www.dottostring.com/tag/windows-form/
          */
 
-		//Gets The Screen Width Available for Work
-		public int GetScreenWidth()
+        //Gets The Screen Width Available for Work
+        public int GetScreenWidth()
         {
             Rectangle recWorkingArea = new Rectangle();
             recWorkingArea = GetScreen().WorkingArea;
             return GetPositionX(recWorkingArea.Width);
         }
 
-		//Gets The Screen Height Available for Work  
-		public int GetScreenHeight()
+        //Gets The Screen Height Available for Work  
+        public int GetScreenHeight()
         {
             Rectangle recWorkingArea = new Rectangle();
             recWorkingArea = GetScreen().WorkingArea;
             return recWorkingArea.Height;
         }
 
-		//Initialize the Docking Window Start Location
-		private void ConfigureThis()
+        //Initialize the Docking Window Start Location
+        private void ConfigureThis()
         {
             //Setting the Text of the Button which will act at the Navigation for Docking Window  
             this.btnDockUnDock.Text = "<<";
@@ -1030,8 +1039,8 @@ namespace DesktopShortcutMgr.Forms
 
         }
 
-		//Sets the height of the Shortcutbar
-		public void ConfigureThis(int height)
+        //Sets the height of the Shortcutbar
+        public void ConfigureThis(int height)
         {
             //Dynamically resizing the form to match the height available on the screen  
             this.Size = new Size(this.Width, height);
@@ -1062,8 +1071,8 @@ namespace DesktopShortcutMgr.Forms
                 return false;
         }
 
-		//Docking Window is brought to the front
-		public void DockOut()
+        //Docking Window is brought to the front
+        public void DockOut()
         {
             btnMainMenu.Show();
             pnlMiniPanel.Hide();
@@ -1082,7 +1091,7 @@ namespace DesktopShortcutMgr.Forms
                     //This loops does the trick for us, this will effectively simulate the  
                     //coming out effect to the docking window, eventually making the window  
                     //completely visible  
-                    
+
                     for (int i = StartX; i >= EndX; i--)
                     {
                         this.Location = new System.Drawing.Point(i, offsetY);
@@ -1108,8 +1117,8 @@ namespace DesktopShortcutMgr.Forms
             this.btnDockUnDock.Text = ">>";
         }
 
-		//Docking Window is Docked Back In  
-		public void DockIn()
+        //Docking Window is Docked Back In  
+        public void DockIn()
         {
             btnMainMenu.Hide();
 
@@ -1129,7 +1138,7 @@ namespace DesktopShortcutMgr.Forms
                     int EndX = GetScreenWidth() - pVisiblePart.Width;
 
                     //This is loop will dock the window back in  
-                    
+
                     for (int i = StartX; i <= EndX; i++)
                     {
                         this.Location = new System.Drawing.Point(i, offsetY);
@@ -1154,39 +1163,39 @@ namespace DesktopShortcutMgr.Forms
             this.btnDockUnDock.Text = "<<";
         }
 
-		#endregion
+        #endregion
 
 
 
-		#region Form Functions
+        #region Form Functions
 
-		//Get the user defined height for the bar
-		private int GetUserSize()
+        //Get the user defined height for the bar
+        private int GetUserSize()
         {
             int intReturn = ((int)((Properties.Settings.Default.IntialHeight / 100.0) * GetScreenHeight()));
             return intReturn;
         }
 
-		//Gets the listview Width
-		public int GetListViewWidth()
+        //Gets the listview Width
+        public int GetListViewWidth()
         {
             return lvShortcuts.Width;
         }
 
-		//Gets the listview Height
-		public int GetListViewHeight()
+        //Gets the listview Height
+        public int GetListViewHeight()
         {
             return lvShortcuts.Height;
         }
 
-		//Gets the selected item'strFilename application path in the list view
-		private ShortcutItem GetSelectedListViewItem()
+        //Gets the selected item'strFilename application path in the list view
+        private ShortcutItem GetSelectedListViewItem()
         {
-			return (ShortcutItem)lvShortcuts.SelectedItems[0].Tag;
+            return (ShortcutItem)lvShortcuts.SelectedItems[0].Tag;
         }
 
-		//Gets the selected item'strFilename application path in the list view
-		private string GetSelectedShortcutNameFromListView()
+        //Gets the selected item'strFilename application path in the list view
+        private string GetSelectedShortcutNameFromListView()
         {
             return GetSelectedListViewItem().Text;
         }
@@ -1196,56 +1205,57 @@ namespace DesktopShortcutMgr.Forms
             return GetSelectedListViewItem().Id;
         }
 
-		private void StartupCheck()
-		{
-			if (!System.IO.Directory.Exists(AppConfig.IconFolder))
-			{
-				System.IO.Directory.CreateDirectory(AppConfig.IconFolder);
+        private void StartupCheck()
+        {
+            if (!System.IO.Directory.Exists(AppConfig.IconFolder))
+            {
+                System.IO.Directory.CreateDirectory(AppConfig.IconFolder);
 
-				Icon ico = DesktopShortcutMgr.Properties.Resources.folder;
-				string iconPath = System.IO.Path.Combine(AppConfig.IconFolder, "folder.ico");
-				using (System.IO.FileStream fs = new System.IO.FileStream(iconPath, System.IO.FileMode.OpenOrCreate))
-				{
-					ico.Save(fs);
-					fs.Close();
-					fs.Dispose();
-				}
-			}
-			if (!System.IO.Directory.Exists(AppConfig.ShortcutFolder))
-			{
-				System.IO.Directory.CreateDirectory(AppConfig.ShortcutFolder);
-			}
-			if (!System.IO.Directory.Exists(AppConfig.ConfigFolder))
-			{
-				System.IO.Directory.CreateDirectory(AppConfig.ConfigFolder);
-			}
+                Icon ico = DesktopShortcutMgr.Properties.Resources.folder;
+                string iconPath = System.IO.Path.Combine(AppConfig.IconFolder, "folder.ico");
+                using (System.IO.FileStream fs = new System.IO.FileStream(iconPath, System.IO.FileMode.OpenOrCreate))
+                {
+                    ico.Save(fs);
+                    fs.Close();
+                    fs.Dispose();
+                }
+            }
+            if (!System.IO.Directory.Exists(AppConfig.ShortcutFolder))
+            {
+                System.IO.Directory.CreateDirectory(AppConfig.ShortcutFolder);
+            }
+            if (!System.IO.Directory.Exists(AppConfig.ConfigFolder))
+            {
+                System.IO.Directory.CreateDirectory(AppConfig.ConfigFolder);
+            }
 
 
-			if (!System.IO.File.Exists(AppConfig.BaseShortcutFile))
-			{
-				ShortcutUtil.UpdateGroup(new ShortcutGroup());
+            if (!System.IO.File.Exists(AppConfig.BaseShortcutFile))
+            {
+                ShortcutUtil.UpdateGroup(new ShortcutGroup());
 
-				Properties.Settings.Default.LastMenuLoaded = null;
-				Properties.Settings.Default.Save();
-				Properties.Settings.Default.Reload();
-			}
+                Properties.Settings.Default.LastMenuLoaded = null;
+                Properties.Settings.Default.Save();
+                Properties.Settings.Default.Reload();
+            }
 
-			if (!System.IO.File.Exists(AppConfig.DefaultIconMappingFile))
-			{
-				IconMap iconMap = new IconMap() {
-					Items = new List<IconMapItem>() {
-						new IconMapItem() {
-							Ext = "folder",
-							Icon = "folder.ico"
-						}
-					}
-				};
-				IconMapperUtil.UpdateIconMapping(iconMap);
-			}
-		}
+            if (!System.IO.File.Exists(AppConfig.DefaultIconMappingFile))
+            {
+                IconMap iconMap = new IconMap()
+                {
+                    Items = new List<IconMapItem>() {
+                        new IconMapItem() {
+                            Ext = "folder",
+                            Icon = "folder.ico"
+                        }
+                    }
+                };
+                IconMapperUtil.UpdateIconMapping(iconMap);
+            }
+        }
 
-		//Loads dynamic shortcuts for generic use
-		private void PreloadShortcuts()
+        //Loads dynamic shortcuts for generic use
+        private void PreloadShortcuts()
         {
             ToolStripMenuItem itmMain = new ToolStripMenuItem("Execute Application");
             itmMain.Name = "ExeApp";
@@ -1265,8 +1275,8 @@ namespace DesktopShortcutMgr.Forms
         }
 
 
-		//[ThreadSafe] Set the title of the forms and other related labels
-		private void SetTitle(string strTitle)
+        //[ThreadSafe] Set the title of the forms and other related labels
+        private void SetTitle(string strTitle)
         {
             if (vlblMain.InvokeRequired || lblGroupName.InvokeRequired)
             {
@@ -1282,12 +1292,12 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		//Setting the opacity form
-		public void SetOpacity(double dblOpacity) { this.Opacity = dblOpacity; }
+        //Setting the opacity form
+        public void SetOpacity(double dblOpacity) { this.Opacity = dblOpacity; }
 
 
-		//Load settings from Settings File
-		private void LoadSettings()
+        //Load settings from Settings File
+        private void LoadSettings()
         {
             //Set the default view (Large Icons, Small Icons, List, Tile)
             //SetView(Properties.Settings.Default.DefaultView);
@@ -1295,12 +1305,12 @@ namespace DesktopShortcutMgr.Forms
             //Set Opacity of the form
             SetOpacity(Properties.Settings.Default.Opacity);
 
-			//Select last chosen group
-			SelectGroup(Properties.Settings.Default.LastMenuLoaded);
+            //Select last chosen group
+            SelectGroup(Properties.Settings.Default.LastMenuLoaded);
 
 
-			//Set the background image if not empty
-			if (!string.IsNullOrEmpty(Properties.Settings.Default.BackgroundImagePath))
+            //Set the background image if not empty
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.BackgroundImagePath))
             {
                 ChangeBackgroundImage(Properties.Settings.Default.BackgroundImagePath);
             }
@@ -1311,8 +1321,8 @@ namespace DesktopShortcutMgr.Forms
             ChangeShortcutBarTextColor(Color.FromName(Properties.Settings.Default.ShortcutBarTextColor));
         }
 
-		//Change the color of the bar
-		public void ChangeShortcutBarColor(Color c)
+        //Change the color of the bar
+        public void ChangeShortcutBarColor(Color c)
         {
             lblGroupName.BackColor = c;
             tbGroupName.BackColor = c;
@@ -1320,24 +1330,24 @@ namespace DesktopShortcutMgr.Forms
             pVisiblePart.BackColor = c;
         }
 
-		//change the color of the text in the bar
-		public void ChangeShortcutBarTextColor(Color c)
+        //change the color of the text in the bar
+        public void ChangeShortcutBarTextColor(Color c)
         {
             vlblMain.ForeColor = c;
             lblGroupName.ForeColor = c;
             tbGroupName.ForeColor = c;
         }
 
-		//Reset the form to original view without any group selected
-		private void ClearToDefaultView()
+        //Reset the form to original view without any group selected
+        private void ClearToDefaultView()
         {
             vlblMain.Text = programName;
             lblGroupName.Text = programName;
             lvShortcuts.Items.Clear();
         }
 
-		//Show the shortcut bar
-		private void ShowShortcutBar()
+        //Show the shortcut bar
+        private void ShowShortcutBar()
         {
             SetForegroundWindow(Handle.ToInt32());
             //this.TopMost = true;
@@ -1345,8 +1355,8 @@ namespace DesktopShortcutMgr.Forms
             //this.TopMost = false;
         }
 
-		//Change background image
-		public void ChangeBackgroundImage(string strBackgroundImagePath)
+        //Change background image
+        public void ChangeBackgroundImage(string strBackgroundImagePath)
         {
             if (System.IO.File.Exists(strBackgroundImagePath))
             {
@@ -1368,8 +1378,8 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		//Renames a listview item
-		private void RenameItem()
+        //Renames a listview item
+        private void RenameItem()
         {
             if (lvShortcuts.SelectedItems != null)
             {
@@ -1377,73 +1387,74 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		//Deletes a listview item
-		private void DeleteListViewItem()
+        //Deletes a listview item
+        private void DeleteListViewItem()
         {
-			List<ShortcutItem> itemsToDelete = new List<ShortcutItem>();
-			if (lvShortcuts.SelectedItems.Count > 1)
-			{
-				if (MessageBox.Show("Are you sure you want to delete these shortcuts ?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
-				{
-					foreach (ListViewItem i in lvShortcuts.SelectedItems)
-					{
-						itemsToDelete.Add((ShortcutItem)i.Tag);
-					}
-				}
-				else {
-					return;
-				}
-			}
-			else
-			{
-				ShortcutItem selectedItem = ((ShortcutItem)lvShortcuts.SelectedItems[0].Tag);
-				string idToDelete = selectedItem.Id;
-				string strItemToDelete = selectedItem.Text;
+            List<ShortcutItem> itemsToDelete = new List<ShortcutItem>();
+            if (lvShortcuts.SelectedItems.Count > 1)
+            {
+                if (MessageBox.Show("Are you sure you want to delete these shortcuts ?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    foreach (ListViewItem i in lvShortcuts.SelectedItems)
+                    {
+                        itemsToDelete.Add((ShortcutItem)i.Tag);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                ShortcutItem selectedItem = ((ShortcutItem)lvShortcuts.SelectedItems[0].Tag);
+                string idToDelete = selectedItem.Id;
+                string strItemToDelete = selectedItem.Text;
 
-				//ask for confirmation
-				if (MessageBox.Show("Are you sure you want to delete shortcut [" + strItemToDelete + "]?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
-				{
-					itemsToDelete.Add(selectedItem);
-				}
-				else
-				{
-					return;
-				}
-			}
+                //ask for confirmation
+                if (MessageBox.Show("Are you sure you want to delete shortcut [" + strItemToDelete + "]?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    itemsToDelete.Add(selectedItem);
+                }
+                else
+                {
+                    return;
+                }
+            }
 
-			if (itemsToDelete.Count > 0)
-			{
-				if (ShortcutUtil.DeleteShortcut(currentGroupName, itemsToDelete.ToArray()))
-				{
-					SelectGroup(currentGroupName);
-				}
-			}
+            if (itemsToDelete.Count > 0)
+            {
+                if (ShortcutUtil.DeleteShortcut(currentGroupName, itemsToDelete.ToArray()))
+                {
+                    SelectGroup(currentGroupName);
+                }
+            }
         }
 
-		//Shows the shortcut properties
-		private void ShowListViewItemProperties()
+        //Shows the shortcut properties
+        private void ShowListViewItemProperties()
         {
 
-			ShortcutItem selectedItem = GetSelectedListViewItem();
+            ShortcutItem selectedItem = GetSelectedListViewItem();
 
-			string strCurrentShortcutName = selectedItem.Text;
-			string strCurrentShortcutPath = selectedItem.Application;
+            string strCurrentShortcutName = selectedItem.Text;
+            string strCurrentShortcutPath = selectedItem.Application;
 
-			Console.WriteLine(selectedItem.IconPath);
+            Console.WriteLine(selectedItem.IconPath);
 
-			//New Properties form
-			ShortcutPropertiesForm frmProp = new ShortcutPropertiesForm()
-			{
-				ShortcutItem = selectedItem
-			};
+            //New Properties form
+            ShortcutPropertiesForm frmProp = new ShortcutPropertiesForm()
+            {
+                ShortcutItem = selectedItem
+            };
 
-			frmProp.FrmOpener = this;
+            frmProp.FrmOpener = this;
 
 
             //If OK, make the changes
             if (frmProp.ShowDialog() == DialogResult.OK)
             {
-				ShortcutItem editedItem = frmProp.ShortcutItem;
+                ShortcutItem editedItem = frmProp.ShortcutItem;
                 string strSelectedIcon = editedItem.IconPath;
                 if (!string.IsNullOrEmpty(strSelectedIcon))
                 {
@@ -1462,9 +1473,10 @@ namespace DesktopShortcutMgr.Forms
                     }
                 }
 
-				if (!ShortcutUtil.UpdateShortcut(currentGroupName, editedItem)) {
-					ShowListViewItemProperties();
-				}
+                if (!ShortcutUtil.UpdateShortcut(currentGroupName, editedItem))
+                {
+                    ShowListViewItemProperties();
+                }
 
                 //Select the group
                 SelectGroup(currentGroupName);
@@ -1480,9 +1492,9 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-        
-		//Perform patching based on the startup parameters
-		private void ExecuteStartupCommand(string[] strCmd)
+
+        //Perform patching based on the startup parameters
+        private void ExecuteStartupCommand(string[] strCmd)
         {
             try
             {
@@ -1493,7 +1505,7 @@ namespace DesktopShortcutMgr.Forms
                         if (cmd.Substring(0, 2) == "P:")
                         {
                             Patcher patcher = new Patcher();
-							patcher.ApplyPatch(cmd.Substring(2));
+                            patcher.ApplyPatch(cmd.Substring(2));
                             patcher = null;
                         }
                         else
@@ -1532,8 +1544,8 @@ namespace DesktopShortcutMgr.Forms
 
 
 
-		//[ThreadSafe] Clear all shortcuts from menu
-		private void ClearItems()
+        //[ThreadSafe] Clear all shortcuts from menu
+        private void ClearItems()
         {
             if (lvShortcuts.InvokeRequired || pnlMiniPanel.InvokeRequired)
             {
@@ -1553,8 +1565,8 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		//[ThreadSafe] Adds shortcut into the listview
-		private void AddItem(ShortcutItem item)
+        //[ThreadSafe] Adds shortcut into the listview
+        private void AddItem(ShortcutItem item)
         {
             Icon icn = null;
 
@@ -1611,12 +1623,12 @@ namespace DesktopShortcutMgr.Forms
             if (itmMain.DropDown != null)
             {
 
-				if (!string.IsNullOrEmpty(item.Arguments))
-				{
-					strItemShortcut = Environment.NewLine + " " + item.Arguments;
-				}
+                if (!string.IsNullOrEmpty(item.Arguments))
+                {
+                    strItemShortcut = Environment.NewLine + " " + item.Arguments;
+                }
 
-				ToolStripMenuItem itm = null;
+                ToolStripMenuItem itm = null;
                 if (itmMain.DropDown.Items.Count > lvShortcuts.Items.Count)
                 {
                     itm = (ToolStripMenuItem)itmMain.DropDown.Items[lvShortcuts.Items.Count];
@@ -1627,22 +1639,22 @@ namespace DesktopShortcutMgr.Forms
             {
                 ToolStripMenuItem itm = (ToolStripMenuItem)itmMain.DropDown.Items[0];
 
-				if (!string.IsNullOrEmpty(item.Arguments))
-				{
-					strItemShortcut = Environment.NewLine + " " + item.Arguments;
-				}
-				strItemShortcut += Environment.NewLine + " Shortcut: " + FormatShortcutString(itm.ShortcutKeys.ToString());
+                if (!string.IsNullOrEmpty(item.Arguments))
+                {
+                    strItemShortcut = Environment.NewLine + " " + item.Arguments;
+                }
+                strItemShortcut += Environment.NewLine + " Shortcut: " + FormatShortcutString(itm.ShortcutKeys.ToString());
             }
 
             //Creates button in the mini panel
             Button btn = new Button();
-			btn.Tag = item;
+            btn.Tag = item;
             btn.Image = imageListSmall.Images[imageList1.Images.Count - 1];
             btn.Margin = new Padding(1);
             btn.Size = new System.Drawing.Size((pnlMiniPanel.Width - btn.Margin.Left - btn.Margin.Right), (pnlMiniPanel.Width - btn.Margin.Top - btn.Margin.Bottom));
             btn.FlatStyle = FlatStyle.Flat;
             btn.Location = new Point(btn.Margin.Left, (btn.Height + btn.Margin.Bottom) * lvShortcuts.Items.Count);  //intShortcutIndex
-			btn.Click += new EventHandler(btnMiniPanelShortcut_Click);
+            btn.Click += new EventHandler(btnMiniPanelShortcut_Click);
             pnlMiniPanelAddItem(btn);
 
 
@@ -1651,8 +1663,8 @@ namespace DesktopShortcutMgr.Forms
             l.ImageIndex = imageList1.Images.Count - 1;
             l.Text = item.Text;
             l.Name = item.Id;
-			l.Tag = item;
-			l.ToolTipText = item.Application + strItemShortcut;
+            l.Tag = item;
+            l.ToolTipText = item.Application + strItemShortcut;
 
 
             //Add list view item
@@ -1661,8 +1673,8 @@ namespace DesktopShortcutMgr.Forms
             item = null;
         }
 
-		//[ThreadSafe] Add Items to the MiniPanel
-		private void pnlMiniPanelAddItem(Control ctrl)
+        //[ThreadSafe] Add Items to the MiniPanel
+        private void pnlMiniPanelAddItem(Control ctrl)
         {
             if (pnlMiniPanel.InvokeRequired)
             {
@@ -1676,8 +1688,8 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		//[ThreadSafe] Add items to the ListView
-		private void lvShortcutsAddItem(ListViewItem l)
+        //[ThreadSafe] Add items to the ListView
+        private void lvShortcutsAddItem(ListViewItem l)
         {
             if (pnlMiniPanel.InvokeRequired)
             {
@@ -1691,8 +1703,8 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		//[ThreadSafe] Set ContextToolstripMenuItem checkstate
-		private void SetCtxToolStripMenuItemCheckedState(ContextMenuStrip msParent, ToolStripMenuItem itm, bool bln)
+        //[ThreadSafe] Set ContextToolstripMenuItem checkstate
+        private void SetCtxToolStripMenuItemCheckedState(ContextMenuStrip msParent, ToolStripMenuItem itm, bool bln)
         {
             if (msParent.InvokeRequired)
             {
@@ -1707,8 +1719,8 @@ namespace DesktopShortcutMgr.Forms
         }
 
 
-		//[ThreadSafe] Add Icon to ImageList
-		private void AddImageListIcon(ImageList imgList, Icon icn)
+        //[ThreadSafe] Add Icon to ImageList
+        private void AddImageListIcon(ImageList imgList, Icon icn)
         {
             if (this.InvokeRequired)
             {
@@ -1726,90 +1738,90 @@ namespace DesktopShortcutMgr.Forms
         {
             if (sender != null && sender is Button)
             {
-				ShortcutItem item = (ShortcutItem)((Button)sender).Tag;
-				CommonUtil.ExecuteProgram(item);
+                ShortcutItem item = (ShortcutItem)((Button)sender).Tag;
+                CommonUtil.ExecuteProgram(item);
             }
         }
 
-		#endregion
+        #endregion
 
-		#region Group Functions (Create/Rename/Delete/Select)
+        #region Group Functions (Create/Rename/Delete/Select)
 
-		//Load the Group Names for shortcuts from XML file
-		private void LoadShortcutGroups()
+        //Load the Group Names for shortcuts from XML file
+        private void LoadShortcutGroups()
         {
-			//Clear the context menu
-			ctxMnuListView.Items.Clear();
-			ctxMnuMain_SelectGroup.DropDownItems.Clear();
-			ctxMnuMain_DeleteGroup.DropDownItems.Clear();
+            //Clear the context menu
+            ctxMnuListView.Items.Clear();
+            ctxMnuMain_SelectGroup.DropDownItems.Clear();
+            ctxMnuMain_DeleteGroup.DropDownItems.Clear();
 
-			ctxMnuListViewItem_MoveTo.DropDownItems.Clear();
-			ctxMnuListViewItem_CopyTo.DropDownItems.Clear();
+            ctxMnuListViewItem_MoveTo.DropDownItems.Clear();
+            ctxMnuListViewItem_CopyTo.DropDownItems.Clear();
 
-			int intShortcutKey_ListView = 1;
+            int intShortcutKey_ListView = 1;
 
-			List<string> groupNames = ShortcutUtil.GetShortcutGroupNames();
-			foreach (string groupName in groupNames)
-			{
-				ToolStripMenuItem itm, itm_shortcutGrp, itm_selectGrp, itm_CopyTo, itm_MoveTo;
+            List<string> groupNames = ShortcutUtil.GetShortcutGroupNames();
+            foreach (string groupName in groupNames)
+            {
+                ToolStripMenuItem itm, itm_shortcutGrp, itm_selectGrp, itm_CopyTo, itm_MoveTo;
 
-				/********************************************************************************************************************
+                /********************************************************************************************************************
 				 * Adds items to the Listview Context Menu (Adds to listview context menu strip)
 				 * Adds items to the List of Group for selection 
 				 ********************************************************************************************************************/
-				itm = new ToolStripMenuItem();
-				itm_shortcutGrp = new ToolStripMenuItem();
-				itm_selectGrp = new ToolStripMenuItem();
-				itm_CopyTo = new ToolStripMenuItem();
-				itm_MoveTo = new ToolStripMenuItem();
+                itm = new ToolStripMenuItem();
+                itm_shortcutGrp = new ToolStripMenuItem();
+                itm_selectGrp = new ToolStripMenuItem();
+                itm_CopyTo = new ToolStripMenuItem();
+                itm_MoveTo = new ToolStripMenuItem();
 
-				if (intShortcutKey_ListView <= 12)
-				{
-					Keys k = (
-						(Keys)System.Enum.Parse(typeof(Keys),
-						("F" + intShortcutKey_ListView.ToString()), true)
-					);
+                if (intShortcutKey_ListView <= 12)
+                {
+                    Keys k = (
+                        (Keys)System.Enum.Parse(typeof(Keys),
+                        ("F" + intShortcutKey_ListView.ToString()), true)
+                    );
 
-					itm.ShortcutKeys = k;
-					itm_shortcutGrp.ShortcutKeys = k;
-					itm_selectGrp.ShortcutKeys = k;
-					intShortcutKey_ListView += 1;
-				}
+                    itm.ShortcutKeys = k;
+                    itm_shortcutGrp.ShortcutKeys = k;
+                    itm_selectGrp.ShortcutKeys = k;
+                    intShortcutKey_ListView += 1;
+                }
 
-				//To appear in the context menu of the list view
-				itm.Text = groupName;
-				itm.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
+                //To appear in the context menu of the list view
+                itm.Text = groupName;
+                itm.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
 
-				//To Appear in the hidden menu for Selection of group via Hotkeys
-				itm_shortcutGrp.Text = groupName;
-				itm_shortcutGrp.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
+                //To Appear in the hidden menu for Selection of group via Hotkeys
+                itm_shortcutGrp.Text = groupName;
+                itm_shortcutGrp.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
 
-				//To appear in the Left Menu
-				itm_selectGrp.Text = groupName;
-				itm_selectGrp.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
+                //To appear in the Left Menu
+                itm_selectGrp.Text = groupName;
+                itm_selectGrp.Click += new EventHandler(listViewCtxMenuItem_Selection_Click);
 
-				itm_CopyTo.Text = groupName;
-				itm_CopyTo.Click += new EventHandler(itm_CopyTo_Click);
+                itm_CopyTo.Text = groupName;
+                itm_CopyTo.Click += new EventHandler(itm_CopyTo_Click);
 
-				itm_MoveTo.Text = groupName;
-				itm_MoveTo.Click += new EventHandler(itm_MoveTo_Click);
+                itm_MoveTo.Text = groupName;
+                itm_MoveTo.Click += new EventHandler(itm_MoveTo_Click);
 
-				ctxMnuListView.Items.Add(itm);
-				mnuShortcutGroup.Items.Add(itm_shortcutGrp);
-				ctxMnuMain_SelectGroup.DropDownItems.Add(itm_selectGrp);
+                ctxMnuListView.Items.Add(itm);
+                mnuShortcutGroup.Items.Add(itm_shortcutGrp);
+                ctxMnuMain_SelectGroup.DropDownItems.Add(itm_selectGrp);
 
-				ctxMnuListViewItem_MoveTo.DropDownItems.Add(itm_MoveTo);
-				ctxMnuListViewItem_CopyTo.DropDownItems.Add(itm_CopyTo);
+                ctxMnuListViewItem_MoveTo.DropDownItems.Add(itm_MoveTo);
+                ctxMnuListViewItem_CopyTo.DropDownItems.Add(itm_CopyTo);
 
-				/********************************************************************************************************************
+                /********************************************************************************************************************
 				 * Add to List of Group for deleting
 				 ********************************************************************************************************************/
-				itm = new ToolStripMenuItem();
-				itm.Text = groupName;
-				itm.Click += new EventHandler(listViewCtxMenuItem_Delete_Click);
+                itm = new ToolStripMenuItem();
+                itm.Text = groupName;
+                itm.Click += new EventHandler(listViewCtxMenuItem_Delete_Click);
 
-				ctxMnuMain_DeleteGroup.DropDownItems.Add(itm);
-			}
+                ctxMnuMain_DeleteGroup.DropDownItems.Add(itm);
+            }
         }
 
         private void itm_MoveTo_Click(object sender, EventArgs e)
@@ -1836,20 +1848,20 @@ namespace DesktopShortcutMgr.Forms
             }
         }
 
-		//Actual Creation of the Group
-		private void CreateGroup(string strGroupName)
+        //Actual Creation of the Group
+        private void CreateGroup(string strGroupName)
         {
-			if (ShortcutUtil.GroupNameExists(strGroupName))
-			{
-				MessageBox.Show(
-						"Unable to create group. Group Already Exists.",
-						"Unable to create group",
-						MessageBoxButtons.OK,
-						MessageBoxIcon.Error
-					);
-				return;
-			}
-			ShortcutUtil.CreateGroup(strGroupName);
+            if (ShortcutUtil.GroupNameExists(strGroupName))
+            {
+                MessageBox.Show(
+                        "Unable to create group. Group Already Exists.",
+                        "Unable to create group",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                return;
+            }
+            ShortcutUtil.CreateGroup(strGroupName);
 
             //ReLoad the shortcut Groups
             LoadShortcutGroups();
@@ -1859,64 +1871,65 @@ namespace DesktopShortcutMgr.Forms
 
         }
 
-		//Rename Group
-		private void RenameGroup(string oldGroupName, string newGroupName)
+        //Rename Group
+        private void RenameGroup(string oldGroupName, string newGroupName)
         {
             //Exit if empty new group name
             if (string.IsNullOrEmpty(newGroupName)) { return; }
 
-			//no change in name
-			if (oldGroupName == newGroupName) { return; }
+            //no change in name
+            if (oldGroupName == newGroupName) { return; }
 
-			if (ShortcutUtil.GroupNameExists(newGroupName))
-			{
-				MessageBox.Show(
-					"Unable to rename group. Group with existing name already exists.",
-					"Unable to rename group",
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error
-				);
-				return;
-			}
+            if (ShortcutUtil.GroupNameExists(newGroupName))
+            {
+                MessageBox.Show(
+                    "Unable to rename group. Group with existing name already exists.",
+                    "Unable to rename group",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
 
-			if (ShortcutUtil.RenameGroup(oldGroupName, newGroupName))
-			{
-				//Reload
-				LoadShortcutGroups();
+            if (ShortcutUtil.RenameGroup(oldGroupName, newGroupName))
+            {
+                //Reload
+                LoadShortcutGroups();
 
-				//Select the new group name
-				SelectGroup(newGroupName);
-			}
+                //Select the new group name
+                SelectGroup(newGroupName);
+            }
         }
 
-		//Delete Group
-		private void DeleteGroup(string groupName)
+        //Delete Group
+        private void DeleteGroup(string groupName)
         {
-			if (ShortcutUtil.DeleteGroup(groupName)) {
-				LoadShortcutGroups();
+            if (ShortcutUtil.DeleteGroup(groupName))
+            {
+                LoadShortcutGroups();
 
-				//If the currently selected group is the one deleted, clear the list view
-				if (groupName == lblGroupName.Text)
-				{
-					ClearToDefaultView();
-				}
-			}
-		}
+                //If the currently selected group is the one deleted, clear the list view
+                if (groupName == lblGroupName.Text)
+                {
+                    ClearToDefaultView();
+                }
+            }
+        }
 
-		//Load the shortcuts and set the menu checked
-		private void SelectGroup(string strGroupName)
+        //Load the shortcuts and set the menu checked
+        private void SelectGroup(string strGroupName)
         {
-			if (GroupSelectorThread != null && GroupSelectorThread.IsAlive) GroupSelectorThread.Abort();
+            if (GroupSelectorThread != null && GroupSelectorThread.IsAlive) GroupSelectorThread.Abort();
 
-			//Start a new thread to load the selection of group
-			GroupSelectorThread = new Thread(new ParameterizedThreadStart(SelectGroupAsync));
-			GroupSelectorThread.Start(strGroupName);
-			GroupSelectorThread = null;
-		}
+            //Start a new thread to load the selection of group
+            GroupSelectorThread = new Thread(new ParameterizedThreadStart(SelectGroupAsync));
+            GroupSelectorThread.Start(strGroupName);
+            GroupSelectorThread = null;
+        }
 
 
-		//ThreadSafe] Selects & Loads Selected Group
-		private void SelectGroupAsync(object objStrGroupName)
+        //ThreadSafe] Selects & Loads Selected Group
+        private void SelectGroupAsync(object objStrGroupName)
         {
             try
             {
@@ -1927,21 +1940,21 @@ namespace DesktopShortcutMgr.Forms
 
                 ClearItems();
 
-				//locate file. If it exists, load the items
-				List<ShortcutItem> files = ShortcutUtil.GetShortcuts(strGroupName);
-				if (files != null && files.Count > 0)
-				{
-					int idx = 0;
-					foreach (ShortcutItem item in files)
-					{
-						idx++;
-						AddItem(item);
-						SetTitle(string.Format("{0} Loading: {1} of {2}", strGroupName, idx, files.Count));
-					}
-					files = null;
-				}
+                //locate file. If it exists, load the items
+                List<ShortcutItem> files = ShortcutUtil.GetShortcuts(strGroupName);
+                if (files != null && files.Count > 0)
+                {
+                    int idx = 0;
+                    foreach (ShortcutItem item in files)
+                    {
+                        idx++;
+                        AddItem(item);
+                        SetTitle(string.Format("{0} Loading: {1} of {2}", strGroupName, idx, files.Count));
+                    }
+                    files = null;
+                }
 
-				SetTitle(strGroupName);
+                SetTitle(strGroupName);
                 currentGroupName = strGroupName;
 
                 //Checked the selected group
@@ -1965,7 +1978,7 @@ namespace DesktopShortcutMgr.Forms
                 Properties.Settings.Default.Save();
                 Properties.Settings.Default.Reload();
 
-			}
+            }
             catch (ThreadAbortException)
             {
                 ClearItems();
@@ -1976,7 +1989,7 @@ namespace DesktopShortcutMgr.Forms
                 {
                     if (!AttemptedPatch)
                     {
-						(new Patcher()).ApplyPatch(Patcher.Commands.AssignShortcutIds);
+                        (new Patcher()).ApplyPatch(Patcher.Commands.AssignShortcutIds);
                         SelectGroupAsync(objStrGroupName);
                     }
                     else
@@ -1991,21 +2004,22 @@ namespace DesktopShortcutMgr.Forms
                 }
             }
 
-			
-		}
+
+        }
 
 
-		//Selects the item in the list view
-		private void SelectItem(string selectedId)
+        //Selects the item in the list view
+        private void SelectItem(string selectedId)
         {
             foreach (ListViewItem item in lvShortcuts.Items)
             {
-				ShortcutItem lvItem = (ShortcutItem) item.Tag;
-				if (lvItem.Id == selectedId) {
-					item.Selected = true;
-					break;
-				}
-			}
+                ShortcutItem lvItem = (ShortcutItem)item.Tag;
+                if (lvItem.Id == selectedId)
+                {
+                    item.Selected = true;
+                    break;
+                }
+            }
         }
 
         // Format the shortcut to be easily understandable. e.g. change D1 to 1, Oemtilde to ~
@@ -2068,35 +2082,35 @@ namespace DesktopShortcutMgr.Forms
             return strResult;
         }
 
-		//Method to copy/move items from one group to another based on the current selected item(s) in the active listview
-		public void CopyItems(string newGroupName, bool deleteAfterCopy)
+        //Method to copy/move items from one group to another based on the current selected item(s) in the active listview
+        public void CopyItems(string newGroupName, bool deleteAfterCopy)
         {
-			List<ShortcutItem> items = new List<ShortcutItem>();
-			if (lvShortcuts.SelectedItems != null && lvShortcuts.SelectedItems.Count > 0)
-			{
-				foreach (ListViewItem item in lvShortcuts.SelectedItems)
-				{
-					items.Add((ShortcutItem)item.Tag);
-				}
+            List<ShortcutItem> items = new List<ShortcutItem>();
+            if (lvShortcuts.SelectedItems != null && lvShortcuts.SelectedItems.Count > 0)
+            {
+                foreach (ListViewItem item in lvShortcuts.SelectedItems)
+                {
+                    items.Add((ShortcutItem)item.Tag);
+                }
 
-				ShortcutUtil.CopyShortcut(newGroupName, items.ToArray());
-				if (deleteAfterCopy)
-				{
-					ShortcutUtil.DeleteShortcut(currentGroupName, items.ToArray());
+                ShortcutUtil.CopyShortcut(newGroupName, items.ToArray());
+                if (deleteAfterCopy)
+                {
+                    ShortcutUtil.DeleteShortcut(currentGroupName, items.ToArray());
 
-					//Reload current group to reflect changes if any
-					SelectGroup(currentGroupName);
-				}
-			}
+                    //Reload current group to reflect changes if any
+                    SelectGroup(currentGroupName);
+                }
+            }
         }
 
-		#endregion
+        #endregion
 
 
-		#region DllImports
+        #region DllImports
 
-		//Bring the Window into Foreground
-		[DllImport("User32.dll")]
+        //Bring the Window into Foreground
+        [DllImport("User32.dll")]
         public static extern Int32 SetForegroundWindow(int hWnd);
 
 
