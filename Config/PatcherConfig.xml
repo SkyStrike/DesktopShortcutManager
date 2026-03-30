@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <patchconfig>
   <folder_shortcut>Shortcut\</folder_shortcut>
-  <folder_icon>icons\</folder_icon>
+  <folder_icon>Icons\</folder_icon>
   <folder_config>Config\</folder_config>
   <imports>
     <import>
