@@ -17,7 +17,19 @@ namespace DesktopShortcutMgr
         [STAThread]
         static void Main(string[] args)
         {
-...
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
+                Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
+                AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+                Application.Run(new Forms.MainForm());
+            }
+            catch (Exception ex)
+            {
+                HandleError(ex);
+            }
         }
 
         /// <summary>

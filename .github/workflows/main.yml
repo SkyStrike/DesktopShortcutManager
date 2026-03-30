@@ -1,0 +1,63 @@
+name: Build and Release
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v2
+
+    - name: Restore NuGet Packages
+      run: nuget restore DesktopShortcutMgr.csproj
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v1.1.1
+      with:
+        versionSpec: '5.x'
+
+    - name: Determine Version
+      id: gitversion
+      uses: gittools/actions/gitversion/execute@v1.1.1
+
+    - name: Build Application
+      run: msbuild DesktopShortcutMgr.csproj /p:Configuration=Release /p:Platform="AnyCPU" /p:OutputPath=bin\Release
+
+    - name: Zip the Output
+      shell: pwsh
+      run: |
+        # Remove debug symbols
+        Get-ChildItem -Path ./bin/Release -Include *.pdb -Recurse | Remove-Item -Force
+        
+        # Compress the bin/Release directory
+        Compress-Archive -Path ./bin/Release/* -DestinationPath ./DesktopShortcutManager_v${{ steps.gitversion.outputs.MajorMinorPatch }}.zip
+
+    - name: Create GitHub Release
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: Release ${{ steps.gitversion.outputs.FullSemVer }}
+        draft: false
+        prerelease: false
+        files: |
+          *.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

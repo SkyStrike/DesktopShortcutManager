@@ -228,17 +228,24 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\Config\DefaultIconMapping.xml" />
-    <None Include="bin\Debug\icons\unknown.ico" />
-    <Content Include="bin\Debug\Config\PatcherConfig.xml" />
-    <Content Include="bin\Release\Config\DefaultIconMapping.xml" />
-    <Content Include="bin\Release\Config\PatcherConfig.xml" />
-    <Content Include="bin\Release\Patch Notes.txt" />
-    <None Include="Resources\unknown.ico" />
-    <None Include="Icons\unknown.ico" />
-    <None Include="Icons\folder.ico" />
-    <Content Include="Icons\star.ico" />
-    <None Include="bin\Release\icons\unknown.ico" />
+    <Content Include="Config\DefaultIconMapping.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\PatcherConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\Shortcuts.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\folder.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\star.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\unknown.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
