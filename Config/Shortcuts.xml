@@ -1,4 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
 <shortcuts>
-	<Groups />
+	<Groups>
+		<name>Default</name>
+	</Groups>
 </shortcuts>
